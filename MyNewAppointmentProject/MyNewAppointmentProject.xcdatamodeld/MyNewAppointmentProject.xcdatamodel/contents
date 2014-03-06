@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="3401" systemVersion="13B42" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
+    <entity name="DataEntity" representedClassName="DataEntity" syncable="YES">
+        <attribute name="appointmentCaseId" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="appointmentClientName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="appointmentDate" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="appointmentDescription" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="appointmentHolidayType" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="appointmentName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="appointmentRecurring" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="appointmentReminder" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="appointmentTime" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="appointmentToDate" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="appointmentToTime" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="appointmentType" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="appointmentVenue" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="appointmentVisibility" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="LawyerEntity" representedClassName="LawyerEntity" syncable="YES">
+        <attribute name="chamberID" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="lawyerID" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="DataEntity" positionX="-4914" positionY="-975" width="128" height="255"/>
+        <element name="LawyerEntity" positionX="-4707" positionY="-873" width="128" height="73"/>
+    </elements>
+</model>
