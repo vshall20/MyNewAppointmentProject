@@ -2,7 +2,7 @@
 //  DataEntity.h
 //  MyNewAppointmentProject
 //
-//  Created by Vishal Dharmawat on 07/03/14.
+//  Created by Vishnu Gupta on 07/03/14.
 //  Copyright (c) 2014 Vishnu Gupta. All rights reserved.
 //
 
@@ -12,19 +12,29 @@
 
 @interface DataEntity : NSManagedObject
 
-@property (nonatomic, retain) NSDate * appointmentDate;
-@property (nonatomic, retain) NSString * appointmentName;
-@property (nonatomic, retain) NSDate * appointmentTime;
-@property (nonatomic, retain) NSDate * appointmentToDate;
-@property (nonatomic, retain) NSDate * appointmentToTime;
+@property (nonatomic, retain) NSString * appId;
 @property (nonatomic, retain) NSString * appointmentType;
-@property (nonatomic, retain) NSString * appointmentClientName;
-@property (nonatomic, retain) NSString * appointmentCaseId;
+@property (nonatomic, retain) NSString * caseId;
+@property (nonatomic, retain) NSString * clientName;
+@property (nonatomic, retain) NSString * createdBy;
+@property (nonatomic, retain) NSDate * createdDate;
 @property (nonatomic, retain) NSString * appointmentDescription;
-@property (nonatomic, retain) NSString * appointmentVenue;
-@property (nonatomic, retain) NSString * appointmentReminder;
-@property (nonatomic, retain) NSString * appointmentRecurring;
-@property (nonatomic, retain) NSString * appointmentVisibility;
-@property (nonatomic, retain) NSString * appointmentHolidayType;
+@property (nonatomic, retain) NSDate * end;
+@property (nonatomic, retain) NSString * eventVisibility;
+@property (nonatomic, retain) NSString * holidayType;
+@property (nonatomic, retain) NSString * isAllDay;
+@property (nonatomic, retain) NSDate * matterFromDate;
+@property (nonatomic, retain) NSString * matterStatus;
+@property (nonatomic, retain) NSString * matterSummary;
+@property (nonatomic, retain) NSDate * matterToDate;
+@property (nonatomic, retain) NSString * recurrenceParentId;
+@property (nonatomic, retain) NSString * recurrenceRule;
+@property (nonatomic, retain) NSString * reminder;
+@property (nonatomic, retain) NSDate * start;
+@property (nonatomic, retain) NSString * status;
+@property (nonatomic, retain) NSString * subject;
+@property (nonatomic, retain) NSString * updatedBy;
+@property (nonatomic, retain) NSString * updatedOn;
+@property (nonatomic, retain) NSString * venue;
 
 @end

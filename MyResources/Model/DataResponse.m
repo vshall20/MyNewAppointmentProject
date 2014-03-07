@@ -7,13 +7,15 @@
 //
 
 #import "DataResponse.h"
+#import "Processor.h"
 
 @implementation DataResponse
 
 
 -(id)initWithDictionary:(NSMutableDictionary *)dict
 {
-    if (!self) {
+    self = [super init];
+    if (self) {
         self = [[DataResponse alloc]init];
         _dataDictionary = dict;
     }
@@ -23,6 +25,13 @@
 
 -(void)saveData
 {
-    
+    if (_dataDictionary)
+    {
+        Processor *processor = [[Processor alloc]initWithDictionary:_dataDictionary];
+        
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
+            [processor parseDictionaryAndSave];
+        });
+    }
 }
 @end

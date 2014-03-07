@@ -12,5 +12,9 @@
 
 @property (nonatomic, strong) NSFetchedResultsController *fetchResultController;
 @property (nonatomic, strong) NSManagedObjectContext *managedObjectContext;
+@property (nonatomic, strong) NSManagedObjectContext *bgManagedObjectContext;
+
+-(id)initWithManagedObjectContext:(NSManagedObjectContext *)context;
+- (void)saveBGContext;
 
 @end

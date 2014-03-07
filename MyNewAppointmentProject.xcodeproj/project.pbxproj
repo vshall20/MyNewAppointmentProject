@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		33A8BC1C18C9A22900F4F2DE /* AppointmentTypeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 33A8BC1A18C9A22900F4F2DE /* AppointmentTypeViewController.m */; };
+		33A8BC1D18C9A22900F4F2DE /* AppointmentTypeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 33A8BC1B18C9A22900F4F2DE /* AppointmentTypeViewController.xib */; };
+		33A8BC2218C9EAE200F4F2DE /* FilterByLawyerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 33A8BC2018C9EAE200F4F2DE /* FilterByLawyerViewController.m */; };
+		33A8BC2318C9EAE200F4F2DE /* FilterByLawyerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 33A8BC2118C9EAE200F4F2DE /* FilterByLawyerViewController.xib */; };
+		33A8BC2618CA096100F4F2DE /* Processor.m in Sources */ = {isa = PBXBuildFile; fileRef = 33A8BC2518CA096100F4F2DE /* Processor.m */; };
+		33A8BC2918CA17C700F4F2DE /* DataEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 33A8BC2818CA17C700F4F2DE /* DataEntity.m */; };
 		33B3EF4118C73EB7006AEF58 /* NSDate+TKCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 33B3EF3318C73EB7006AEF58 /* NSDate+TKCategory.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		33B3EF4218C73EB7006AEF58 /* TapkuLibrary.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 33B3EF3418C73EB7006AEF58 /* TapkuLibrary.bundle */; };
 		33B3EF4318C73EB7006AEF58 /* TKCalendarMonthTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 33B3EF3618C73EB7006AEF58 /* TKCalendarMonthTableViewController.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -44,8 +50,8 @@
 		33EAF93418C6277B0016C832 /* LeftViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 33EAF93218C6277B0016C832 /* LeftViewController.xib */; };
 		33EAF93818C6278C0016C832 /* RightViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 33EAF93618C6278C0016C832 /* RightViewController.m */; };
 		33EAF93918C6278C0016C832 /* RightViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 33EAF93718C6278C0016C832 /* RightViewController.xib */; };
+		33FC8ECE18CA205100D409CF /* DateFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 33FC8ECD18CA205100D409CF /* DateFormatter.m */; };
 		86E2CC5418C8FFC200E11FD4 /* DataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 86E2CC5318C8FFC200E11FD4 /* DataManager.m */; };
-		86E2CC5718C902EC00E11FD4 /* DataEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 86E2CC5618C902EC00E11FD4 /* DataEntity.m */; };
 		86E2CC5A18C905A400E11FD4 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 86E2CC5918C905A400E11FD4 /* Reachability.m */; };
 		86E2CC5D18C905E700E11FD4 /* Utility.m in Sources */ = {isa = PBXBuildFile; fileRef = 86E2CC5C18C905E700E11FD4 /* Utility.m */; };
 		86E2CC5F18C9061900E11FD4 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 86E2CC5E18C9061900E11FD4 /* SystemConfiguration.framework */; };
@@ -67,6 +73,16 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		33A8BC1918C9A22900F4F2DE /* AppointmentTypeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppointmentTypeViewController.h; sourceTree = "<group>"; };
+		33A8BC1A18C9A22900F4F2DE /* AppointmentTypeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppointmentTypeViewController.m; sourceTree = "<group>"; };
+		33A8BC1B18C9A22900F4F2DE /* AppointmentTypeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AppointmentTypeViewController.xib; sourceTree = "<group>"; };
+		33A8BC1F18C9EAE200F4F2DE /* FilterByLawyerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FilterByLawyerViewController.h; sourceTree = "<group>"; };
+		33A8BC2018C9EAE200F4F2DE /* FilterByLawyerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FilterByLawyerViewController.m; sourceTree = "<group>"; };
+		33A8BC2118C9EAE200F4F2DE /* FilterByLawyerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FilterByLawyerViewController.xib; sourceTree = "<group>"; };
+		33A8BC2418CA096100F4F2DE /* Processor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Processor.h; sourceTree = "<group>"; };
+		33A8BC2518CA096100F4F2DE /* Processor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Processor.m; sourceTree = "<group>"; };
+		33A8BC2718CA17C700F4F2DE /* DataEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataEntity.h; sourceTree = "<group>"; };
+		33A8BC2818CA17C700F4F2DE /* DataEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataEntity.m; sourceTree = "<group>"; };
 		33B3EF3218C73EB7006AEF58 /* NSDate+TKCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+TKCategory.h"; sourceTree = "<group>"; };
 		33B3EF3318C73EB7006AEF58 /* NSDate+TKCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+TKCategory.m"; sourceTree = "<group>"; };
 		33B3EF3418C73EB7006AEF58 /* TapkuLibrary.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = TapkuLibrary.bundle; sourceTree = "<group>"; };
@@ -122,10 +138,10 @@
 		33EAF93618C6278C0016C832 /* RightViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RightViewController.m; sourceTree = "<group>"; };
 		33EAF93718C6278C0016C832 /* RightViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RightViewController.xib; sourceTree = "<group>"; };
 		33EAF93A18C62D240016C832 /* Constant.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Constant.h; sourceTree = "<group>"; };
+		33FC8ECC18CA205100D409CF /* DateFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DateFormatter.h; sourceTree = "<group>"; };
+		33FC8ECD18CA205100D409CF /* DateFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DateFormatter.m; sourceTree = "<group>"; };
 		86E2CC5218C8FFC200E11FD4 /* DataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataManager.h; sourceTree = "<group>"; };
 		86E2CC5318C8FFC200E11FD4 /* DataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataManager.m; sourceTree = "<group>"; };
-		86E2CC5518C902EC00E11FD4 /* DataEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataEntity.h; sourceTree = "<group>"; };
-		86E2CC5618C902EC00E11FD4 /* DataEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataEntity.m; sourceTree = "<group>"; };
 		86E2CC5818C905A400E11FD4 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
 		86E2CC5918C905A400E11FD4 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
 		86E2CC5B18C905E700E11FD4 /* Utility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Utility.h; sourceTree = "<group>"; };
@@ -232,10 +248,10 @@
 				33EAF90318C61F560016C832 /* AppDelegate.m */,
 				33EAF90818C61F560016C832 /* Images.xcassets */,
 				33EAF90518C61F560016C832 /* MyNewAppointmentProject.xcdatamodeld */,
+				33A8BC2718CA17C700F4F2DE /* DataEntity.h */,
+				33A8BC2818CA17C700F4F2DE /* DataEntity.m */,
 				86E2CC6018C910C600E11FD4 /* LawyerEntity.h */,
 				86E2CC6118C910C600E11FD4 /* LawyerEntity.m */,
-				86E2CC5518C902EC00E11FD4 /* DataEntity.h */,
-				86E2CC5618C902EC00E11FD4 /* DataEntity.m */,
 				33EAF8FA18C61F560016C832 /* Supporting Files */,
 			);
 			path = MyNewAppointmentProject;
@@ -291,6 +307,8 @@
 				33B3EF6118C7649B006AEF58 /* myNavigationBar.xib */,
 				33B3EF6318C76556006AEF58 /* MyNavigationBar.h */,
 				33B3EF6418C76556006AEF58 /* MyNavigationBar.m */,
+				33FC8ECC18CA205100D409CF /* DateFormatter.h */,
+				33FC8ECD18CA205100D409CF /* DateFormatter.m */,
 			);
 			path = CommonClass;
 			sourceTree = "<group>";
@@ -304,6 +322,8 @@
 				86E2CC5318C8FFC200E11FD4 /* DataManager.m */,
 				86E2CC5B18C905E700E11FD4 /* Utility.h */,
 				86E2CC5C18C905E700E11FD4 /* Utility.m */,
+				33A8BC2418CA096100F4F2DE /* Processor.h */,
+				33A8BC2518CA096100F4F2DE /* Processor.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -335,7 +355,13 @@
 				33B3EF4B18C74A9F006AEF58 /* LoginViewController.xib */,
 				33B3EF5618C7523C006AEF58 /* NewAppointmentViewController.h */,
 				33B3EF5718C7523C006AEF58 /* NewAppointmentViewController.m */,
+				33A8BC1918C9A22900F4F2DE /* AppointmentTypeViewController.h */,
 				33B3EF5818C7523C006AEF58 /* NewAppointmentViewController.xib */,
+				33A8BC1A18C9A22900F4F2DE /* AppointmentTypeViewController.m */,
+				33A8BC1B18C9A22900F4F2DE /* AppointmentTypeViewController.xib */,
+				33A8BC1F18C9EAE200F4F2DE /* FilterByLawyerViewController.h */,
+				33A8BC2018C9EAE200F4F2DE /* FilterByLawyerViewController.m */,
+				33A8BC2118C9EAE200F4F2DE /* FilterByLawyerViewController.xib */,
 			);
 			path = UIViewController;
 			sourceTree = "<group>";
@@ -439,7 +465,9 @@
 			files = (
 				33EAF92F18C620160016C832 /* MyAppointmentListViewController.xib in Resources */,
 				33B3EF6218C7649B006AEF58 /* myNavigationBar.xib in Resources */,
+				33A8BC2318C9EAE200F4F2DE /* FilterByLawyerViewController.xib in Resources */,
 				33EAF93918C6278C0016C832 /* RightViewController.xib in Resources */,
+				33A8BC1D18C9A22900F4F2DE /* AppointmentTypeViewController.xib in Resources */,
 				33EAF93418C6277B0016C832 /* LeftViewController.xib in Resources */,
 				33B3EF5A18C7523C006AEF58 /* NewAppointmentViewController.xib in Resources */,
 				33B3EF4218C73EB7006AEF58 /* TapkuLibrary.bundle in Resources */,
@@ -471,20 +499,24 @@
 				33EAF93318C6277B0016C832 /* LeftViewController.m in Sources */,
 				86E2CC6D18C91EC000E11FD4 /* DataRequest.m in Sources */,
 				86E2CC5D18C905E700E11FD4 /* Utility.m in Sources */,
-				86E2CC5718C902EC00E11FD4 /* DataEntity.m in Sources */,
+				33A8BC1C18C9A22900F4F2DE /* AppointmentTypeViewController.m in Sources */,
 				33B3EF4118C73EB7006AEF58 /* NSDate+TKCategory.m in Sources */,
 				33EAF90718C61F560016C832 /* MyNewAppointmentProject.xcdatamodeld in Sources */,
 				33B3EF4C18C74A9F006AEF58 /* LoginViewController.m in Sources */,
+				33A8BC2918CA17C700F4F2DE /* DataEntity.m in Sources */,
 				86E2CC5418C8FFC200E11FD4 /* DataManager.m in Sources */,
 				86E2CC6918C9187E00E11FD4 /* LoginResponse.m in Sources */,
 				33B3EF4518C73EB7006AEF58 /* TKCalendarMonthViewController.m in Sources */,
 				33B3EF5D18C75584006AEF58 /* MyTabBar.m in Sources */,
 				33EAF90418C61F560016C832 /* AppDelegate.m in Sources */,
+				33A8BC2618CA096100F4F2DE /* Processor.m in Sources */,
 				33B3EF4318C73EB7006AEF58 /* TKCalendarMonthTableViewController.m in Sources */,
 				33B3EF4818C73EB7006AEF58 /* UIView+TKCategory.m in Sources */,
 				86E2CC5A18C905A400E11FD4 /* Reachability.m in Sources */,
 				33EAF90018C61F560016C832 /* main.m in Sources */,
 				33B3EF4718C73EB7006AEF58 /* UIImage+TKCategory.m in Sources */,
+				33FC8ECE18CA205100D409CF /* DateFormatter.m in Sources */,
+				33A8BC2218C9EAE200F4F2DE /* FilterByLawyerViewController.m in Sources */,
 				86E2CC6218C910C600E11FD4 /* LawyerEntity.m in Sources */,
 				33B3EF4618C73EB7006AEF58 /* TKGlobal.m in Sources */,
 				86E2CC7018C91ED500E11FD4 /* DataResponse.m in Sources */,

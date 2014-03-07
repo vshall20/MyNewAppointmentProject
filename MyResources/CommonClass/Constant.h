@@ -12,5 +12,34 @@
 #define myLeftRightTableBackGroundColor [UIColor colorWithRed:73.0/255.0 green:73.0/255.0 blue:73.0/255.0 alpha:0.8]
 #define myLeftRightTableCellTextColor [UIColor colorWithRed:86.0/255.0 green:152.0/255.0 blue:76.0/255.0 alpha:1.0]
 
+#define kNameEntityName             @"DataEntity"
+
+#define kNameja_AllStartDate        @"ja_AllStartDate"
+#define kNameja_AppId               @"ja_AppId"
+#define kNameja_AppointmentType     @"ja_AppointmentType"
+#define kNameja_CaseID              @"ja_CaseID"
+#define kNameja_ClientName          @"ja_ClientName"
+#define kNameja_CreatedBy           @"ja_CreatedBy"
+#define kNameja_CreatedDate         @"ja_CreatedDate"
+#define kNameja_Description         @"ja_Description"
+#define kNameja_End                 @"ja_End"
+#define kNameja_EventVisibility     @"ja_EventVisibility"
+#define kNameja_HolidayType         @"ja_HolidayType"
+#define kNameja_ISAllDay            @"ja_ISAllDay"
+#define kNameja_MatterFromDate      @"ja_MatterFromDate"
+#define kNameja_MatterStatus        @"ja_MatterStatus"
+#define kNameja_MatterSummary       @"ja_MatterSummary"
+#define kNameja_MatterToDate        @"ja_MatterToDate"
+#define kNameja_RecurrenceParentId  @"ja_RecurrenceParentId"
+#define kNameja_RecurrenceRule      @"ja_RecurrenceRule"
+#define kNameja_Reminder            @"ja_Reminder"
+#define kNameja_Start               @"ja_Start"
+#define kNameja_Status              @"ja_Status"
+#define kNameja_Subject             @"ja_Subject"
+#define kNameja_UpdatedBy           @"ja_UpdatedBy"
+#define kNameja_UpdatedOn           @"ja_UpdatedOn"
+#define kNameja_Venue               @"ja_Venue"
+#define kNameja_success             @"success"
+
 
 #endif

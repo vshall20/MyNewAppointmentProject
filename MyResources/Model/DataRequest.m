@@ -13,7 +13,8 @@
 
 -(id)initWithlawyerID:(NSString *)lawyerID andChamberID:(NSString *)chamberID
 {
-    if (!self) {
+    self = [super init];
+    if (self) {
         self = [[DataRequest alloc]init];
         _lawyerID = lawyerID;
         _chamberID = chamberID;

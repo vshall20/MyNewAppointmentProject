@@ -12,7 +12,8 @@
 
 -(id)initWithDictionary:(NSMutableDictionary *)dict
 {
-    if (!self) {
+    self = [super init];
+    if (self)  {
         self = [[LoginResponse alloc]init];
         _lawyerDictionary = dict;
     }

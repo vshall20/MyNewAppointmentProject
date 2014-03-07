@@ -13,7 +13,8 @@
 
 -(id)initWithUsername:(NSString *)username andPassword:(NSString *)password
 {
-    if (!self) {
+    self = [super init];
+    if (self) {
         self = [[LoginRequest alloc]init];
         _username = username;
         _password = password;

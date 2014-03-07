@@ -17,9 +17,11 @@
 
 #import "DataRequest.h"
 #import "DataResponse.h"
+#import "AppointmentTypeViewController.h"
+#import "FilterByLawyerViewController.h"
 
 
-@interface MyAppointmentListViewController ()<LeftViewControllerDelegate,TKCalendarMonthViewDelegate,TKCalendarMonthViewDataSource>
+@interface MyAppointmentListViewController ()<LeftViewControllerDelegate,TKCalendarMonthViewDelegate,TKCalendarMonthViewDataSource,AppointmentTypeDelegate,FilterByLawyerDelegate>
 
 {
     LeftViewController  *obj_LeftViewController;
@@ -53,8 +55,7 @@
     obj_MyNavigationBar = (MyNavigationBar *)[nib objectAtIndex:0];
     obj_MyNavigationBar.myNavigationItem.title = @"Appointment";
     [obj_MyNavigationBar.myLeftBarItem setAction:@selector(leftBarClicked:)];
-    //obj_MyNavigationBar.frame = CGRectMake(0, 0, obj_MyTabBar.frame.size.width, obj_MyTabBar.frame.size.height);
-    
+    [obj_MyNavigationBar.myRightItem setAction:@selector(rightBarClicked:)];
     [self.view addSubview:obj_MyNavigationBar];
     // Do any additional setup after loading the view from its nib.
     if (nib)
@@ -97,9 +98,10 @@
 //    NSDictionary *dictValue = [NSDictionary dictionaryWithObjectsAndKeys:@"chm00101",@"id",@"shyam.deore@prod.shriyais.com",@"username",@"Password123",@"password",@"1",@"flag", nil];
     
     
-
-    [self loginWebServiceCallAndResponseToGetChamberIDandLawyerID]; //loginWebService Call.
-    [self callTheEventListWebService];     //fetching Events Details WebService Call.
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
+        [self loginWebServiceCallAndResponseToGetChamberIDandLawyerID]; //loginWebService Call.
+        [self callTheEventListWebService];     //fetching Events Details WebService Call.
+    });
 
    
 }
@@ -131,13 +133,15 @@
     
     DataRequest *request = [[DataRequest alloc]initWithlawyerID:_lawyerID andChamberID:_chamberID];
     DataResponse *response = [[DataResponse alloc]initWithDictionary:[request fetchData]];
+//    if([[response valueForKey:@"success"] isEqualToString:@"1"])
+//    {
     [response saveData];
+//    }
+//    else{
+//        //// failed show alert message 
+//    }
     
 }
-
-
-
-
 - (IBAction)leftBarClicked:(id)sender {
     
     if (!obj_LeftViewController)
@@ -158,6 +162,13 @@
 
 - (IBAction)rightBarClicked:(id)sender {
    
+    FilterByLawyerViewController *obj_Filterlawyer = [[FilterByLawyerViewController alloc] initWithNibName:@"FilterByLawyerViewController" bundle:nil];
+    obj_Filterlawyer.myDelegate = self;
+    obj_Filterlawyer.tbl_LawyerList.alpha = 0.0;
+    obj_Filterlawyer.view.backgroundColor = [UIColor clearColor];
+    self.navigationController.modalPresentationStyle = UIModalPresentationCurrentContext;
+    [self presentViewController:obj_Filterlawyer animated:YES completion:NULL];
+    
 
 }
 #pragma mark - remove child controller 
@@ -172,6 +183,12 @@
 -(void)leftSideTableViewSelectedWithStringValue:(NSString *)name indexValue:(int)indexValue
 {
     [self removeLeftViewController];
+    AppointmentTypeViewController *obj_Appointment = [[AppointmentTypeViewController alloc] initWithNibName:@"AppointmentTypeViewController" bundle:nil];
+    obj_Appointment.myDelegate = self;
+    obj_Appointment.view.backgroundColor = [UIColor clearColor];
+    self.navigationController.modalPresentationStyle = UIModalPresentationCurrentContext;
+    [self presentViewController:obj_Appointment animated:YES completion:NULL];
+    
 }
 #pragma mark -
 #pragma mark TKCalendarMonthViewDelegate methods
@@ -233,6 +250,17 @@
 	// When testing initially you will have to update the dates in this array so they are visible at the
    	return [NSArray arrayWithArray:marks];
 
+}
+#pragma mark - Filter Lawyer Delegate 
+-(void)lawyerSelectedWithLawyerName:(NSString *)lawyerName
+{
+    NSLog(@"lawyerName %@",lawyerName);
+}
+#pragma mark Appointment Type Delegate 
+-(void)appointmentTypeClickedWithAppointmentTypeName:(NSString *)name buttonIndex:(int)indexValue
+{
+    NSLog(@"indexValue %d",indexValue);
+    
 }
 #pragma mark - Tab Bar Delegate 
 - (void)tabBar:(UITabBar *)tabBar didSelectItem:(UITabBarItem *)item;

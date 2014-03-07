@@ -2,7 +2,7 @@
 //  DataEntity.m
 //  MyNewAppointmentProject
 //
-//  Created by Vishal Dharmawat on 07/03/14.
+//  Created by Vishnu Gupta on 07/03/14.
 //  Copyright (c) 2014 Vishnu Gupta. All rights reserved.
 //
 
@@ -11,19 +11,29 @@
 
 @implementation DataEntity
 
-@dynamic appointmentDate;
-@dynamic appointmentName;
-@dynamic appointmentTime;
-@dynamic appointmentToDate;
-@dynamic appointmentToTime;
+@dynamic appId;
 @dynamic appointmentType;
-@dynamic appointmentClientName;
-@dynamic appointmentCaseId;
+@dynamic caseId;
+@dynamic clientName;
+@dynamic createdBy;
+@dynamic createdDate;
 @dynamic appointmentDescription;
-@dynamic appointmentVenue;
-@dynamic appointmentReminder;
-@dynamic appointmentRecurring;
-@dynamic appointmentVisibility;
-@dynamic appointmentHolidayType;
+@dynamic end;
+@dynamic eventVisibility;
+@dynamic holidayType;
+@dynamic isAllDay;
+@dynamic matterFromDate;
+@dynamic matterStatus;
+@dynamic matterSummary;
+@dynamic matterToDate;
+@dynamic recurrenceParentId;
+@dynamic recurrenceRule;
+@dynamic reminder;
+@dynamic start;
+@dynamic status;
+@dynamic subject;
+@dynamic updatedBy;
+@dynamic updatedOn;
+@dynamic venue;
 
 @end
