@@ -18,5 +18,5 @@
 - (void)saveBGContext;
 -(void)performFetch;
 -(void)performFetchWithPredicateString:(NSString *)predicateString;
-
+-(void)performFetchWithPredicateType:(AppointmentType)type;
 @end

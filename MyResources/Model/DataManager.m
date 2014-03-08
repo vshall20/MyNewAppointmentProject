@@ -10,6 +10,31 @@
 
 @implementation DataManager
 
++ (NSArray *)names
+{
+    static NSMutableArray * _names = nil;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        _names = [[NSMutableArray alloc]init];
+        [_names insertObject:@"Matter" atIndex:AppointmentTypeMatter];
+        [_names insertObject:@"Consultation" atIndex:AppointmentTypeConsultation];
+        [_names insertObject:@"Discussion" atIndex:AppointmentTypeDiscussion];
+        [_names insertObject:@"Event" atIndex:AppointmentTypeEvent];
+        [_names insertObject:@"Birthday" atIndex:AppointmentTypeBirthday];
+        [_names insertObject:@"Anniversary" atIndex:AppointmentTypeAnniversary];
+        [_names insertObject:@"Holiday" atIndex:AppointmentTypeHoliday];
+        [_names insertObject:@"Other" atIndex:AppointmentTypeOthers];
+        [_names insertObject:@"All" atIndex:AppointmentTypeAll];
+    });
+    
+    return _names;
+}
+
++ (NSString *)appointmentTypeForIndex:(AppointmentType)index
+{
+    return [[self names] objectAtIndex:index];
+}
+
 -(id)initWithManagedObjectContext:(NSManagedObjectContext *)context
 {
     self = [super init];
@@ -71,12 +96,29 @@
 -(void)performFetchWithPredicateString:(NSString *)predicateString
 {
     NSPredicate *predicate;
-    if ([predicateString isEqualToString:@"All"]) {
+    if ([predicateString isEqualToString:@"All"] || [predicateString isEqualToString:@"Others"]) {
         predicateString = nil;
     }
     else
     {
         predicate = [NSPredicate predicateWithFormat:@"appointmentType like %@",predicateString];
+    }
+    
+    [self.fetchedResultsController.fetchRequest setPredicate:predicate];
+    [self performFetch];
+}
+
+
+-(void)performFetchWithPredicateType:(AppointmentType)type
+{
+    NSPredicate *predicate;
+    
+    if (type == AppointmentTypeAll || type == AppointmentTypeOthers) {
+        predicate = nil;
+    }
+    else
+    {
+        predicate = [NSPredicate predicateWithFormat:@"appointmentType like %@",[[self class] appointmentTypeForIndex:type]];
     }
     
     [self.fetchedResultsController.fetchRequest setPredicate:predicate];

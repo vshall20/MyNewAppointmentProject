@@ -25,7 +25,7 @@
 
 -(NSMutableDictionary *)fetchData
 {
-    NSString *parameterName = [NSString stringWithFormat:@"/eLegalNet_GetAppointments?parameter={\"search\":\" 11/18/2013\",\"lawyerid\":\"%@\",\"caseid\":\"\",\"appointmenttype\":\"\",\"chamberid\":\"%@\",\"logintype\":\"lawyer\"}",_lawyerID,_chamberID];
+    NSString *parameterName = [NSString stringWithFormat:@"/eLegalNet_GetAppointments?parameter={\"search\":\" 11/19/2013\",\"lawyerid\":\"%@\",\"caseid\":\"\",\"appointmenttype\":\"\",\"chamberid\":\"%@\",\"logintype\":\"lawyer\"}",_lawyerID,_chamberID];
     
     NSLog(@"Parameter name for local login type:=%@",parameterName);
     

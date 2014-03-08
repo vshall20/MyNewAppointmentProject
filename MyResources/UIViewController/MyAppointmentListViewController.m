@@ -358,7 +358,8 @@
 -(void)appointmentTypeClickedWithAppointmentTypeName:(NSString *)name buttonIndex:(int)indexValue
 {
     NSLog(@"indexValue %d and name : %@",indexValue,name);
-    [[[AppDelegate delegate] dataManager] performFetchWithPredicateString:name];
+//    [[[AppDelegate delegate] dataManager] performFetchWithPredicateString:name];
+    [[[AppDelegate delegate] dataManager] performFetchWithPredicateType:indexValue];
     [_tbl_AppointmentList reloadData];
     
     

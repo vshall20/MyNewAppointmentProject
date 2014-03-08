@@ -41,5 +41,16 @@
 #define kNameja_Venue               @"ja_Venue"
 #define kNameja_success             @"success"
 
+typedef enum {
+    AppointmentTypeMatter =0,
+    AppointmentTypeConsultation,
+    AppointmentTypeDiscussion,
+    AppointmentTypeEvent,
+    AppointmentTypeBirthday,
+    AppointmentTypeAnniversary,
+    AppointmentTypeHoliday,
+    AppointmentTypeOthers,
+    AppointmentTypeAll
+} AppointmentType;
 
 #endif
