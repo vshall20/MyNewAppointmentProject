@@ -10,11 +10,12 @@
 
 #import "Utility.h"
 
-@interface MyAppointmentListViewController : UIViewController<UITabBarDelegate>
+@interface MyAppointmentListViewController : UIViewController<UITabBarDelegate,UITableViewDelegate,UITableViewDataSource,NSFetchedResultsControllerDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *tbl_AppointmentList;
 @property (nonatomic, strong) NSString *chamberID;
 @property (nonatomic, strong) NSString *lawyerID;
+@property (nonatomic, strong) NSFetchedResultsController *fetchResultController;
 
 - (IBAction)leftBarClicked:(id)sender;
 - (IBAction)rightBarClicked:(id)sender;

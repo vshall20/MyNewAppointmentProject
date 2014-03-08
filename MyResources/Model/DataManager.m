@@ -29,14 +29,59 @@
     return _bgManagedObjectContext;
 }
 
--(NSFetchedResultsController *)fetchResultController
+-(NSFetchedResultsController *)fetchedResultsController
 {
-    if (!_fetchResultController) {
-        _fetchResultController = [[NSFetchedResultsController alloc] init];
+    if (_fetchedResultsController != nil) {
+        return _fetchedResultsController;
     }
-    return _fetchResultController;
+    
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    NSEntityDescription *entity = [NSEntityDescription
+                                   entityForName:kNameEntityName inManagedObjectContext:self.bgManagedObjectContext];
+    [fetchRequest setEntity:entity];
+    
+    NSSortDescriptor *sort = [[NSSortDescriptor alloc] initWithKey:@"appId" ascending:NO];
+    
+    [fetchRequest setSortDescriptors:[NSArray arrayWithObject:sort]];
+    
+    [fetchRequest setFetchBatchSize:20];
+    
+    NSFetchedResultsController *theFetchedResultsController =
+    [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest
+                                        managedObjectContext:self.bgManagedObjectContext
+                                          sectionNameKeyPath:nil
+                                                   cacheName:nil];
+    self.fetchedResultsController = theFetchedResultsController;
+    _fetchedResultsController.delegate = self;
+    
+    return _fetchedResultsController;
+    
 }
 
+-(void)performFetch
+{
+    NSError *error;
+	if (![[self fetchedResultsController] performFetch:&error]) {
+            // Update to handle the error appropriately.
+		NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
+	}
+    
+}
+
+-(void)performFetchWithPredicateString:(NSString *)predicateString
+{
+    NSPredicate *predicate;
+    if ([predicateString isEqualToString:@"All"]) {
+        predicateString = nil;
+    }
+    else
+    {
+        predicate = [NSPredicate predicateWithFormat:@"appointmentType like %@",predicateString];
+    }
+    
+    [self.fetchedResultsController.fetchRequest setPredicate:predicate];
+    [self performFetch];
+}
 
 - (void)saveBGContext
 {

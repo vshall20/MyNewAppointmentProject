@@ -19,6 +19,7 @@
 #import "DataResponse.h"
 #import "AppointmentTypeViewController.h"
 #import "FilterByLawyerViewController.h"
+#import "DataEntity.h"
 
 
 @interface MyAppointmentListViewController ()<LeftViewControllerDelegate,TKCalendarMonthViewDelegate,TKCalendarMonthViewDataSource,AppointmentTypeDelegate,FilterByLawyerDelegate>
@@ -97,19 +98,22 @@
 
 //    NSDictionary *dictValue = [NSDictionary dictionaryWithObjectsAndKeys:@"chm00101",@"id",@"shyam.deore@prod.shriyais.com",@"username",@"Password123",@"password",@"1",@"flag", nil];
     
-    
+    self.fetchResultController = [[[AppDelegate delegate] dataManager]fetchedResultsController];
+    self.fetchResultController.delegate = self;
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
         [self loginWebServiceCallAndResponseToGetChamberIDandLawyerID]; //loginWebService Call.
         [self callTheEventListWebService];     //fetching Events Details WebService Call.
     });
-
+    
+    
    
 }
+
 -(void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
     self.navigationController.navigationBarHidden = YES;
-    }
+}
 
 - (void)didReceiveMemoryWarning
 {
@@ -117,6 +121,24 @@
     // Dispose of any resources that can be recreated.
 }
 
+
+#pragma FetchedResultsController Delegate Methods
+#pragma mark -
+
+
+//-(void)controllerWillChangeContent:(NSFetchedResultsController *)controller
+//{
+//
+//}
+
+
+-(void)controllerDidChangeContent:(NSFetchedResultsController *)controller
+{
+    [_tbl_AppointmentList reloadData];
+}
+
+#pragma
+#pragma mark -
 
 -(void)loginWebServiceCallAndResponseToGetChamberIDandLawyerID
 {
@@ -142,6 +164,82 @@
 //    }
     
 }
+
+#pragma tableView Methods
+#pragma mark -
+
+
+#pragma mark - Table view data source
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    // Return the number of sections.
+    return 1;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    // Return the number of rows in the section.
+    return self.fetchResultController.fetchedObjects.count;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    static NSString *CellIdentifier = @"Cell";
+//    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+    UITableViewCell *cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+    
+    // Configure the cell...
+
+    DataEntity *entity = (DataEntity *)[self.fetchResultController objectAtIndexPath:indexPath];
+    cell.textLabel.text = entity.appointmentType;
+    
+    return cell;
+}
+
+/*
+// Override to support conditional editing of the table view.
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    // Return NO if you do not want the specified item to be editable.
+    return YES;
+}
+*/
+
+/*
+// Override to support editing the table view.
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (editingStyle == UITableViewCellEditingStyleDelete) {
+        // Delete the row from the data source
+        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+    }   
+    else if (editingStyle == UITableViewCellEditingStyleInsert) {
+        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
+    }   
+}
+*/
+
+/*
+// Override to support rearranging the table view.
+- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
+{
+}
+*/
+
+/*
+// Override to support conditional rearranging of the table view.
+- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    // Return NO if you do not want the item to be re-orderable.
+    return YES;
+}
+*/
+
+
+#pragma <#arguments#>
+#pragma mark -
+
 - (IBAction)leftBarClicked:(id)sender {
     
     if (!obj_LeftViewController)
@@ -259,7 +357,10 @@
 #pragma mark Appointment Type Delegate 
 -(void)appointmentTypeClickedWithAppointmentTypeName:(NSString *)name buttonIndex:(int)indexValue
 {
-    NSLog(@"indexValue %d",indexValue);
+    NSLog(@"indexValue %d and name : %@",indexValue,name);
+    [[[AppDelegate delegate] dataManager] performFetchWithPredicateString:name];
+    [_tbl_AppointmentList reloadData];
+    
     
 }
 #pragma mark - Tab Bar Delegate 

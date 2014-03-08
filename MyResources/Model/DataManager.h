@@ -8,13 +8,15 @@
 
 #import <Foundation/Foundation.h>
 
-@interface DataManager : NSObject
+@interface DataManager : NSObject <NSFetchedResultsControllerDelegate>
 
-@property (nonatomic, strong) NSFetchedResultsController *fetchResultController;
+@property (nonatomic, strong) NSFetchedResultsController *fetchedResultsController;
 @property (nonatomic, strong) NSManagedObjectContext *managedObjectContext;
 @property (nonatomic, strong) NSManagedObjectContext *bgManagedObjectContext;
 
 -(id)initWithManagedObjectContext:(NSManagedObjectContext *)context;
 - (void)saveBGContext;
+-(void)performFetch;
+-(void)performFetchWithPredicateString:(NSString *)predicateString;
 
 @end

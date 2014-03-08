@@ -26,10 +26,11 @@
 
 -(void)parseDictionaryAndSave
 {
+    DataManager *dataManager = [[AppDelegate delegate] dataManager];
     if (dictionary) {
         NSArray *tempArray = [dictionary valueForKeyPath:[NSString stringWithFormat:@"data.%@",kNameja_AppId]];
         for (int i=0; i<[tempArray count]; i++) {
-            DataEntity *entity = [NSEntityDescription insertNewObjectForEntityForName:kNameEntityName inManagedObjectContext:[[[AppDelegate delegate] dataManager] bgManagedObjectContext]];
+            DataEntity *entity = [NSEntityDescription insertNewObjectForEntityForName:kNameEntityName inManagedObjectContext:[dataManager bgManagedObjectContext]];
             
             entity.appId = [(NSArray *)[dictionary valueForKeyPath:[NSString stringWithFormat:@"data.%@",kNameja_AppId]] objectAtIndex:i];
             entity.appointmentType= [(NSArray *)[dictionary valueForKeyPath:[NSString stringWithFormat:@"data.%@",kNameja_AppointmentType]] objectAtIndex:i];
@@ -56,7 +57,8 @@
             entity.updatedOn = [(NSArray *)[dictionary valueForKeyPath:[NSString stringWithFormat:@"data.%@",kNameja_UpdatedOn]] objectAtIndex:i];
             entity.venue = [(NSArray *)[dictionary valueForKeyPath:[NSString stringWithFormat:@"data.%@",kNameja_Venue]] objectAtIndex:i];
             
-            [[[AppDelegate delegate] dataManager]saveBGContext];
+            [dataManager saveBGContext];
+            [dataManager performFetch];
         }
         
     }
