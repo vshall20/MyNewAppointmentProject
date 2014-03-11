@@ -9,6 +9,9 @@
 #import "MyDropDownViewController.h"
 
 @interface MyDropDownViewController ()
+{
+    NSArray  *arr_AppointmentType;
+}
 
 @end
 
@@ -26,6 +29,9 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    arr_AppointmentType = [NSArray arrayWithObjects:@"Matter",@"Consulation",@"Discussion",@"Events",@"Birthday",@"Anniversary",@"Holiday", nil];
+    
+
 
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -44,31 +50,51 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-#warning Potentially incomplete method implementation.
+
     // Return the number of sections.
-    return 0;
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-#warning Incomplete method implementation.
     // Return the number of rows in the section.
+    if ([_str_ShowTableContent isEqualToString:kShowAppointmentType])
+    {
+        return arr_AppointmentType.count;
+    }
     return 0;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"Cell";
+    static NSString *CellIdentifier = @"dropDownCell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
+    if ([_str_ShowTableContent isEqualToString:kShowAppointmentType])
+    {
+        cell.textLabel.text = [arr_AppointmentType objectAtIndex:indexPath.row];
+    }
+    
     
     // Configure the cell...
     
     return cell;
 }
-
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    NSString *str_Content;
+    if ([_str_ShowTableContent isEqualToString:kShowAppointmentType])
+    {
+        str_Content = [arr_AppointmentType objectAtIndex:indexPath.row];
+    }
+    [_delegate selectedDropDownListTableWithContent:str_Content contentType:_str_ShowTableContent];
+    [self didMoveToParentViewController:nil];
+    [self.view removeFromSuperview];
+    [self removeFromParentViewController];
+ 
+}
 /*
 // Override to support conditional editing of the table view.
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath

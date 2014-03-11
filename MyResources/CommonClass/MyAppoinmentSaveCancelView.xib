@@ -50,7 +50,7 @@
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" red="0.64705882349999999" green="0.80784313730000001" blue="0.39607843139999999" alpha="1" colorSpace="calibratedRGB"/>
                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                    <state key="normal" title="Save">
+                    <state key="normal" title="Basic">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                 </button>
@@ -74,8 +74,10 @@
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
                 <outlet property="btn_Cancel" destination="Oxi-Jn-afV" id="rad-Vb-ikw"/>
+                <outlet property="btn_DropDownList" destination="PWh-yb-t42" id="5vi-A5-etZ"/>
                 <outlet property="btn_Save" destination="XdC-A0-B92" id="7kg-eQ-r6p"/>
                 <outlet property="lbl_Title" destination="4mj-qw-0Uk" id="DQT-3v-iwV"/>
+                <outlet property="txt_AppointmentType" destination="kdw-43-nEg" id="oEn-bm-iE4"/>
             </connections>
         </view>
     </objects>

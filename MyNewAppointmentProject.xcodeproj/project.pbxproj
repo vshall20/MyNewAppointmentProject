@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		33A4C44518CEE4E10010FDF3 /* CustomRecurringCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 33A4C44418CEE4E10010FDF3 /* CustomRecurringCell.m */; };
+		33A4C44818CEE4F50010FDF3 /* CustomHolidayTypeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 33A4C44718CEE4F50010FDF3 /* CustomHolidayTypeCell.m */; };
+		33A4C44A18CEE5150010FDF3 /* CustomRecurringCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 33A4C44918CEE5150010FDF3 /* CustomRecurringCell.xib */; };
+		33A4C44C18CEE5280010FDF3 /* CustomHolidayTypeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 33A4C44B18CEE5280010FDF3 /* CustomHolidayTypeCell.xib */; };
 		33A8BC1C18C9A22900F4F2DE /* AppointmentTypeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 33A8BC1A18C9A22900F4F2DE /* AppointmentTypeViewController.m */; };
 		33A8BC1D18C9A22900F4F2DE /* AppointmentTypeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 33A8BC1B18C9A22900F4F2DE /* AppointmentTypeViewController.xib */; };
 		33A8BC2218C9EAE200F4F2DE /* FilterByLawyerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 33A8BC2018C9EAE200F4F2DE /* FilterByLawyerViewController.m */; };
@@ -86,6 +90,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		33A4C44318CEE4E10010FDF3 /* CustomRecurringCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomRecurringCell.h; sourceTree = "<group>"; };
+		33A4C44418CEE4E10010FDF3 /* CustomRecurringCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomRecurringCell.m; sourceTree = "<group>"; };
+		33A4C44618CEE4F50010FDF3 /* CustomHolidayTypeCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomHolidayTypeCell.h; sourceTree = "<group>"; };
+		33A4C44718CEE4F50010FDF3 /* CustomHolidayTypeCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomHolidayTypeCell.m; sourceTree = "<group>"; };
+		33A4C44918CEE5150010FDF3 /* CustomRecurringCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomRecurringCell.xib; sourceTree = "<group>"; };
+		33A4C44B18CEE5280010FDF3 /* CustomHolidayTypeCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomHolidayTypeCell.xib; sourceTree = "<group>"; };
 		33A8BC1918C9A22900F4F2DE /* AppointmentTypeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppointmentTypeViewController.h; sourceTree = "<group>"; };
 		33A8BC1A18C9A22900F4F2DE /* AppointmentTypeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppointmentTypeViewController.m; sourceTree = "<group>"; };
 		33A8BC1B18C9A22900F4F2DE /* AppointmentTypeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AppointmentTypeViewController.xib; sourceTree = "<group>"; };
@@ -357,6 +367,12 @@
 				33CD960918CDBF750011EAD5 /* CustomAppoinmentDescriptionCell.h */,
 				33CD960A18CDBF750011EAD5 /* CustomAppoinmentDescriptionCell.m */,
 				33CD961118CDD2AA0011EAD5 /* CustomAppoinmentDescriptionCell.xib */,
+				33A4C44318CEE4E10010FDF3 /* CustomRecurringCell.h */,
+				33A4C44418CEE4E10010FDF3 /* CustomRecurringCell.m */,
+				33A4C44918CEE5150010FDF3 /* CustomRecurringCell.xib */,
+				33A4C44618CEE4F50010FDF3 /* CustomHolidayTypeCell.h */,
+				33A4C44718CEE4F50010FDF3 /* CustomHolidayTypeCell.m */,
+				33A4C44B18CEE5280010FDF3 /* CustomHolidayTypeCell.xib */,
 			);
 			path = CommonClass;
 			sourceTree = "<group>";
@@ -403,8 +419,8 @@
 				33B3EF4B18C74A9F006AEF58 /* LoginViewController.xib */,
 				33B3EF5618C7523C006AEF58 /* NewAppointmentViewController.h */,
 				33B3EF5718C7523C006AEF58 /* NewAppointmentViewController.m */,
-				33A8BC1918C9A22900F4F2DE /* AppointmentTypeViewController.h */,
 				33B3EF5818C7523C006AEF58 /* NewAppointmentViewController.xib */,
+				33A8BC1918C9A22900F4F2DE /* AppointmentTypeViewController.h */,
 				33A8BC1A18C9A22900F4F2DE /* AppointmentTypeViewController.m */,
 				33A8BC1B18C9A22900F4F2DE /* AppointmentTypeViewController.xib */,
 				33A8BC1F18C9EAE200F4F2DE /* FilterByLawyerViewController.h */,
@@ -521,11 +537,13 @@
 				33EAF93918C6278C0016C832 /* RightViewController.xib in Resources */,
 				33CD960C18CDCB9B0011EAD5 /* AddEditAppoinmentViewController.xib in Resources */,
 				33A8BC1D18C9A22900F4F2DE /* AppointmentTypeViewController.xib in Resources */,
+				33A4C44C18CEE5280010FDF3 /* CustomHolidayTypeCell.xib in Resources */,
 				33CD95F518CDA1A20011EAD5 /* MyDatePicker.xib in Resources */,
 				33EAF93418C6277B0016C832 /* LeftViewController.xib in Resources */,
 				33CD961018CDD08A0011EAD5 /* CustomAppointmentFromToCell.xib in Resources */,
 				33B3EF5A18C7523C006AEF58 /* NewAppointmentViewController.xib in Resources */,
 				33CD95FA18CDA2C50011EAD5 /* MyDropDownViewController.xib in Resources */,
+				33A4C44A18CEE5150010FDF3 /* CustomRecurringCell.xib in Resources */,
 				33B3EF4218C73EB7006AEF58 /* TapkuLibrary.bundle in Resources */,
 				33CD961218CDD2AA0011EAD5 /* CustomAppoinmentDescriptionCell.xib in Resources */,
 				33CD960E18CDCF470011EAD5 /* CustomAppointmentTitleCell.xib in Resources */,
@@ -564,6 +582,7 @@
 				33B3EF4118C73EB7006AEF58 /* NSDate+TKCategory.m in Sources */,
 				33EAF90718C61F560016C832 /* MyNewAppointmentProject.xcdatamodeld in Sources */,
 				33B3EF4C18C74A9F006AEF58 /* LoginViewController.m in Sources */,
+				33A4C44818CEE4F50010FDF3 /* CustomHolidayTypeCell.m in Sources */,
 				33A8BC2918CA17C700F4F2DE /* DataEntity.m in Sources */,
 				86E2CC5418C8FFC200E11FD4 /* DataManager.m in Sources */,
 				86E2CC6918C9187E00E11FD4 /* LoginResponse.m in Sources */,
@@ -576,6 +595,7 @@
 				33B3EF4318C73EB7006AEF58 /* TKCalendarMonthTableViewController.m in Sources */,
 				33B3EF4818C73EB7006AEF58 /* UIView+TKCategory.m in Sources */,
 				86E2CC5A18C905A400E11FD4 /* Reachability.m in Sources */,
+				33A4C44518CEE4E10010FDF3 /* CustomRecurringCell.m in Sources */,
 				33EAF90018C61F560016C832 /* main.m in Sources */,
 				33B3EF4718C73EB7006AEF58 /* UIImage+TKCategory.m in Sources */,
 				33FC8ECE18CA205100D409CF /* DateFormatter.m in Sources */,

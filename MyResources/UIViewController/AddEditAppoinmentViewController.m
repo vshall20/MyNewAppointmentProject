@@ -6,15 +6,25 @@
 //  Copyright (c) 2014 Vishnu Gupta. All rights reserved.
 //
 
-#define appointmentBasicCell         @"appointmentBasicCell"
-#define appointmentTitleCell        @"appointmentTitleCell"
+#define appointmentBasicCell        @"appointmentBasicCell"
+//#define appointmentTitleCell        @"appointmentTitleCell"
 #define appointmentFromToCell       @"appointmentFromToCell"
 #define appoinmentDescriptionCell   @"appoinmentDescriptionCell"
+#define appoinmentRecurringCell     @"appoinmentRecurringCell"
+#define appointmentHoildayTypeCell  @"appointmentHoildayTypeCell"
+
+#define heightAppointmentFromToCell         65.0
+#define heightAppoinmentDescriptionCell     150.0
+#define heightAppoinmentRecurringCell       55.0
+#define heightAppointmentHoildayTypeCell    55.0
+#define heightAppointmentBasicCell          44.0
 
 #import "AddEditAppoinmentViewController.h"
-#import "CustomAppointmentTitleCell.h"
+//#import "CustomAppointmentTitleCell.h"
 #import "CustomAppointmentFromToCell.h"
 #import "CustomAppoinmentDescriptionCell.h"
+#import "CustomHolidayTypeCell.h"
+#import "CustomRecurringCell.h"
 
 @interface AddEditAppoinmentViewController ()
 
@@ -53,65 +63,168 @@
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
 
-    // Return the number of sections.
+    // Return the number of sections
     return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-
-    // Return the number of rows in the section.
     return 8;
 }
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    switch (indexPath.row) {
+            case 0:
+                return heightAppointmentFromToCell;  
+                break;
+            case 1:
+                 {
+            if ([_str_AppointmentType isEqualToString:@"Matter"] || [_str_AppointmentType isEqualToString:@"Consulation"] || [_str_AppointmentType isEqualToString:@"Discussion"] || [_str_AppointmentType isEqualToString:@"Event"])
+               {
+              return heightAppointmentFromToCell;
+               }
+            else{
+                return 0;
+            }
+        }
+                break;
+            case 2:
+                 {
+            if ([_str_AppointmentType isEqualToString:@"Matter"] || [_str_AppointmentType isEqualToString:@"Consulation"] || [_str_AppointmentType isEqualToString:@"Discussion"] || [_str_AppointmentType isEqualToString:@"Event"])
+            {
+                return heightAppointmentBasicCell;
+            }
+            else{
+                return 0;
+            }
+        }
+                break;
+          case 3:
+        {
+            if ([_str_AppointmentType isEqualToString:@"Matter"] || [_str_AppointmentType isEqualToString:@"Consulation"] || [_str_AppointmentType isEqualToString:@"Discussion"] || [_str_AppointmentType isEqualToString:@"Event"])
+            {
+                return heightAppointmentBasicCell;
+            }
+            else{
+                return 0;
+            }
+        }
 
+            break;
+        case 4:
+        {
+            if ([_str_AppointmentType isEqualToString:@"Event"])
+            {
+                return heightAppointmentBasicCell;
+            }
+            else{
+                return 0;
+            }
+        }
+        case 5:
+            if ([_str_AppointmentType isEqualToString:@"Birthday"] || [_str_AppointmentType isEqualToString:@"Anniversary"] || [_str_AppointmentType isEqualToString:@"Holiday"])
+            {
+                return heightAppoinmentRecurringCell;
+            }
+            else{
+                return 0;
+            }
+            break;
+        case 6:
+            if ([_str_AppointmentType isEqualToString:@"Holiday"])
+            {
+                return heightAppointmentHoildayTypeCell;
+            }
+            else{
+                return 0;
+            }
+            break;
+        case 7:
+            if ([_str_AppointmentType isEqualToString:@"Matter"] || [_str_AppointmentType isEqualToString:@"Consulation"] || [_str_AppointmentType isEqualToString:@"Discussion"] || [_str_AppointmentType isEqualToString:@"Event"])
+            {
+                return heightAppoinmentDescriptionCell;
+            }
+            else{
+                return 0;
+            }
+            break;
+               default:
+                return heightAppointmentBasicCell;
+                break;
+           }
+
+}
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     
     switch (indexPath.row) {
         case 0:
                 {
-             UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:appointmentBasicCell];
-            if (cell == nil) {
-                cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:appointmentBasicCell];
-            }
-             return cell;
-        }
+                    CustomAppointmentFromToCell *cell = (CustomAppointmentFromToCell*) [tableView dequeueReusableCellWithIdentifier:appointmentFromToCell];
+                    if (cell == nil)
+                    {
+                        NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"CustomAppointmentFromToCell" owner:self options:nil];
+                        cell = (CustomAppointmentFromToCell *)[nib objectAtIndex:0];
+                    }
+                    
+                    return cell;
+
+              }
         break;
         case 1:
         {
-            CustomAppointmentTitleCell *cell = [tableView dequeueReusableCellWithIdentifier:appointmentTitleCell];
+            CustomAppointmentFromToCell *cell = (CustomAppointmentFromToCell*) [tableView dequeueReusableCellWithIdentifier:appointmentFromToCell];
             if (cell == nil)
             {
-                [tableView registerNib:[UINib nibWithNibName:@"CustomAppointmentTitleCell" bundle:nil] forCellReuseIdentifier:appointmentTitleCell];
-             
-                cell = [tableView dequeueReusableCellWithIdentifier:appointmentTitleCell];
+                NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"CustomAppointmentFromToCell" owner:self options:nil];
+                cell = (CustomAppointmentFromToCell *)[nib objectAtIndex:0];
             }
-           
+         
+                if ([_str_AppointmentType isEqualToString:@"Matter"] || [_str_AppointmentType isEqualToString:@"Consulation"] || [_str_AppointmentType isEqualToString:@"Discussion"] || [_str_AppointmentType isEqualToString:@"Event"])
+                {
+                    cell.hidden = NO;
+                }
+                else{
+                    cell.hidden = YES;
+                    
+                }
+
+            
             return cell;
+
         }
             break;
         case 2:
         {
-            CustomAppointmentFromToCell *cell = (CustomAppointmentFromToCell*) [tableView dequeueReusableCellWithIdentifier:appointmentFromToCell];
-            if (cell == nil)
-            {
-                NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"CustomAppointmentFromToCell" owner:self options:nil];
-                cell = (CustomAppointmentFromToCell *)[nib objectAtIndex:0];
+            UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:appointmentBasicCell];
+            if (cell == nil) {
+                cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:appointmentBasicCell];
             }
-            
+            if ([_str_AppointmentType isEqualToString:@"Matter"] || [_str_AppointmentType isEqualToString:@"Consulation"] || [_str_AppointmentType isEqualToString:@"Discussion"] || [_str_AppointmentType isEqualToString:@"Event"])
+            {
+                cell.hidden = NO;
+            }
+            else{
+                cell.hidden = YES;
+                
+            }
             return cell;
-          
         }
             break;
         case 3:
         {
-            CustomAppointmentFromToCell *cell = (CustomAppointmentFromToCell*) [tableView dequeueReusableCellWithIdentifier:appointmentFromToCell];
-            if (cell == nil)
-            {
-                NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"CustomAppointmentFromToCell" owner:self options:nil];
-                cell = (CustomAppointmentFromToCell *)[nib objectAtIndex:0];
+            UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:appointmentBasicCell];
+            if (cell == nil) {
+                cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:appointmentBasicCell];
             }
-            
+            if ([_str_AppointmentType isEqualToString:@"Matter"] || [_str_AppointmentType isEqualToString:@"Consulation"] || [_str_AppointmentType isEqualToString:@"Discussion"] || [_str_AppointmentType isEqualToString:@"Event"])
+            {
+                cell.hidden = NO;
+            }
+            else{
+                cell.hidden = YES;
+                
+            }
             return cell;
         }
             break;
@@ -122,20 +235,57 @@
                 if (cell == nil) {
                     cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:appointmentBasicCell];
                 }
+                if ([_str_AppointmentType isEqualToString:@"Event"])
+                {
+                    cell.hidden = NO;
+                }
+                else{
+                    cell.hidden = YES;
+                }
                 return cell;
             }
             break;
         case 5:
-     
+        {
+            CustomRecurringCell *cell = (CustomRecurringCell*) [tableView dequeueReusableCellWithIdentifier:appoinmentRecurringCell];
+            if (cell == nil)
             {
-                UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:appointmentBasicCell];
-                if (cell == nil) {
-                    cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:appointmentBasicCell];
-                }
-                return cell;
+                NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"CustomRecurringCell" owner:self options:nil];
+                cell = (CustomRecurringCell *)[nib objectAtIndex:0];
             }
-        break;
+            if ([_str_AppointmentType isEqualToString:@"Birthday"] || [_str_AppointmentType isEqualToString:@"Anniversary"] || [_str_AppointmentType isEqualToString:@"Holiday"])
+            {
+                cell.hidden = NO;
+            }
+            else{
+                cell.hidden = YES;
+            }
+            
+            return cell;
+            
+        }
+            break;
         case 6:
+        {
+            CustomHolidayTypeCell *cell = (CustomHolidayTypeCell*) [tableView dequeueReusableCellWithIdentifier:appointmentHoildayTypeCell];
+            if (cell == nil)
+            {
+                NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"CustomHolidayTypeCell" owner:self options:nil];
+                cell = (CustomHolidayTypeCell *)[nib objectAtIndex:0];
+            }
+            if ([_str_AppointmentType isEqualToString:@"Holiday"])
+            {
+                cell.hidden = NO;
+            }
+            else{
+                cell.hidden = YES;
+            }
+            
+            return cell;
+            
+        }
+            break;
+        case 7:
         {
             CustomAppoinmentDescriptionCell *cell = (CustomAppoinmentDescriptionCell*) [tableView dequeueReusableCellWithIdentifier:appoinmentDescriptionCell];
             if (cell == nil)
@@ -143,10 +293,18 @@
                 NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"CustomAppoinmentDescriptionCell" owner:self options:nil];
                 cell = (CustomAppoinmentDescriptionCell *)[nib objectAtIndex:0];
             }
+            if ([_str_AppointmentType isEqualToString:@"Matter"] || [_str_AppointmentType isEqualToString:@"Consulation"] || [_str_AppointmentType isEqualToString:@"Discussion"] || [_str_AppointmentType isEqualToString:@"Event"])
+            {
+                cell.hidden = NO;
+            }
+            else{
+                cell.hidden = YES;
+                
+            }
             return cell;
         }
             break;
-        case 7:
+        case 8:
         {
           
                 UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:appointmentBasicCell];

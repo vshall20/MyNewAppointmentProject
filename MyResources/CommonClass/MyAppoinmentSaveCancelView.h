@@ -12,5 +12,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *lbl_Title;
 @property (weak, nonatomic) IBOutlet UIButton *btn_Save;
 @property (weak, nonatomic) IBOutlet UIButton *btn_Cancel;
+@property (weak, nonatomic) IBOutlet UITextField *txt_AppointmentType;
+@property (weak, nonatomic) IBOutlet UIButton *btn_DropDownList;
 
 @end

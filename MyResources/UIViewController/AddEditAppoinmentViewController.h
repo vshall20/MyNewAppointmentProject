@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface AddEditAppoinmentViewController : UITableViewController
-
+@property (nonatomic,readwrite)NSString    *str_AppointmentType;
 @end

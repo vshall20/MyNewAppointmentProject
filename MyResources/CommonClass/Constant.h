@@ -12,6 +12,10 @@
 #define myLeftRightTableBackGroundColor [UIColor colorWithRed:73.0/255.0 green:73.0/255.0 blue:73.0/255.0 alpha:0.8]
 #define myLeftRightTableCellTextColor [UIColor colorWithRed:86.0/255.0 green:152.0/255.0 blue:76.0/255.0 alpha:1.0]
 
+#define kShowAppointmentType             @"ShowAppointmentType"
+#define kShowAppointmentLinkedToCaseId   @"ShowAppointmentLinkedToCaseId"
+#define kShowAppointmentSelectVenue      @"ShowAppointmentSelectVenue"
+
 #define kNameEntityName             @"DataEntity"
 
 #define kNameja_AllStartDate        @"ja_AllStartDate"

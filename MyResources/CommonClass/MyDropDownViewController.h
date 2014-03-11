@@ -8,6 +8,14 @@
 
 #import <UIKit/UIKit.h>
 
-@interface MyDropDownViewController : UITableViewController
+@protocol MyDropDownViewControllerDelegate <NSObject>
 
+-(void)selectedDropDownListTableWithContent:(NSString *)str_Content contentType:(NSString *)str_ContentType;
+
+@end
+
+
+@interface MyDropDownViewController : UITableViewController
+@property(nonatomic,readwrite)NSString *str_ShowTableContent;
+@property(nonatomic,assign)id <MyDropDownViewControllerDelegate> delegate;
 @end
