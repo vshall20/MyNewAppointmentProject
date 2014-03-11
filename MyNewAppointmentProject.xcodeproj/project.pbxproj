@@ -29,6 +29,19 @@
 		33B3EF5F18C756B5006AEF58 /* MyTabBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = 33B3EF5E18C756B5006AEF58 /* MyTabBar.xib */; };
 		33B3EF6218C7649B006AEF58 /* myNavigationBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = 33B3EF6118C7649B006AEF58 /* myNavigationBar.xib */; };
 		33B3EF6518C76556006AEF58 /* MyNavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 33B3EF6418C76556006AEF58 /* MyNavigationBar.m */; };
+		33CD95F118CD9B830011EAD5 /* AddEditAppoinmentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 33CD95EF18CD9B830011EAD5 /* AddEditAppoinmentViewController.m */; };
+		33CD95F518CDA1A20011EAD5 /* MyDatePicker.xib in Resources */ = {isa = PBXBuildFile; fileRef = 33CD95F418CDA1A20011EAD5 /* MyDatePicker.xib */; };
+		33CD95F918CDA2C50011EAD5 /* MyDropDownViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 33CD95F718CDA2C50011EAD5 /* MyDropDownViewController.m */; };
+		33CD95FA18CDA2C50011EAD5 /* MyDropDownViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 33CD95F818CDA2C50011EAD5 /* MyDropDownViewController.xib */; };
+		33CD95FC18CDA3C90011EAD5 /* MyAppoinmentSaveCancelView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 33CD95FB18CDA3C90011EAD5 /* MyAppoinmentSaveCancelView.xib */; };
+		33CD95FF18CDA4140011EAD5 /* MyAppoinmentSaveCancelView.m in Sources */ = {isa = PBXBuildFile; fileRef = 33CD95FE18CDA4140011EAD5 /* MyAppoinmentSaveCancelView.m */; };
+		33CD960518CDBEA60011EAD5 /* CustomAppointmentTitleCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 33CD960418CDBEA60011EAD5 /* CustomAppointmentTitleCell.m */; };
+		33CD960818CDBEF80011EAD5 /* CustomAppointmentFromToCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 33CD960718CDBEF80011EAD5 /* CustomAppointmentFromToCell.m */; };
+		33CD960B18CDBF750011EAD5 /* CustomAppoinmentDescriptionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 33CD960A18CDBF750011EAD5 /* CustomAppoinmentDescriptionCell.m */; };
+		33CD960C18CDCB9B0011EAD5 /* AddEditAppoinmentViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 33CD95F018CD9B830011EAD5 /* AddEditAppoinmentViewController.xib */; };
+		33CD960E18CDCF470011EAD5 /* CustomAppointmentTitleCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 33CD960D18CDCF470011EAD5 /* CustomAppointmentTitleCell.xib */; };
+		33CD961018CDD08A0011EAD5 /* CustomAppointmentFromToCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 33CD960F18CDD08A0011EAD5 /* CustomAppointmentFromToCell.xib */; };
+		33CD961218CDD2AA0011EAD5 /* CustomAppoinmentDescriptionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 33CD961118CDD2AA0011EAD5 /* CustomAppoinmentDescriptionCell.xib */; };
 		33EAF8F218C61F560016C832 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 33EAF8F118C61F560016C832 /* Foundation.framework */; };
 		33EAF8F418C61F560016C832 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 33EAF8F318C61F560016C832 /* CoreGraphics.framework */; };
 		33EAF8F618C61F560016C832 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 33EAF8F518C61F560016C832 /* UIKit.framework */; };
@@ -110,6 +123,25 @@
 		33B3EF6118C7649B006AEF58 /* myNavigationBar.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = myNavigationBar.xib; sourceTree = "<group>"; };
 		33B3EF6318C76556006AEF58 /* MyNavigationBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyNavigationBar.h; sourceTree = "<group>"; };
 		33B3EF6418C76556006AEF58 /* MyNavigationBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyNavigationBar.m; sourceTree = "<group>"; };
+		33CD95EE18CD9B830011EAD5 /* AddEditAppoinmentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddEditAppoinmentViewController.h; sourceTree = "<group>"; };
+		33CD95EF18CD9B830011EAD5 /* AddEditAppoinmentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddEditAppoinmentViewController.m; sourceTree = "<group>"; };
+		33CD95F018CD9B830011EAD5 /* AddEditAppoinmentViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddEditAppoinmentViewController.xib; sourceTree = "<group>"; };
+		33CD95F418CDA1A20011EAD5 /* MyDatePicker.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MyDatePicker.xib; sourceTree = "<group>"; };
+		33CD95F618CDA2C50011EAD5 /* MyDropDownViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyDropDownViewController.h; sourceTree = "<group>"; };
+		33CD95F718CDA2C50011EAD5 /* MyDropDownViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyDropDownViewController.m; sourceTree = "<group>"; };
+		33CD95F818CDA2C50011EAD5 /* MyDropDownViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MyDropDownViewController.xib; sourceTree = "<group>"; };
+		33CD95FB18CDA3C90011EAD5 /* MyAppoinmentSaveCancelView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MyAppoinmentSaveCancelView.xib; sourceTree = "<group>"; };
+		33CD95FD18CDA4140011EAD5 /* MyAppoinmentSaveCancelView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyAppoinmentSaveCancelView.h; sourceTree = "<group>"; };
+		33CD95FE18CDA4140011EAD5 /* MyAppoinmentSaveCancelView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyAppoinmentSaveCancelView.m; sourceTree = "<group>"; };
+		33CD960318CDBEA60011EAD5 /* CustomAppointmentTitleCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomAppointmentTitleCell.h; sourceTree = "<group>"; };
+		33CD960418CDBEA60011EAD5 /* CustomAppointmentTitleCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomAppointmentTitleCell.m; sourceTree = "<group>"; };
+		33CD960618CDBEF80011EAD5 /* CustomAppointmentFromToCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomAppointmentFromToCell.h; sourceTree = "<group>"; };
+		33CD960718CDBEF80011EAD5 /* CustomAppointmentFromToCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomAppointmentFromToCell.m; sourceTree = "<group>"; };
+		33CD960918CDBF750011EAD5 /* CustomAppoinmentDescriptionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomAppoinmentDescriptionCell.h; sourceTree = "<group>"; };
+		33CD960A18CDBF750011EAD5 /* CustomAppoinmentDescriptionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomAppoinmentDescriptionCell.m; sourceTree = "<group>"; };
+		33CD960D18CDCF470011EAD5 /* CustomAppointmentTitleCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomAppointmentTitleCell.xib; sourceTree = "<group>"; };
+		33CD960F18CDD08A0011EAD5 /* CustomAppointmentFromToCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomAppointmentFromToCell.xib; sourceTree = "<group>"; };
+		33CD961118CDD2AA0011EAD5 /* CustomAppoinmentDescriptionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomAppoinmentDescriptionCell.xib; sourceTree = "<group>"; };
 		33EAF8EE18C61F560016C832 /* MyNewAppointmentProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyNewAppointmentProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		33EAF8F118C61F560016C832 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		33EAF8F318C61F560016C832 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -309,6 +341,22 @@
 				33B3EF6418C76556006AEF58 /* MyNavigationBar.m */,
 				33FC8ECC18CA205100D409CF /* DateFormatter.h */,
 				33FC8ECD18CA205100D409CF /* DateFormatter.m */,
+				33CD95F418CDA1A20011EAD5 /* MyDatePicker.xib */,
+				33CD95F618CDA2C50011EAD5 /* MyDropDownViewController.h */,
+				33CD95F718CDA2C50011EAD5 /* MyDropDownViewController.m */,
+				33CD95F818CDA2C50011EAD5 /* MyDropDownViewController.xib */,
+				33CD95FD18CDA4140011EAD5 /* MyAppoinmentSaveCancelView.h */,
+				33CD95FE18CDA4140011EAD5 /* MyAppoinmentSaveCancelView.m */,
+				33CD95FB18CDA3C90011EAD5 /* MyAppoinmentSaveCancelView.xib */,
+				33CD960318CDBEA60011EAD5 /* CustomAppointmentTitleCell.h */,
+				33CD960418CDBEA60011EAD5 /* CustomAppointmentTitleCell.m */,
+				33CD960D18CDCF470011EAD5 /* CustomAppointmentTitleCell.xib */,
+				33CD960618CDBEF80011EAD5 /* CustomAppointmentFromToCell.h */,
+				33CD960718CDBEF80011EAD5 /* CustomAppointmentFromToCell.m */,
+				33CD960F18CDD08A0011EAD5 /* CustomAppointmentFromToCell.xib */,
+				33CD960918CDBF750011EAD5 /* CustomAppoinmentDescriptionCell.h */,
+				33CD960A18CDBF750011EAD5 /* CustomAppoinmentDescriptionCell.m */,
+				33CD961118CDD2AA0011EAD5 /* CustomAppoinmentDescriptionCell.xib */,
 			);
 			path = CommonClass;
 			sourceTree = "<group>";
@@ -362,6 +410,9 @@
 				33A8BC1F18C9EAE200F4F2DE /* FilterByLawyerViewController.h */,
 				33A8BC2018C9EAE200F4F2DE /* FilterByLawyerViewController.m */,
 				33A8BC2118C9EAE200F4F2DE /* FilterByLawyerViewController.xib */,
+				33CD95EE18CD9B830011EAD5 /* AddEditAppoinmentViewController.h */,
+				33CD95EF18CD9B830011EAD5 /* AddEditAppoinmentViewController.m */,
+				33CD95F018CD9B830011EAD5 /* AddEditAppoinmentViewController.xib */,
 			);
 			path = UIViewController;
 			sourceTree = "<group>";
@@ -463,14 +514,21 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				33CD95FC18CDA3C90011EAD5 /* MyAppoinmentSaveCancelView.xib in Resources */,
 				33EAF92F18C620160016C832 /* MyAppointmentListViewController.xib in Resources */,
 				33B3EF6218C7649B006AEF58 /* myNavigationBar.xib in Resources */,
 				33A8BC2318C9EAE200F4F2DE /* FilterByLawyerViewController.xib in Resources */,
 				33EAF93918C6278C0016C832 /* RightViewController.xib in Resources */,
+				33CD960C18CDCB9B0011EAD5 /* AddEditAppoinmentViewController.xib in Resources */,
 				33A8BC1D18C9A22900F4F2DE /* AppointmentTypeViewController.xib in Resources */,
+				33CD95F518CDA1A20011EAD5 /* MyDatePicker.xib in Resources */,
 				33EAF93418C6277B0016C832 /* LeftViewController.xib in Resources */,
+				33CD961018CDD08A0011EAD5 /* CustomAppointmentFromToCell.xib in Resources */,
 				33B3EF5A18C7523C006AEF58 /* NewAppointmentViewController.xib in Resources */,
+				33CD95FA18CDA2C50011EAD5 /* MyDropDownViewController.xib in Resources */,
 				33B3EF4218C73EB7006AEF58 /* TapkuLibrary.bundle in Resources */,
+				33CD961218CDD2AA0011EAD5 /* CustomAppoinmentDescriptionCell.xib in Resources */,
+				33CD960E18CDCF470011EAD5 /* CustomAppointmentTitleCell.xib in Resources */,
 				33EAF8FE18C61F560016C832 /* InfoPlist.strings in Resources */,
 				33B3EF5F18C756B5006AEF58 /* MyTabBar.xib in Resources */,
 				33B3EF4D18C74A9F006AEF58 /* LoginViewController.xib in Resources */,
@@ -495,11 +553,14 @@
 			files = (
 				33EAF92E18C620160016C832 /* MyAppointmentListViewController.m in Sources */,
 				33B3EF6518C76556006AEF58 /* MyNavigationBar.m in Sources */,
+				33CD960B18CDBF750011EAD5 /* CustomAppoinmentDescriptionCell.m in Sources */,
 				33B3EF5918C7523C006AEF58 /* NewAppointmentViewController.m in Sources */,
 				33EAF93318C6277B0016C832 /* LeftViewController.m in Sources */,
 				86E2CC6D18C91EC000E11FD4 /* DataRequest.m in Sources */,
 				86E2CC5D18C905E700E11FD4 /* Utility.m in Sources */,
+				33CD95FF18CDA4140011EAD5 /* MyAppoinmentSaveCancelView.m in Sources */,
 				33A8BC1C18C9A22900F4F2DE /* AppointmentTypeViewController.m in Sources */,
+				33CD95F918CDA2C50011EAD5 /* MyDropDownViewController.m in Sources */,
 				33B3EF4118C73EB7006AEF58 /* NSDate+TKCategory.m in Sources */,
 				33EAF90718C61F560016C832 /* MyNewAppointmentProject.xcdatamodeld in Sources */,
 				33B3EF4C18C74A9F006AEF58 /* LoginViewController.m in Sources */,
@@ -507,6 +568,8 @@
 				86E2CC5418C8FFC200E11FD4 /* DataManager.m in Sources */,
 				86E2CC6918C9187E00E11FD4 /* LoginResponse.m in Sources */,
 				33B3EF4518C73EB7006AEF58 /* TKCalendarMonthViewController.m in Sources */,
+				33CD95F118CD9B830011EAD5 /* AddEditAppoinmentViewController.m in Sources */,
+				33CD960518CDBEA60011EAD5 /* CustomAppointmentTitleCell.m in Sources */,
 				33B3EF5D18C75584006AEF58 /* MyTabBar.m in Sources */,
 				33EAF90418C61F560016C832 /* AppDelegate.m in Sources */,
 				33A8BC2618CA096100F4F2DE /* Processor.m in Sources */,
@@ -520,6 +583,7 @@
 				86E2CC6218C910C600E11FD4 /* LawyerEntity.m in Sources */,
 				33B3EF4618C73EB7006AEF58 /* TKGlobal.m in Sources */,
 				86E2CC7018C91ED500E11FD4 /* DataResponse.m in Sources */,
+				33CD960818CDBEF80011EAD5 /* CustomAppointmentFromToCell.m in Sources */,
 				86E2CC6618C9186A00E11FD4 /* LoginRequest.m in Sources */,
 				33B3EF4418C73EB7006AEF58 /* TKCalendarMonthView.m in Sources */,
 				33EAF93818C6278C0016C832 /* RightViewController.m in Sources */,

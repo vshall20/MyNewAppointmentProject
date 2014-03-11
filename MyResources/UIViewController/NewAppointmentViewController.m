@@ -9,6 +9,8 @@
 #import "NewAppointmentViewController.h"
 #import "MyNavigationBar.h"
 #import "MyTabBar.h"
+#import "AddEditAppoinmentViewController.h"
+#import "MyAppoinmentSaveCancelView.h"
 
 @interface NewAppointmentViewController ()
 
@@ -16,6 +18,8 @@
     MyNavigationBar  *obj_MyNavigationBar;
     MyTabBar         *obj_MyTabBar;
     NSArray          *nib;
+    MyAppoinmentSaveCancelView *obj_SaveCancelView;
+    AddEditAppoinmentViewController *obj_addEditViewController;
 }
 @end
 
@@ -45,13 +49,36 @@
     {
         nib = nil;
     }
+    nib = [[NSBundle mainBundle] loadNibNamed:@"MyAppoinmentSaveCancelView" owner:self options:nil];
     
-     nib = [[NSBundle mainBundle] loadNibNamed:@"MyTabBar" owner:self options:nil];
+    obj_SaveCancelView = (MyAppoinmentSaveCancelView *)[nib objectAtIndex:0];
+    obj_SaveCancelView.frame = CGRectMake(0,obj_MyNavigationBar.frame.size.height, obj_SaveCancelView.frame.size.width, obj_SaveCancelView.frame.size.height);
+    [self.view addSubview:obj_SaveCancelView];
+    
+    
+    
+    nib = [[NSBundle mainBundle] loadNibNamed:@"MyTabBar" owner:self options:nil];
     
     obj_MyTabBar = (MyTabBar *)[nib objectAtIndex:0];
     obj_MyTabBar.frame = CGRectMake(0, self.view.frame.size.height-obj_MyTabBar.frame.size.height, obj_MyTabBar.frame.size.width, obj_MyTabBar.frame.size.height);
     obj_MyTabBar.delegate = self;
     [self.view addSubview:obj_MyTabBar];
+    
+//    if (!obj_addEditViewController)
+//    {
+//        obj_addEditViewController = [[AddEditAppoinmentViewController alloc] initWithNibName:@"AddEditAppoinmentViewController" bundle:nil];
+//        float yOrigin = obj_MyNavigationBar.frame.size.height + obj_SaveCancelView.frame.size.height;
+//        //obj_addEditViewController.delegate = self;
+//        float viewHeight = obj_MyNavigationBar.frame.size.height + obj_SaveCancelView.frame.size.height + obj_MyTabBar.frame.size.height;
+//        obj_addEditViewController.view.frame = CGRectMake(0,yOrigin, self.view.frame.size.width, self.view.frame.size.height-viewHeight);
+//        [self addChildViewController:obj_addEditViewController];
+//        [self.view addSubview:obj_addEditViewController.view];
+//        [obj_addEditViewController didMoveToParentViewController:self];
+//        
+//    }
+
+    
+   
 }
 
 #pragma mark - Tab Bar Delegate
