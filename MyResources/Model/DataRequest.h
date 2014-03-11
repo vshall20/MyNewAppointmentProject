@@ -15,7 +15,7 @@
 @property (nonatomic, strong) NSString *lawyerID;
 
 -(id)initWithlawyerID:(NSString *)lawyerID andChamberID:(NSString *)chamberID;
-
+-(NSMutableDictionary *)fetchDataForParameter:(NSString *)parameterName;
 -(NSMutableDictionary *)fetchData;
 
 

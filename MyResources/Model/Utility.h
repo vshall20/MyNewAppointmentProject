@@ -18,5 +18,5 @@
 - (void) startConnectionCheck;
 +(Utility *)sharedInstance;
 -(NSMutableDictionary *)fetchData:(NSString *)webMethod;
--(void)fetchDataAndSave:(NSString *)parameterName;
+//-(void)fetchDataAndSave:(NSString *)parameterName;
 @end

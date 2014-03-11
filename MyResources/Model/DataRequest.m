@@ -35,4 +35,15 @@
 }
 
 
+-(NSMutableDictionary *)fetchDataForParameter:(NSString *)parameterName
+{
+//    NSString *parameterName = [NSString stringWithFormat:@"/eLegalNet_GetAppointments?parameter={\"search\":\" 11/19/2013\",\"lawyerid\":\"%@\",\"caseid\":\"\",\"appointmenttype\":\"\",\"chamberid\":\"%@\",\"logintype\":\"lawyer\"}",_lawyerID,_chamberID];
+    
+    NSLog(@"Parameter name for local login type:=%@",parameterName);
+    
+    NSMutableDictionary *jsonObject = [[Utility sharedInstance] fetchData:parameterName];
+    
+    return jsonObject;
+}
+
 @end
