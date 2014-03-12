@@ -31,7 +31,10 @@
     [super viewDidLoad];
     arr_AppointmentType = [NSArray arrayWithObjects:@"Matter",@"Consulation",@"Discussion",@"Events",@"Birthday",@"Anniversary",@"Holiday", nil];
     
-
+    if ([_str_ShowTableContent isEqualToString:kShowAppointmentLinkedToCaseId]) {
+        _txt_linkToCaseID = [[UITextField alloc]init];
+        self.tableView.tableHeaderView = _txt_linkToCaseID;
+    }
 
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
