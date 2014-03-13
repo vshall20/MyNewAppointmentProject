@@ -14,5 +14,6 @@
 @property (weak, nonatomic) IBOutlet UIButton *btn_Cancel;
 @property (weak, nonatomic) IBOutlet UITextField *txt_AppointmentType;
 @property (weak, nonatomic) IBOutlet UIButton *btn_DropDownList;
+@property (weak, nonatomic) IBOutlet UIButton *btn_Invite;
 
 @end

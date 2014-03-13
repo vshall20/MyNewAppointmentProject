@@ -9,8 +9,14 @@
 #import <UIKit/UIKit.h>
 #import "DataEntity.h"
 
+@protocol AddEditAppointmentViewDelegate <NSObject>
+
+-(void)inviteButtonState:(BOOL)state;
+
+@end
 
 @interface AddEditAppoinmentViewController : UITableViewController
 @property (nonatomic,readwrite)NSString    *str_AppointmentType;
 @property(strong,nonatomic) DataEntity  *entityData;
+@property (nonatomic, weak) id<AddEditAppointmentViewDelegate> delegate;
 @end

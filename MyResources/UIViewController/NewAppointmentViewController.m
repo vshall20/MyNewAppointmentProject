@@ -57,7 +57,10 @@
     obj_SaveCancelView.frame = CGRectMake(0,obj_MyNavigationBar.frame.size.height, obj_SaveCancelView.frame.size.width, obj_SaveCancelView.frame.size.height);
     [obj_SaveCancelView.txt_AppointmentType setEnabled:NO];
     [obj_SaveCancelView.btn_DropDownList addTarget:self action:@selector(dropDownListClicked:) forControlEvents:UIControlEventTouchUpInside];
-     [obj_SaveCancelView.btn_Save addTarget:self action:@selector(saveButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
+    [obj_SaveCancelView.btn_Save addTarget:self action:@selector(saveButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
+    [obj_SaveCancelView.btn_Invite addTarget:self action:@selector(inviteButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
+    [obj_SaveCancelView.btn_Invite setEnabled:NO];
+    
     [obj_SaveCancelView.btn_Cancel
      addTarget:self action:@selector(cancelButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:obj_SaveCancelView];
@@ -132,7 +135,7 @@
         float yOrigin = obj_MyNavigationBar.frame.size.height + obj_SaveCancelView.frame.size.height;
         obj_addEditViewController.str_AppointmentType = appointmentType;
         obj_addEditViewController.entityData          = myEntityData;
-        //obj_addEditViewController.delegate = self;
+        obj_addEditViewController.delegate = self;
         float viewHeight = obj_MyNavigationBar.frame.size.height + obj_SaveCancelView.frame.size.height + obj_MyTabBar.frame.size.height;
         obj_addEditViewController.view.frame = CGRectMake(0,yOrigin, self.view.frame.size.width, self.view.frame.size.height-viewHeight);
         [self addChildViewController:obj_addEditViewController];
@@ -142,6 +145,16 @@
     }
 
 }
+
+#pragma mark AddEditViewDelegate
+
+-(void)inviteButtonState:(BOOL) state
+{
+    return [obj_SaveCancelView.btn_Invite setEnabled:state];
+}
+
+#pragma mark -
+
 -(void)removeAddEditViewController
 {
     if (obj_addEditViewController)

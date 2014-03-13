@@ -100,6 +100,7 @@
     [[av textFieldAtIndex:1] setSecureTextEntry:YES];
     [av show];
     
+    _dateArray = [[NSMutableArray alloc]init];
 
 //    NSDictionary *dictValue = [NSDictionary dictionaryWithObjectsAndKeys:@"chm00101",@"id",@"shyam.deore@prod.shriyais.com",@"username",@"Password123",@"password",@"1",@"flag", nil];
     
@@ -127,7 +128,7 @@
 }
 
 
-#pragma FetchedResultsController Delegate Methods
+#pragma mark FetchedResultsController Delegate Methods
 #pragma mark -
 
 
@@ -139,7 +140,12 @@
 
 -(void)controllerDidChangeContent:(NSFetchedResultsController *)controller
 {
+    
     [_tbl_AppointmentList reloadData];
+    for (DataEntity *entity in controller.fetchedObjects) {
+        [_dateArray addObject:entity.start];
+    }
+    [calendarView reload];
 }
 
 #pragma
@@ -342,12 +348,13 @@
    
     NSMutableArray *marks = [NSMutableArray array];
         
-    NSArray *data = [NSArray arrayWithObjects:@"2014-03-07 00:00:00 +0000", nil];
+//    NSArray *data = [NSArray arrayWithObjects:@"2014-03-07 00:00:00 +0000", nil];
     
     NSCalendar *cal = [NSCalendar currentCalendar];
     [cal setTimeZone:[NSTimeZone timeZoneForSecondsFromGMT:0]];
     
-    NSDateComponents *comp = [cal components:(NSMonthCalendarUnit | NSMinuteCalendarUnit | NSYearCalendarUnit | NSDayCalendarUnit | NSWeekdayCalendarUnit | NSHourCalendarUnit | NSSecondCalendarUnit) fromDate:startDate];
+        //NSMonthCalendarUnit | NSMinuteCalendarUnit | NSYearCalendarUnit | NSDayCalendarUnit | NSWeekdayCalendarUnit | NSHourCalendarUnit | NSSecondCalendarUnit
+    NSDateComponents *comp = [cal components:(NSMonthCalendarUnit | NSYearCalendarUnit | NSDayCalendarUnit) fromDate:startDate];
     
     NSDate *d = [cal dateFromComponents:comp];
     
@@ -365,7 +372,7 @@
         }
         
         // If the date is in the data array, add it to the marks array, else don't
-        if ([data containsObject:[d description]]) {
+        if ([_dateArray containsObject:[d description]]) {
             [marks addObject:[NSNumber numberWithBool:YES]];
         } else {
             [marks addObject:[NSNumber numberWithBool:NO]];
@@ -391,6 +398,10 @@
     NSLog(@"indexValue %d and name : %@",indexValue,name);
 //    [[[AppDelegate delegate] dataManager] performFetchWithPredicateString:name];
     [[[AppDelegate delegate] dataManager] performFetchWithPredicateType:indexValue];
+    for (DataEntity *entity in self.fetchResultController.fetchedObjects) {
+        [_dateArray addObject:entity.start];
+    }
+    [calendarView reload];
     [_tbl_AppointmentList reloadData];
     
     

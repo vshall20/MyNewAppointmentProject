@@ -363,7 +363,7 @@
 	int i = 1;
 	while(index % 7 != 0){
 		r = [self rectForCellAtIndex:index] ;
-		if ([marks count] > 0) 
+		if ([marks count] > 0)
 			[self drawTileInRect:r day:i mark:[[marks objectAtIndex:index] boolValue] font:font font2:font2];
 		else
 			[self drawTileInRect:r day:i mark:NO font:font font2:font2];

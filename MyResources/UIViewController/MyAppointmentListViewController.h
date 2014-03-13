@@ -16,6 +16,7 @@
 @property (nonatomic, strong) NSString *chamberID;
 @property (nonatomic, strong) NSString *lawyerID;
 @property (nonatomic, strong) NSFetchedResultsController *fetchResultController;
+@property (nonatomic, strong) NSMutableArray *dateArray;
 
 - (IBAction)leftBarClicked:(id)sender;
 - (IBAction)rightBarClicked:(id)sender;

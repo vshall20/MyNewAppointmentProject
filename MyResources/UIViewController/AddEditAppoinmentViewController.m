@@ -259,6 +259,13 @@
             if (model.caseId)
             {
                 cell.textLabel.text = [NSString stringWithFormat:@"Link to case id %@",model.caseId];
+                    //Invite Button
+                [_delegate inviteButtonState:YES];
+            }
+            else
+            {
+                cell.textLabel.text = [NSString stringWithFormat:@"Link to case id "];
+                [_delegate inviteButtonState:NO];
             }
             [cell setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
             if ([_str_AppointmentType isEqualToString:@"Matter"] || [_str_AppointmentType isEqualToString:@"Consulation"] || [_str_AppointmentType isEqualToString:@"Discussion"] || [_str_AppointmentType isEqualToString:@"Event"])
