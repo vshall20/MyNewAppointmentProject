@@ -40,16 +40,22 @@
     self = [super init];
     if (self) {
         self = [[DataManager alloc]init];
-        _managedObjectContext = context;
+//        _managedObjectContext = context;
     }
     return self;
+}
+
+
+-(NSManagedObjectContext *)managedObjectContext
+{
+    return [[AppDelegate delegate] managedObjectContext];
 }
 
 -(NSManagedObjectContext *)bgManagedObjectContext
 {
     if (!_bgManagedObjectContext) {
-        _bgManagedObjectContext = [[NSManagedObjectContext alloc]init];
-        [_bgManagedObjectContext setPersistentStoreCoordinator:[[AppDelegate delegate] persistentStoreCoordinator]];
+        _bgManagedObjectContext = [[NSManagedObjectContext alloc]initWithConcurrencyType:NSPrivateQueueConcurrencyType];
+        [_bgManagedObjectContext setParentContext:[self managedObjectContext]];
     }
     return _bgManagedObjectContext;
 }
@@ -62,7 +68,7 @@
     
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
     NSEntityDescription *entity = [NSEntityDescription
-                                   entityForName:kNameEntityName inManagedObjectContext:self.bgManagedObjectContext];
+                                   entityForName:kNameEntityName inManagedObjectContext:[self managedObjectContext]];
     [fetchRequest setEntity:entity];
     
     NSSortDescriptor *sort = [[NSSortDescriptor alloc] initWithKey:@"appId" ascending:NO];
@@ -73,7 +79,7 @@
     
     NSFetchedResultsController *theFetchedResultsController =
     [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest
-                                        managedObjectContext:self.bgManagedObjectContext
+                                        managedObjectContext:[self managedObjectContext]
                                           sectionNameKeyPath:nil
                                                    cacheName:nil];
     self.fetchedResultsController = theFetchedResultsController;
@@ -127,15 +133,42 @@
 
 - (void)saveBGContext
 {
-    NSError *error = nil;
-    NSManagedObjectContext *managedObjectContext = self.bgManagedObjectContext;
-    if (managedObjectContext != nil) {
-        if ([managedObjectContext hasChanges] && ![managedObjectContext save:&error]) {
-            // Replace this implementation with code to handle the error appropriately.
-            // abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
-            NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
-            abort();
-        }
+    __block NSError *error = nil;
+    __block NSManagedObjectContext *tempManagedObjectContext = self.bgManagedObjectContext;
+    __block NSManagedObjectContext *managedObjectContext = [self managedObjectContext];
+    __block NSManagedObjectContext *writerManagedObjectContext = [[self managedObjectContext] parentContext];
+    if (tempManagedObjectContext != nil)
+    {
+        [tempManagedObjectContext performBlock:^{
+            
+            if ([tempManagedObjectContext hasChanges] && ![tempManagedObjectContext save:&error]) {
+                    // Replace this implementation with code to handle the error appropriately.
+                    // abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
+                NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
+                
+            }
+            [managedObjectContext performBlock:^{
+               
+                if ([managedObjectContext hasChanges] && ![managedObjectContext save:&error]) {
+                        // Replace this implementation with code to handle the error appropriately.
+                        // abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
+                    NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
+                    
+                }
+                
+                [writerManagedObjectContext performBlock:^{
+                   
+                    if ([writerManagedObjectContext hasChanges] && ![writerManagedObjectContext save:&error]) {
+                            // Replace this implementation with code to handle the error appropriately.
+                            // abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
+                        NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
+                        
+                    }
+                    
+                }];
+                
+            }];
+        }];
     }
 }
 

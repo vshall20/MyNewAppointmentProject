@@ -14,6 +14,7 @@
 @synthesize managedObjectContext = _managedObjectContext;
 @synthesize managedObjectModel = _managedObjectModel;
 @synthesize persistentStoreCoordinator = _persistentStoreCoordinator;
+@synthesize writerManagedObjectContext = _writerManagedObjectContext;
 
 +(AppDelegate *)delegate
 {
@@ -23,7 +24,7 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     [Utility sharedInstance];
-    _dataManager = [[DataManager alloc]initWithManagedObjectContext:self.managedObjectContext];
+    _dataManager = [[DataManager alloc]initWithManagedObjectContext:[self managedObjectContext]];
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
     
@@ -83,17 +84,31 @@
 
 // Returns the managed object context for the application.
 // If the context doesn't already exist, it is created and bound to the persistent store coordinator for the application.
+
+- (NSManagedObjectContext *)writerManagedObjectContext
+{
+    if (_writerManagedObjectContext != nil) {
+        return _writerManagedObjectContext;
+    }
+    
+    NSPersistentStoreCoordinator *coordinator = [self persistentStoreCoordinator];
+    if (coordinator != nil) {
+        _writerManagedObjectContext = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSPrivateQueueConcurrencyType];
+        [_writerManagedObjectContext setPersistentStoreCoordinator:coordinator];
+    }
+    return _writerManagedObjectContext;
+}
+
+
 - (NSManagedObjectContext *)managedObjectContext
 {
     if (_managedObjectContext != nil) {
         return _managedObjectContext;
     }
     
-    NSPersistentStoreCoordinator *coordinator = [self persistentStoreCoordinator];
-    if (coordinator != nil) {
-        _managedObjectContext = [[NSManagedObjectContext alloc] init];
-        [_managedObjectContext setPersistentStoreCoordinator:coordinator];
-    }
+    _managedObjectContext = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSMainQueueConcurrencyType];
+    _managedObjectContext.parentContext = [self writerManagedObjectContext];
+    
     return _managedObjectContext;
 }
 
