@@ -14,5 +14,6 @@
 
 @interface LeftViewController : UITableViewController
 @property(nonatomic,assign)id <LeftViewControllerDelegate> delegate;
+@property(nonatomic,readwrite) NSArray  *myArray;
 
 @end

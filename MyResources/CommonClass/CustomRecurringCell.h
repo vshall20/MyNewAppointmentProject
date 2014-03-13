@@ -9,5 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface CustomRecurringCell : UITableViewCell
+@property (weak, nonatomic) IBOutlet UIButton *btn_Yes;
+@property (weak, nonatomic) IBOutlet UIButton *btn_No;
 
 @end

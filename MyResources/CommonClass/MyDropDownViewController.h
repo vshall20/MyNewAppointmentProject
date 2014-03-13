@@ -18,6 +18,6 @@
 @interface MyDropDownViewController : UITableViewController
 @property(nonatomic,readwrite)NSString *str_ShowTableContent;
 @property(nonatomic,assign)id <MyDropDownViewControllerDelegate> delegate;
-@property(nonatomic, strong) UITextField *txt_linkToCaseID;
+@property (strong, nonatomic) IBOutlet UITextField *txt_ClientName;
 
 @end

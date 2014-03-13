@@ -11,6 +11,6 @@
 @interface CustomAppointmentFromToCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UILabel *lbl_Title;
 @property (weak, nonatomic) IBOutlet UITextField *txt_Date;
-@property (weak, nonatomic) IBOutlet UITextField *txt_Time;
+
 
 @end

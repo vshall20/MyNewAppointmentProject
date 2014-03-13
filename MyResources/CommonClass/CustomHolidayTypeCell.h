@@ -9,5 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface CustomHolidayTypeCell : UITableViewCell
+@property (weak, nonatomic) IBOutlet UIButton *btn_Court;
+@property (weak, nonatomic) IBOutlet UIButton *btn_Chamber;
 
 @end

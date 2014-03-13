@@ -21,13 +21,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" id="Soe-qO-0jD">
-                        <rect key="frame" x="5" y="29" width="148" height="30"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                        <textInputTraits key="textInputTraits"/>
-                    </textField>
-                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" id="2gR-fb-wDD">
-                        <rect key="frame" x="175" y="29" width="140" height="30"/>
+                        <rect key="frame" x="5" y="29" width="310" height="30"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <textInputTraits key="textInputTraits"/>
@@ -37,7 +31,6 @@
             <connections>
                 <outlet property="lbl_Title" destination="gWa-Xe-992" id="lBc-nQ-OML"/>
                 <outlet property="txt_Date" destination="Soe-qO-0jD" id="PbQ-fg-XR3"/>
-                <outlet property="txt_Time" destination="2gR-fb-wDD" id="BV6-49-4gW"/>
             </connections>
         </tableViewCell>
     </objects>

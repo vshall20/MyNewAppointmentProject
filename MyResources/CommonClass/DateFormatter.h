@@ -15,5 +15,6 @@
 
 +(DateFormatter *)sharedDateFormatter;
 -(NSDate *)dateFromParamString:(NSString *)string;
+-(NSString *)stringFromGivenDate:(NSDate *)date;
 
 @end

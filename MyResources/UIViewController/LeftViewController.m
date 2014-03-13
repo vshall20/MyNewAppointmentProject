@@ -52,7 +52,7 @@
 {
 
     // Return the number of rows in the section.
-    return 2;
+    return _myArray.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -65,14 +65,8 @@
     cell.textLabel.textAlignment = NSTextAlignmentCenter;
     cell.backgroundColor = myLeftRightTableBackGroundColor;
     cell.textLabel.textColor = myLeftRightTableCellTextColor;
-    if (indexPath.row == 0)
-    {
-        cell.textLabel.text = @"Edit";
-    }
-    else{
-        cell.textLabel.text = @"Back";
-        
-    }
+    cell.textLabel.text = [_myArray objectAtIndex:indexPath.row];
+   
     
     
     // Configure the cell...
@@ -81,7 +75,7 @@
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    [delegate  leftSideTableViewSelectedWithStringValue:@"" indexValue:indexPath.row];
+    [delegate  leftSideTableViewSelectedWithStringValue:[_myArray objectAtIndex:indexPath.row] indexValue:indexPath.row];
 }
 /*
 // Override to support conditional editing of the table view.

@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "DataEntity.h"
+
 
 @interface AddEditAppoinmentViewController : UITableViewController
 @property (nonatomic,readwrite)NSString    *str_AppointmentType;
+@property(strong,nonatomic) DataEntity  *entityData;
 @end

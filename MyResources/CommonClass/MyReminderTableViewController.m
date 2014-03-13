@@ -1,23 +1,21 @@
 //
-//  MyDropDownViewController.m
+//  MyReminderTableViewController.m
 //  MyNewAppointmentProject
 //
-//  Created by Vishnu Gupta on 10/03/14.
+//  Created by Vishnu Gupta on 13/03/14.
 //  Copyright (c) 2014 Vishnu Gupta. All rights reserved.
 //
 
-#import "MyDropDownViewController.h"
+#import "MyReminderTableViewController.h"
 
-@interface MyDropDownViewController ()
+@interface MyReminderTableViewController ()
 {
-    NSArray  *arr_AppointmentType;
-    NSArray  *arr_LinkToCaseId;
-    NSArray  *arr_Venue;
+    NSArray *arr_Reminder;
 }
 
 @end
 
-@implementation MyDropDownViewController
+@implementation MyReminderTableViewController
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -31,18 +29,11 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    arr_AppointmentType = [NSArray arrayWithObjects:@"Matter",@"Consulation",@"Discussion",@"Event",@"Birthday",@"Anniversary",@"Holiday", nil];
-    arr_LinkToCaseId = [NSArray arrayWithObjects:@"74354735",@"45778",@"6596759",@"6767767",@"7676776",@"67676",@"Ho7676liday", nil];
-    arr_Venue = [NSArray arrayWithObjects:@"dfgdfgfdg",@"fgfgf",@"fgfgfg",@"rtertrtr",@"rtrtrtret",@"tyrtytry",@"tyrtytyt", nil];
+    arr_Reminder = [NSArray arrayWithObjects:@"15 min",@"30 min",@"45 min", nil];
     
-    if ([_str_ShowTableContent isEqualToString:kShowAppointmentLinkedToCaseId]) {
-       
-        self.tableView.tableHeaderView = _txt_ClientName;
-    }
-
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
- 
+    
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
@@ -57,74 +48,36 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-
+    
     // Return the number of sections.
     return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
+    
     // Return the number of rows in the section.
-    if ([_str_ShowTableContent isEqualToString:kShowAppointmentType])
-    {
-        return arr_AppointmentType.count;
-    }
-    else if ([_str_ShowTableContent isEqualToString:kShowAppointmentLinkedToCaseId])
-    {
-        return arr_LinkToCaseId.count;
-    }
-    else{
-        return arr_Venue.count;
-    }
-    return 0;
+    return arr_Reminder.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"dropDownCell";
+    static NSString *CellIdentifier = @"reminderCell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
-   
-    if ([_str_ShowTableContent isEqualToString:kShowAppointmentType])
-    {
-        cell.textLabel.text = [arr_AppointmentType objectAtIndex:indexPath.row];
-    }
-    else if ([_str_ShowTableContent isEqualToString:kShowAppointmentLinkedToCaseId])
-    {
-        cell.textLabel.text = [arr_LinkToCaseId objectAtIndex:indexPath.row];
-    }
-    else{
-       cell.textLabel.text = [arr_Venue objectAtIndex:indexPath.row];
-    }
-
-    
     // Configure the cell...
+    cell.textLabel.text = [NSString stringWithFormat:@"before %@",[arr_Reminder objectAtIndex:indexPath.row]];
     
     return cell;
 }
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    NSString *str_Content;
-    if ([_str_ShowTableContent isEqualToString:kShowAppointmentType])
-    {
-        str_Content = [arr_AppointmentType objectAtIndex:indexPath.row];
-    }
-    else if ([_str_ShowTableContent isEqualToString:kShowAppointmentLinkedToCaseId])
-    {
-         str_Content = [arr_LinkToCaseId objectAtIndex:indexPath.row];
-    }
-    else{
-        str_Content = [arr_Venue objectAtIndex:indexPath.row];
-    }
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    [_myDelegate reminderSelectedWithValue:[arr_Reminder objectAtIndex:indexPath.row]];
     [self didMoveToParentViewController:nil];
     [self.view removeFromSuperview];
     [self removeFromParentViewController];
-
-    [_delegate selectedDropDownListTableWithContent:str_Content contentType:_str_ShowTableContent];
     
- 
 }
 /*
 // Override to support conditional editing of the table view.

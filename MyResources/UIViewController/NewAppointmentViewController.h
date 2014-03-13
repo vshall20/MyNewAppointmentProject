@@ -7,7 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "DataEntity.h"
 
 @interface NewAppointmentViewController : UIViewController<UITabBarDelegate>
 
+@property(strong,nonatomic) DataEntity  *entityData;
 @end

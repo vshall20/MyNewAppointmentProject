@@ -39,4 +39,10 @@ static DateFormatter *dateForm = nil;
     return [_dateFormatter dateFromString:string];
 }
 
+
+-(NSString *)stringFromGivenDate:(NSDate *)date
+{
+    return [_dateFormatter stringFromDate:date];
+}
+
 @end

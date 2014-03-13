@@ -20,6 +20,11 @@
 #import "AppointmentTypeViewController.h"
 #import "FilterByLawyerViewController.h"
 #import "DataEntity.h"
+#import "CustomMyAppointmentListCell.h"
+#import "DateFormatter.h"
+#import "DetailedAppointmentViewController.h"
+
+#define customAppointmentListCell @"customAppointmentListCell"
 
 
 @interface MyAppointmentListViewController ()<LeftViewControllerDelegate,TKCalendarMonthViewDelegate,TKCalendarMonthViewDataSource,AppointmentTypeDelegate,FilterByLawyerDelegate>
@@ -185,18 +190,32 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"Cell";
-//    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
-    UITableViewCell *cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+    CustomMyAppointmentListCell *cell = (CustomMyAppointmentListCell*) [tableView dequeueReusableCellWithIdentifier:customAppointmentListCell];
+    if (cell == nil)
+    {
+        nib = [[NSBundle mainBundle] loadNibNamed:@"CustomMyAppointmentListCell" owner:self options:nil];
+        cell = (CustomMyAppointmentListCell *)[nib objectAtIndex:0];
+    }
+
     
     // Configure the cell...
 
     DataEntity *entity = (DataEntity *)[self.fetchResultController objectAtIndexPath:indexPath];
-    cell.textLabel.text = entity.appointmentType;
+    cell.lbl_AppointmentType.text = entity.appointmentType;
+    cell.lbl_ClientName.text      = entity.clientName;
+    cell.lbl_DateTime.text        = [NSString stringWithFormat:@"%@ to %@",[[DateFormatter sharedDateFormatter] stringFromGivenDate:entity.start],[[DateFormatter sharedDateFormatter] stringFromGivenDate:entity.end]];
     
     return cell;
 }
-
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    DataEntity *entity = (DataEntity *)[self.fetchResultController objectAtIndexPath:indexPath];
+    DetailedAppointmentViewController *obj_New = [[DetailedAppointmentViewController alloc]
+                                                  initWithNibName:@"DetailedAppointmentViewController" bundle:nil];
+    obj_New.entityData   = entity;
+    [self.navigationController pushViewController:obj_New animated:YES];
+  
+}
 /*
 // Override to support conditional editing of the table view.
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
@@ -244,7 +263,9 @@
     
     if (!obj_LeftViewController)
     {
+        NSArray *arr_Data = [NSArray arrayWithObjects:@"Appointment Type",@"Filter by Lawyer", nil];
         obj_LeftViewController = [[LeftViewController alloc] initWithNibName:@"LeftViewController" bundle:nil];
+        obj_LeftViewController.myArray = arr_Data;
         obj_LeftViewController.delegate = self;
         obj_LeftViewController.view.frame = CGRectMake(0, obj_MyNavigationBar.frame.size.height, 100, 88);
         [self addChildViewController:obj_LeftViewController];
@@ -260,32 +281,42 @@
 
 - (IBAction)rightBarClicked:(id)sender {
    
-    FilterByLawyerViewController *obj_Filterlawyer = [[FilterByLawyerViewController alloc] initWithNibName:@"FilterByLawyerViewController" bundle:nil];
-    obj_Filterlawyer.myDelegate = self;
-    obj_Filterlawyer.tbl_LawyerList.alpha = 0.0;
-    obj_Filterlawyer.view.backgroundColor = [UIColor clearColor];
-    self.navigationController.modalPresentationStyle = UIModalPresentationCurrentContext;
-    [self presentViewController:obj_Filterlawyer animated:YES completion:NULL];
     
 
 }
 #pragma mark - remove child controller 
 -(void)removeLeftViewController
 {
+    if (obj_LeftViewController)
+    {
     [obj_LeftViewController didMoveToParentViewController:nil];
     [obj_LeftViewController.view removeFromSuperview];
     [obj_LeftViewController removeFromParentViewController];
     obj_LeftViewController = nil;
+    }
 }
-#pragma mark - Left View Controller Delegate 
+#pragma mark - Left View Controller Delegate
 -(void)leftSideTableViewSelectedWithStringValue:(NSString *)name indexValue:(int)indexValue
 {
     [self removeLeftViewController];
+    if (indexValue == 0)
+    {
     AppointmentTypeViewController *obj_Appointment = [[AppointmentTypeViewController alloc] initWithNibName:@"AppointmentTypeViewController" bundle:nil];
     obj_Appointment.myDelegate = self;
     obj_Appointment.view.backgroundColor = [UIColor clearColor];
     self.navigationController.modalPresentationStyle = UIModalPresentationCurrentContext;
     [self presentViewController:obj_Appointment animated:YES completion:NULL];
+    }
+    else
+    {
+        FilterByLawyerViewController *obj_Filterlawyer = [[FilterByLawyerViewController alloc] initWithNibName:@"FilterByLawyerViewController" bundle:nil];
+        obj_Filterlawyer.myDelegate = self;
+        obj_Filterlawyer.tbl_LawyerList.alpha = 0.0;
+        obj_Filterlawyer.view.backgroundColor = [UIColor clearColor];
+        self.navigationController.modalPresentationStyle = UIModalPresentationCurrentContext;
+        [self presentViewController:obj_Filterlawyer animated:YES completion:NULL];
+
+    }
     
 }
 #pragma mark -
@@ -368,6 +399,7 @@
 - (void)tabBar:(UITabBar *)tabBar didSelectItem:(UITabBarItem *)item;
 {
     NewAppointmentViewController *obj_New = [[NewAppointmentViewController alloc] initWithNibName:@"NewAppointmentViewController" bundle:nil];
+    obj_New.entityData = nil;
     [self.navigationController pushViewController:obj_New animated:YES];
     NSLog(@"item %d",item.tag);
 }
