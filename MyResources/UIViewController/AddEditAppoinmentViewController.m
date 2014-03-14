@@ -60,6 +60,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    NSLog(@"Test");
     
     //////// Initialise a model /////
     if (_entityData)   //// edit mode
