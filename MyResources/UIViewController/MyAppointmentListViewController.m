@@ -112,7 +112,7 @@
     });
     
     
-   
+    [self controllerDidChangeContent:self.fetchResultController];
 }
 
 -(void)viewDidAppear:(BOOL)animated
@@ -142,14 +142,33 @@
 {
     
     [_tbl_AppointmentList reloadData];
-    for (DataEntity *entity in controller.fetchedObjects) {
-        [_dateArray addObject:entity.start];
-    }
-    [calendarView reload];
+    [self updateClanderView];
 }
 
 #pragma
 #pragma mark -
+
+
+-(void)updateClanderView
+{
+    NSString *str_StartDate;
+    NSDateFormatter *dateFormatter;
+    dateFormatter = [[NSDateFormatter alloc] init];
+    NSDate *startDate;
+    for (DataEntity *entity in self.fetchResultController.fetchedObjects) {
+        str_StartDate = [[DateFormatter sharedDateFormatter] stringFromGivenDate:entity.start];
+        str_StartDate = [str_StartDate substringWithRange:NSMakeRange(0, 10)];
+        [dateFormatter setDateFormat:@"MM/dd/yyyy"];
+        startDate = [dateFormatter dateFromString:str_StartDate];
+        //2014-03-07 00:00:00 +0000
+        [dateFormatter setDateFormat:@"yyyy-MM-dd '00':'00':'00 '+0000'"];
+        str_StartDate  = [dateFormatter stringFromDate:startDate];
+        NSLog(@"str_StartDate %@",str_StartDate);
+        [_dateArray addObject:str_StartDate];
+    }
+    [calendarView reload];
+}
+
 
 -(void)loginWebServiceCallAndResponseToGetChamberIDandLawyerID
 {
@@ -166,13 +185,7 @@
     
     DataRequest *request = [[DataRequest alloc]initWithlawyerID:_lawyerID andChamberID:_chamberID];
     DataResponse *response = [[DataResponse alloc]initWithDictionary:[request fetchData]];
-//    if([[response valueForKey:@"success"] isEqualToString:@"1"])
-//    {
     [response saveData];
-//    }
-//    else{
-//        //// failed show alert message 
-//    }
     
 }
 
@@ -347,7 +360,6 @@
     
    
     NSMutableArray *marks = [NSMutableArray array];
-        
 //    NSArray *data = [NSArray arrayWithObjects:@"2014-03-07 00:00:00 +0000", nil];
     
     NSCalendar *cal = [NSCalendar currentCalendar];
@@ -398,10 +410,7 @@
     NSLog(@"indexValue %d and name : %@",indexValue,name);
 //    [[[AppDelegate delegate] dataManager] performFetchWithPredicateString:name];
     [[[AppDelegate delegate] dataManager] performFetchWithPredicateType:indexValue];
-    for (DataEntity *entity in self.fetchResultController.fetchedObjects) {
-        [_dateArray addObject:entity.start];
-    }
-    [calendarView reload];
+    [self updateClanderView];
     [_tbl_AppointmentList reloadData];
     
     
