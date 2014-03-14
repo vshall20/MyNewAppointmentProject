@@ -22,6 +22,9 @@
 
 @property (nonatomic, strong) DataManager *dataManager;
 
+@property (nonatomic, strong) NSString *lawyerID;
+@property (nonatomic, strong) NSString *chamberID;
+
 - (void)saveContext;
 - (NSURL *)applicationDocumentsDirectory;
 

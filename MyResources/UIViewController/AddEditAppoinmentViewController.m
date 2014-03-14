@@ -86,11 +86,25 @@
         [keyboardToolbar setItems:[[NSArray alloc] initWithObjects:done, nil]];
     }
 
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
+        NSString *parameterName = [NSString stringWithFormat:@"/eLegalNet_AutoFilter_ClientName_CaseID?parameter={\"search\":\"\",\"lawyerid\":\"%@\"}",[[AppDelegate delegate] lawyerID]];
+        [self getData:parameterName];
+        NSString *parameterName1 = [NSString stringWithFormat:@"/eLegalNet_Fill_CaseID_ByClientName?parameter={\"clientname\":\"%@\",\"mode\":\"\",\"chamberid\":\"%@\",\"loggedUserid\":\"%@\"}",@"asdf",@"adsf",[[AppDelegate delegate ] lawyerID]];
+        [self getData:parameterName1];
+    });
+    
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
  
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+}
+
+-(NSMutableDictionary *)getData:(NSString *)parameterName
+{
+    Utility *util = [Utility sharedInstance];
+    NSMutableDictionary *dict = [util fetchData:parameterName];
+    return dict;
 }
 
 - (void)didReceiveMemoryWarning

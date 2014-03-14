@@ -33,6 +33,9 @@
     _chamberID = [jsonObject valueForKeyPath:@"logindata.chamberid"];
     _lawyerID  = [jsonObject valueForKeyPath:@"logindata.lawerid"];
     
+    [[AppDelegate delegate] setLawyerID:_lawyerID];
+    [[AppDelegate delegate] setChamberID:_chamberID];
+    
     return jsonObject;
 }
 
