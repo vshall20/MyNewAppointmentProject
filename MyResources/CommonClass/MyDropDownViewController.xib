@@ -28,6 +28,9 @@
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <fontDescription key="fontDescription" type="system" pointSize="14"/>
             <textInputTraits key="textInputTraits"/>
+            <connections>
+                <outlet property="delegate" destination="-1" id="jer-n7-8Ml"/>
+            </connections>
         </textField>
     </objects>
 </document>

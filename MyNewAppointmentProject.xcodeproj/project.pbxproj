@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		330B08A018D2E38800C40AAC /* CustomBottomView.m in Sources */ = {isa = PBXBuildFile; fileRef = 330B089F18D2E38800C40AAC /* CustomBottomView.m */; };
+		330B08A218D2E3BF00C40AAC /* CustomBottomView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 330B08A118D2E3BF00C40AAC /* CustomBottomView.xib */; };
 		33A4C44518CEE4E10010FDF3 /* CustomRecurringCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 33A4C44418CEE4E10010FDF3 /* CustomRecurringCell.m */; };
 		33A4C44818CEE4F50010FDF3 /* CustomHolidayTypeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 33A4C44718CEE4F50010FDF3 /* CustomHolidayTypeCell.m */; };
 		33A4C44A18CEE5150010FDF3 /* CustomRecurringCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 33A4C44918CEE5150010FDF3 /* CustomRecurringCell.xib */; };
@@ -99,6 +101,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		330B089E18D2E38800C40AAC /* CustomBottomView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomBottomView.h; sourceTree = "<group>"; };
+		330B089F18D2E38800C40AAC /* CustomBottomView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomBottomView.m; sourceTree = "<group>"; };
+		330B08A118D2E3BF00C40AAC /* CustomBottomView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomBottomView.xib; sourceTree = "<group>"; };
 		33A4C44318CEE4E10010FDF3 /* CustomRecurringCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomRecurringCell.h; sourceTree = "<group>"; };
 		33A4C44418CEE4E10010FDF3 /* CustomRecurringCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomRecurringCell.m; sourceTree = "<group>"; };
 		33A4C44618CEE4F50010FDF3 /* CustomHolidayTypeCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomHolidayTypeCell.h; sourceTree = "<group>"; };
@@ -407,6 +412,9 @@
 				33F6560A18D1E67300B5987C /* CustomMyAppointmentListCell.h */,
 				33F6560B18D1E67300B5987C /* CustomMyAppointmentListCell.m */,
 				33F6560D18D1E68300B5987C /* CustomMyAppointmentListCell.xib */,
+				330B089E18D2E38800C40AAC /* CustomBottomView.h */,
+				330B089F18D2E38800C40AAC /* CustomBottomView.m */,
+				330B08A118D2E3BF00C40AAC /* CustomBottomView.xib */,
 			);
 			path = CommonClass;
 			sourceTree = "<group>";
@@ -573,6 +581,7 @@
 				33A8BC2318C9EAE200F4F2DE /* FilterByLawyerViewController.xib in Resources */,
 				33F655FF18D1C8CB00B5987C /* CustomVisibilityCell.xib in Resources */,
 				33EAF93918C6278C0016C832 /* RightViewController.xib in Resources */,
+				330B08A218D2E3BF00C40AAC /* CustomBottomView.xib in Resources */,
 				33CD960C18CDCB9B0011EAD5 /* AddEditAppoinmentViewController.xib in Resources */,
 				33A8BC1D18C9A22900F4F2DE /* AppointmentTypeViewController.xib in Resources */,
 				33A4C44C18CEE5280010FDF3 /* CustomHolidayTypeCell.xib in Resources */,
@@ -610,6 +619,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				330B08A018D2E38800C40AAC /* CustomBottomView.m in Sources */,
 				33EAF92E18C620160016C832 /* MyAppointmentListViewController.m in Sources */,
 				33B3EF6518C76556006AEF58 /* MyNavigationBar.m in Sources */,
 				33CD960B18CDBF750011EAD5 /* CustomAppoinmentDescriptionCell.m in Sources */,

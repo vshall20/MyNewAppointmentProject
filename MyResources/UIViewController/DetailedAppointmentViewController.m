@@ -12,6 +12,7 @@
 #import "MyTabBar.h"
 #import "LeftViewController.h"
 #import "NewAppointmentViewController.h"
+#import "CustomBottomView.h"
 
 
 @interface DetailedAppointmentViewController ()<UITabBarDelegate,LeftViewControllerDelegate>
@@ -55,7 +56,12 @@
     obj_MyTabBar.frame = CGRectMake(0, self.view.frame.size.height-obj_MyTabBar.frame.size.height, obj_MyTabBar.frame.size.width, obj_MyTabBar.frame.size.height);
     obj_MyTabBar.delegate = self;
     [self.view addSubview:obj_MyTabBar];
-
+    
+    nib = [[NSBundle mainBundle] loadNibNamed:@"CustomBottomView" owner:self options:nil];
+   CustomBottomView *obj_CustomBottomView = (CustomBottomView *)[nib objectAtIndex:0];
+    obj_CustomBottomView.frame = CGRectMake(0, self.view.frame.size.height-obj_MyTabBar.frame.size.height-obj_CustomBottomView.frame.size.height, obj_CustomBottomView.frame.size.width, obj_CustomBottomView.frame.size.height);
+    //obj_MyTabBar.delegate = self;
+    [self.view addSubview:obj_CustomBottomView];
     // Do any additional setup after loading the view from its nib.
 }
 -(void)viewWillAppear:(BOOL)animated

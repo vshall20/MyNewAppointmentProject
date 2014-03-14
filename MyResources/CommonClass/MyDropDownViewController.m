@@ -8,7 +8,7 @@
 
 #import "MyDropDownViewController.h"
 
-@interface MyDropDownViewController ()
+@interface MyDropDownViewController ()<UITextFieldDelegate>
 {
     NSArray  *arr_AppointmentType;
     NSArray  *arr_LinkToCaseId;
@@ -27,16 +27,23 @@
     }
     return self;
 }
+//{
+//    
+//    "eLegalNet_AutoFilter_ClientName_CaseIDResult" = "{\"success\":\"1\",\"data\":\"{\\r\\n  \\\"ja_CLIENTFULLNAME\\\": \\\"[\\\\r\\\\n  \\\\\\\"Amit Shrivastav\\\\\\\",\\\\r\\\\n  \\\\\\\"Poorima P\\\\\\\"\\\\r\\\\n]\\\",\\r\\n  \\\"ja_CL_Id\\\": \\\"[\\\\r\\\\n  \\\\\\\"\\\\\\\",\\\\r\\\\n  \\\\\\\"\\\\\\\"\\\\r\\\\n]\\\"\\r\\n}\"}";
+//    
+//}
+
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     arr_AppointmentType = [NSArray arrayWithObjects:@"Matter",@"Consulation",@"Discussion",@"Event",@"Birthday",@"Anniversary",@"Holiday", nil];
-    arr_LinkToCaseId = [NSArray arrayWithObjects:@"74354735",@"45778",@"6596759",@"6767767",@"7676776",@"67676",@"Ho7676liday", nil];
+    arr_LinkToCaseId = [NSArray arrayWithObjects:@"fff83d8b-3c03-429d-81d8-f0a7a6064e19",@"58353398-631e-46a3-9022-815f88f001af", nil];
     arr_Venue = [NSArray arrayWithObjects:@"dfgdfgfdg",@"fgfgf",@"fgfgfg",@"rtertrtr",@"rtrtrtret",@"tyrtytry",@"tyrtytyt", nil];
     
     if ([_str_ShowTableContent isEqualToString:kShowAppointmentLinkedToCaseId]) {
        
+        _txt_ClientName.delegate = self;
         self.tableView.tableHeaderView = _txt_ClientName;
     }
 
@@ -125,6 +132,10 @@
     [_delegate selectedDropDownListTableWithContent:str_Content contentType:_str_ShowTableContent];
     
  
+}
+#pragma mark - Text Field Delegate
+-(BOOL)textFieldShouldReturn:(UITextField *)textField{
+    return YES;
 }
 /*
 // Override to support conditional editing of the table view.
