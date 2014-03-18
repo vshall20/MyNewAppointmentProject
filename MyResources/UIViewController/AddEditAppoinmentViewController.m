@@ -89,8 +89,8 @@
 
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
         NSString *parameterName = [NSString stringWithFormat:@"/eLegalNet_AutoFilter_ClientName_CaseID?parameter={\"search\":\"\",\"lawyerid\":\"%@\"}",[[AppDelegate delegate] lawyerID]];
-        [self getData:parameterName];
-        NSString *parameterName1 = [NSString stringWithFormat:@"/eLegalNet_Fill_CaseID_ByClientName?parameter={\"clientname\":\"%@\",\"mode\":\"\",\"chamberid\":\"%@\",\"loggedUserid\":\"%@\"}",@"asdf",@"adsf",[[AppDelegate delegate ] lawyerID]];
+        _dict_linkToCaseID = [self getData:parameterName];
+        NSString *parameterName1 = [NSString stringWithFormat:@"/eLegalNet_Fill_CaseID_ByClientName?parameter={\"clientname\":\"%@\",\"mode\":\"\",\"chamberid\":\"%@\",\"loggedUserid\":\"%@\"}",@"fff83d8b-3c03-429d-81d8-f0a7a6064e19",[[AppDelegate delegate] chamberID],[[AppDelegate delegate ] lawyerID]];
         [self getData:parameterName1];
     });
     
@@ -107,6 +107,7 @@
     NSMutableDictionary *dict = [util fetchData:parameterName];
     return dict;
 }
+
 
 - (void)didReceiveMemoryWarning
 {
@@ -249,6 +250,7 @@
            [cell.txt_Date setInputAccessoryView:keyboardToolbar];
             cell.txt_Date.delegate = self;
             obj_MyDatePicker.datePickerMode = UIDatePickerModeDateAndTime;
+            obj_MyDatePicker.minimumDate = model.start;
            [cell.txt_Date setInputView:obj_MyDatePicker];
            
                 cell.lbl_Title.text = @"To";
@@ -440,7 +442,7 @@
 {
    if (indexPath.row == 2)
    {
-       [self showDropDownWithContentType:kShowAppointmentLinkedToCaseId];
+       [self showDropDownWithContentType:kShowAppointmentLinkedToCaseId andDataArray:[[_dict_linkToCaseID objectForKey:@"data"] objectForKey:@"ja_CLIENTFULLNAME"]];
    }
    else if (indexPath.row == 3)
    {
@@ -451,6 +453,7 @@
        [self showReminderViewController];
    }
 }
+
 -(void)showDropDownWithContentType:(NSString *)str_ContentType
 {
     MyDropDownViewController *obj_MyDropDownViewController = [[MyDropDownViewController alloc] initWithNibName:@"MyDropDownViewController" bundle:nil];
@@ -463,18 +466,43 @@
     [obj_MyDropDownViewController didMoveToParentViewController:self];
     
 }
+
+-(void)showDropDownWithContentType:(NSString *)str_ContentType andDataArray :(NSArray *)array
+{
+    MyDropDownViewController *obj_MyDropDownViewController = [[MyDropDownViewController alloc] initWithNibName:@"MyDropDownViewController" bundle:nil];
+    obj_MyDropDownViewController.str_ShowTableContent  = str_ContentType;
+    obj_MyDropDownViewController.delegate = self;
+    obj_MyDropDownViewController.dataArray = array;
+    obj_MyDropDownViewController.view.frame = CGRectMake(0, self.view.frame.size.height-200,obj_MyDropDownViewController.view.frame.size.width,200);
+    
+    [self addChildViewController:obj_MyDropDownViewController];
+    [self.view addSubview:obj_MyDropDownViewController.view];
+    [obj_MyDropDownViewController didMoveToParentViewController:self];
+    
+}
+
+
 #pragma mark - MyDropDownViewController Delegate
 -(void)selectedDropDownListTableWithContent:(NSString *)str_Content contentType:(NSString *)str_ContentType
 {
     if ([str_ContentType isEqualToString:kShowAppointmentLinkedToCaseId])
     {
-        model.caseId = str_Content;
+        model.caseId = [self idForName:str_Content]; //str_Content;
     }
     else{
         model.venue = str_Content;
     }
     [self.tableView reloadData];
 }
+
+
+-(NSString *)idForName:(NSString *)str
+{//
+    int index = [[[_dict_linkToCaseID objectForKey:@"data"] objectForKey:@"ja_CLIENTFULLNAME"] indexOfObject:str];
+    return [[[_dict_linkToCaseID objectForKey:@"data"] objectForKey:@"ja_CL_Id"] objectAtIndex:index];
+}
+
+
 -(void)showReminderViewController
 {
     MyReminderTableViewController *obj_ReminderTableViewController = [[MyReminderTableViewController alloc] initWithNibName:@"MyReminderTableViewController" bundle:nil];
@@ -497,6 +525,9 @@
 }
 -(BOOL)textFieldShouldBeginEditing:(UITextField *)textField{
     tempTextField = textField;
+    if (model.start) {
+        obj_MyDatePicker.minimumDate = model.start;
+    }
     return YES;
 }
 - (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text{

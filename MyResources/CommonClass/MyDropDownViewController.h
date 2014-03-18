@@ -19,5 +19,6 @@
 @property(nonatomic,readwrite)NSString *str_ShowTableContent;
 @property(nonatomic,assign)id <MyDropDownViewControllerDelegate> delegate;
 @property (strong, nonatomic) IBOutlet UITextField *txt_ClientName;
+@property (nonatomic, readwrite) NSArray *dataArray;
 
 @end

@@ -12,6 +12,7 @@
 #import "AddEditAppoinmentViewController.h"
 #import "MyAppoinmentSaveCancelView.h"
 #import "MyDropDownViewController.h"
+#import "DataEntityValidator.h"
 
 
 @interface NewAppointmentViewController ()<MyDropDownViewControllerDelegate>
@@ -177,6 +178,16 @@
 }
 -(void)saveButtonClicked:(id)sender
 {
+        //validate
+    DataEntityValidator *validator = [[DataEntityValidator alloc]initWithEntity:_entityData];
+    if ([validator isValid]) {
+            //send request
+    }
+    else
+    {
+        UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"Oops !" message:@"Enter all mandatory fields." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
+        [alert show];
+    }
     
 }
 -(void)cancelButtonClicked:(id)sender

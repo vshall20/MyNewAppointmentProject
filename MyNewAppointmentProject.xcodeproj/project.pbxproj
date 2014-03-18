@@ -86,6 +86,7 @@
 		86E2CC6918C9187E00E11FD4 /* LoginResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 86E2CC6818C9187E00E11FD4 /* LoginResponse.m */; };
 		86E2CC6D18C91EC000E11FD4 /* DataRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 86E2CC6C18C91EC000E11FD4 /* DataRequest.m */; };
 		86E2CC7018C91ED500E11FD4 /* DataResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 86E2CC6F18C91ED500E11FD4 /* DataResponse.m */; };
+		86E9C89318D776EC005C5523 /* DataEntityValidator.m in Sources */ = {isa = PBXBuildFile; fileRef = 86E9C89218D776EC005C5523 /* DataEntityValidator.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -222,6 +223,8 @@
 		86E2CC6C18C91EC000E11FD4 /* DataRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataRequest.m; sourceTree = "<group>"; };
 		86E2CC6E18C91ED500E11FD4 /* DataResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataResponse.h; sourceTree = "<group>"; };
 		86E2CC6F18C91ED500E11FD4 /* DataResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataResponse.m; sourceTree = "<group>"; };
+		86E9C89118D776EC005C5523 /* DataEntityValidator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataEntityValidator.h; sourceTree = "<group>"; };
+		86E9C89218D776EC005C5523 /* DataEntityValidator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataEntityValidator.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -318,6 +321,8 @@
 				86E2CC6018C910C600E11FD4 /* LawyerEntity.h */,
 				86E2CC6118C910C600E11FD4 /* LawyerEntity.m */,
 				33EAF8FA18C61F560016C832 /* Supporting Files */,
+				86E9C89118D776EC005C5523 /* DataEntityValidator.h */,
+				86E9C89218D776EC005C5523 /* DataEntityValidator.m */,
 			);
 			path = MyNewAppointmentProject;
 			sourceTree = "<group>";
@@ -635,6 +640,7 @@
 				33CD95F118CD9B830011EAD5 /* AddEditAppoinmentViewController.m in Sources */,
 				33CD960518CDBEA60011EAD5 /* CustomAppointmentTitleCell.m in Sources */,
 				33B3EF5D18C75584006AEF58 /* MyTabBar.m in Sources */,
+				86E9C89318D776EC005C5523 /* DataEntityValidator.m in Sources */,
 				33EAF90418C61F560016C832 /* AppDelegate.m in Sources */,
 				33A8BC2618CA096100F4F2DE /* Processor.m in Sources */,
 				33B3EF4318C73EB7006AEF58 /* TKCalendarMonthTableViewController.m in Sources */,

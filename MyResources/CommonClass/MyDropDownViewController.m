@@ -32,12 +32,13 @@
 {
     [super viewDidLoad];
     arr_AppointmentType = [NSArray arrayWithObjects:@"Matter",@"Consulation",@"Discussion",@"Event",@"Birthday",@"Anniversary",@"Holiday", nil];
-    arr_LinkToCaseId = [NSArray arrayWithObjects:@"74354735",@"45778",@"6596759",@"6767767",@"7676776",@"67676",@"Ho7676liday", nil];
+//    arr_LinkToCaseId = [NSArray arrayWithObjects:@"74354735",@"45778",@"6596759",@"6767767",@"7676776",@"67676",@"Ho7676liday", nil];
     arr_Venue = [NSArray arrayWithObjects:@"dfgdfgfdg",@"fgfgf",@"fgfgfg",@"rtertrtr",@"rtrtrtret",@"tyrtytry",@"tyrtytyt", nil];
     
     if ([_str_ShowTableContent isEqualToString:kShowAppointmentLinkedToCaseId]) {
        
         self.tableView.tableHeaderView = _txt_ClientName;
+        arr_LinkToCaseId = _dataArray;
     }
 
     // Uncomment the following line to preserve selection between presentations.
