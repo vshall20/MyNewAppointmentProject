@@ -19,4 +19,5 @@
 @property (nonatomic,readwrite)NSString    *str_AppointmentType;
 @property(strong,nonatomic) DataEntity  *entityData;
 @property (nonatomic, weak) id<AddEditAppointmentViewDelegate> delegate;
+@property (nonatomic, strong) NSMutableDictionary *dict_linkToCaseID;
 @end

@@ -252,6 +252,18 @@
         case 1:  ////// To Date
         {
             cell.textLabel.text = @"To";
+            if ([_entityData.appointmentType isEqualToString:@"Matter"]) {
+                if ([_entityData.end compare:[NSDate date]]==NSOrderedDescending) {
+                        //dont show matter button
+                    NSLog(@"Dont Show matter button");
+                }
+                else
+                {
+                        //show matter button
+                    NSLog(@"Show matter button");
+                }
+            }
+            
             cell.detailTextLabel.text = [[DateFormatter sharedDateFormatter] stringFromGivenDate:_entityData.end];
             if ([_entityData.appointmentType isEqualToString:@"Matter"] || [_entityData.appointmentType isEqualToString:@"Consulation"] || [_entityData.appointmentType isEqualToString:@"Discussion"] || [_entityData.appointmentType isEqualToString:@"Event"])
             {

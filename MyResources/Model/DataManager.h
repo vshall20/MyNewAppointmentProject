@@ -19,4 +19,5 @@
 -(void)performFetch;
 -(void)performFetchWithPredicateString:(NSString *)predicateString;
 -(void)performFetchWithPredicateType:(AppointmentType)type;
+-(void)performFetchWithCaseID:(NSString *)caseID;
 @end
