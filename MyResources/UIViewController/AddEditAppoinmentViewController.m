@@ -40,13 +40,14 @@
     MyDatePicker  *obj_MyDatePicker;
     UITextField   *tempTextField;
     UIToolbar     *keyboardToolbar;
-    DataEntity    *model;
     UIBarButtonItem *done;
     
 }
 @end
 
 @implementation AddEditAppoinmentViewController
+
+@synthesize model;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {

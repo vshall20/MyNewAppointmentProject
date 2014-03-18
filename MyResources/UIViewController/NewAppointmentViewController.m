@@ -179,7 +179,8 @@
 -(void)saveButtonClicked:(id)sender
 {
         //validate
-    DataEntityValidator *validator = [[DataEntityValidator alloc]initWithEntity:_entityData];
+    obj_addEditViewController.model.subject = @"Test";
+    DataEntityValidator *validator = [[DataEntityValidator alloc]initWithEntity:obj_addEditViewController.model];
     if ([validator isValid]) {
             //send request
     }

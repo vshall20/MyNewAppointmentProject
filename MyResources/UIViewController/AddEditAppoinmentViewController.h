@@ -18,6 +18,7 @@
 @interface AddEditAppoinmentViewController : UITableViewController
 @property (nonatomic,readwrite)NSString    *str_AppointmentType;
 @property(strong,nonatomic) DataEntity  *entityData;
+@property(strong,nonatomic) DataEntity  *model;
 @property (nonatomic, weak) id<AddEditAppointmentViewDelegate> delegate;
 @property (nonatomic, strong) NSMutableDictionary *dict_linkToCaseID;
 @end
