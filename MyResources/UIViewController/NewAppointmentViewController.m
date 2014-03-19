@@ -183,6 +183,7 @@
     DataEntityValidator *validator = [[DataEntityValidator alloc]initWithEntity:obj_addEditViewController.model];
     if ([validator isValid]) {
             //send request
+        [self generateRequestString];
     }
     else
     {
@@ -191,6 +192,14 @@
     }
     
 }
+
+-(NSString *)generateRequestString
+{
+    NSString *parameterString = @"";
+    return parameterString;
+}
+
+
 -(void)cancelButtonClicked:(id)sender
 {
     [self.navigationController popToRootViewControllerAnimated:YES];
