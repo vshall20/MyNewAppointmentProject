@@ -78,10 +78,10 @@
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    if (_entityData)
+    if (_entityData && _mode > 0)
     {
-       obj_SaveCancelView.txt_AppointmentType.text  = _entityData.appointmentType;
-        [self addEditViewControllerWithAppointmentType:_entityData.appointmentType withDataEntity:_entityData];
+        obj_SaveCancelView.txt_AppointmentType.text  = _entityData.appointmentType;
+        [self addEditViewControllerWithAppointmentType:_entityData.appointmentType withDataEntity:_entityData setMode:_mode];
     }
 
 }
@@ -118,13 +118,13 @@
     [obj_SaveCancelView.btn_DropDownList setEnabled:YES];
     if ([str_ContentType isEqualToString:kShowAppointmentType])
     {
-    obj_SaveCancelView.txt_AppointmentType.text  = str_Content;
+       obj_SaveCancelView.txt_AppointmentType.text  = str_Content;
     }
-    [self addEditViewControllerWithAppointmentType:str_Content withDataEntity:nil];
+    [self addEditViewControllerWithAppointmentType:str_Content withDataEntity:nil setMode:_mode];
     
     
 }
--(void)addEditViewControllerWithAppointmentType:(NSString *)appointmentType withDataEntity:(DataEntity *)myEntityData
+-(void)addEditViewControllerWithAppointmentType:(NSString *)appointmentType withDataEntity:(DataEntity *)myEntityData setMode:(int)modeValue
 {
     if (obj_addEditViewController)
     {
@@ -136,6 +136,7 @@
         float yOrigin = obj_MyNavigationBar.frame.size.height + obj_SaveCancelView.frame.size.height;
         obj_addEditViewController.str_AppointmentType = appointmentType;
         obj_addEditViewController.entityData          = myEntityData;
+        obj_addEditViewController.mode                = _mode;
         obj_addEditViewController.delegate = self;
         float viewHeight = obj_MyNavigationBar.frame.size.height + obj_SaveCancelView.frame.size.height + obj_MyTabBar.frame.size.height;
         obj_addEditViewController.view.frame = CGRectMake(0,yOrigin, self.view.frame.size.width, self.view.frame.size.height-viewHeight);

@@ -6,23 +6,10 @@
 //  Copyright (c) 2014 Vishnu Gupta. All rights reserved.
 //
 
-#define appointmentBasicCell        @"appointmentBasicCell"
-//#define appointmentTitleCell        @"appointmentTitleCell"
-#define appointmentFromToCell       @"appointmentFromToCell"
-#define appoinmentDescriptionCell   @"appoinmentDescriptionCell"
-#define appoinmentRecurringCell     @"appoinmentRecurringCell"
-#define appointmentHoildayTypeCell  @"appointmentHoildayTypeCell"
-#define appointmentVisibilityCell   @"appointmentVisibilityCell"
 
-#define heightAppointmentFromToCell         65.0
-#define heightAppoinmentDescriptionCell     150.0
-#define heightAppoinmentRecurringCell       55.0
-#define heightAppointmentHoildayTypeCell    55.0
-#define heightAppointmentBasicCell          44.0
-#define heightAppointmentVisibilityCell     55.0
 
 #import "AddEditAppoinmentViewController.h"
-//#import "CustomAppointmentTitleCell.h"
+#import "CustomAppointmentTitleCell.h"
 #import "CustomAppointmentFromToCell.h"
 #import "CustomAppoinmentDescriptionCell.h"
 #import "CustomHolidayTypeCell.h"
@@ -67,6 +54,16 @@
     if (_entityData)   //// edit mode
     {
         model = _entityData;
+        if (_mode == 2)
+        {
+            model.start = model.matterFromDate;
+            model.end   = model.matterToDate;
+            model.subject = @"";
+            model.appointmentDescription = @"";
+            model.reminder  = @"";
+            model.venue     = @"";
+            
+        }
     }
     else{   /// add mode 
     NSManagedObjectContext *context = [[[AppDelegate delegate] dataManager] managedObjectContext];
@@ -127,15 +124,18 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 9;
+    return 10;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     
     switch (indexPath.row) {
             case 0: /// From Date
+            return heightAppointmentTitleCell;
+            break;
+            case 1: /// From Date
                 return heightAppointmentFromToCell;  
                 break;
-            case 1: ///// To Date
+            case 2: ///// To Date
                  {
             if ([_str_AppointmentType isEqualToString:@"Matter"] || [_str_AppointmentType isEqualToString:@"Consulation"] || [_str_AppointmentType isEqualToString:@"Discussion"] || [_str_AppointmentType isEqualToString:@"Event"])
                {
@@ -146,7 +146,7 @@
             }
         }
                 break;
-            case 2: //// Link to case id
+            case 3: //// Link to case id
                  {
             if ([_str_AppointmentType isEqualToString:@"Matter"] || [_str_AppointmentType isEqualToString:@"Consulation"] || [_str_AppointmentType isEqualToString:@"Discussion"] || [_str_AppointmentType isEqualToString:@"Event"])
             {
@@ -157,7 +157,7 @@
             }
         }
                 break;
-          case 3: //// select venue
+          case 4: //// select venue
         {
             if ([_str_AppointmentType isEqualToString:@"Matter"] || [_str_AppointmentType isEqualToString:@"Consulation"] || [_str_AppointmentType isEqualToString:@"Discussion"] || [_str_AppointmentType isEqualToString:@"Event"])
             {
@@ -169,7 +169,7 @@
         }
 
             break;
-        case 4: /////  Visibility
+        case 5: /////  Visibility
         {
             if ([_str_AppointmentType isEqualToString:@"Event"])
             {
@@ -179,7 +179,7 @@
                 return 0;
             }
         }
-        case 5: ////// Recurring
+        case 6: ////// Recurring
             if ([_str_AppointmentType isEqualToString:@"Birthday"] || [_str_AppointmentType isEqualToString:@"Anniversary"] || [_str_AppointmentType isEqualToString:@"Holiday"])
             {
                 return heightAppoinmentRecurringCell;
@@ -188,7 +188,7 @@
                 return 0;
             }
             break;
-        case 6: //// hoilday
+        case 7: //// hoilday
             if ([_str_AppointmentType isEqualToString:@"Holiday"])
             {
                 return heightAppointmentHoildayTypeCell;
@@ -197,7 +197,7 @@
                 return 0;
             }
             break;
-        case 7: /////// Description
+        case 8: /////// Description
             if ([_str_AppointmentType isEqualToString:@"Matter"] || [_str_AppointmentType isEqualToString:@"Consulation"] || [_str_AppointmentType isEqualToString:@"Discussion"] || [_str_AppointmentType isEqualToString:@"Event"])
             {
                 return heightAppoinmentDescriptionCell;
@@ -206,7 +206,7 @@
                 return 0;
             }
             break;
-        case 8: /// From Reminder
+        case 9: /// From Reminder
             return heightAppointmentBasicCell;
             break;
                default:
@@ -219,7 +219,27 @@
 {
     
     switch (indexPath.row) {
-        case 0: ///// From  Date
+        case 0: ///// Title
+        {
+            CustomAppointmentTitleCell *cell = (CustomAppointmentTitleCell*) [tableView dequeueReusableCellWithIdentifier:appointmentTitleCell];
+            if (cell == nil)
+            {
+                NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"CustomAppointmentTitleCell" owner:self options:nil];
+                cell = (CustomAppointmentTitleCell *)[nib objectAtIndex:0];
+            }
+            cell.txt_AppointmentTitle.delegate = self;
+            if (model.subject)
+            {
+                cell.txt_AppointmentTitle.text = model.subject;
+            }
+            else{
+                cell.txt_AppointmentTitle.text = @"";
+            }
+            cell.contentView.backgroundColor = [UIColor colorWithPatternImage:matterScreenBackGroundImage];
+            return cell;
+        }
+
+        case 1: ///// From  Date
                 {
                     CustomAppointmentFromToCell *cell = (CustomAppointmentFromToCell*) [tableView dequeueReusableCellWithIdentifier:appointmentFromToCell];
                     if (cell == nil)
@@ -234,10 +254,11 @@
                     cell.txt_Date.delegate = self;
                     obj_MyDatePicker.datePickerMode = UIDatePickerModeDateAndTime;
                     [cell.txt_Date setInputView:obj_MyDatePicker];
+                    cell.contentView.backgroundColor = [UIColor colorWithPatternImage:matterScreenBackGroundImage];
                     return cell;
                 }
         break;
-        case 1:  ////// To Date
+        case 2:  ////// To Date
         {
             CustomAppointmentFromToCell *cell = (CustomAppointmentFromToCell*) [tableView dequeueReusableCellWithIdentifier:appointmentFromToCell];
             if (cell == nil)
@@ -263,10 +284,11 @@
                     cell.hidden = YES;
                     
                 }
+            cell.contentView.backgroundColor = [UIColor colorWithPatternImage:matterScreenBackGroundImage];
             return cell;
         }
             break;
-        case 2:
+        case 3:
         {
             UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:appointmentBasicCell];
             if (cell == nil) {
@@ -294,10 +316,11 @@
                 cell.hidden = YES;
                 
             }
+            cell.contentView.backgroundColor = [UIColor colorWithPatternImage:matterScreenBackGroundImage];
             return cell;
         }
             break;
-        case 3:   ///////// Venue
+        case 4:   ///////// Venue
         {
             UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:appointmentBasicCell];
             if (cell == nil) {
@@ -318,10 +341,11 @@
                 cell.hidden = YES;
                 
             }
+            cell.contentView.backgroundColor = [UIColor colorWithPatternImage:matterScreenBackGroundImage];
             return cell;
         }
             break;
-        case 4:
+        case 5:
      
             {
                 CustomVisibilityCell *cell = (CustomVisibilityCell*) [tableView dequeueReusableCellWithIdentifier:appointmentVisibilityCell];
@@ -339,10 +363,11 @@
                 else{
                     cell.hidden = YES;
                 }
+                cell.contentView.backgroundColor = [UIColor colorWithPatternImage:matterScreenBackGroundImage];
                 return cell;
             }
             break;
-        case 5:
+        case 6:
         {
             CustomRecurringCell *cell = (CustomRecurringCell*) [tableView dequeueReusableCellWithIdentifier:appoinmentRecurringCell];
             if (cell == nil)
@@ -360,12 +385,13 @@
             else{
                 cell.hidden = YES;
             }
+            cell.contentView.backgroundColor = [UIColor colorWithPatternImage:matterScreenBackGroundImage];
             
             return cell;
             
         }
             break;
-        case 6:
+        case 7:
         {
             CustomHolidayTypeCell *cell = (CustomHolidayTypeCell*) [tableView dequeueReusableCellWithIdentifier:appointmentHoildayTypeCell];
             if (cell == nil)
@@ -382,12 +408,13 @@
             else{
                 cell.hidden = YES;
             }
+            cell.contentView.backgroundColor = [UIColor colorWithPatternImage:matterScreenBackGroundImage];
             
             return cell;
             
         }
             break;
-        case 7:
+        case 8:
         {
             CustomAppoinmentDescriptionCell *cell = (CustomAppoinmentDescriptionCell*) [tableView dequeueReusableCellWithIdentifier:appoinmentDescriptionCell];
             if (cell == nil)
@@ -408,10 +435,11 @@
                 cell.hidden = YES;
                 
             }
+            cell.contentView.backgroundColor = [UIColor colorWithPatternImage:matterScreenBackGroundImage];
             return cell;
         }
             break;
-        case 8:
+        case 9:
         {
           
                 UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:appointmentBasicCell];
@@ -424,6 +452,7 @@
                 cell.textLabel.text = [NSString stringWithFormat:@"Reminder Before %@",model.reminder];
             }
             [cell setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
+            cell.contentView.backgroundColor = [UIColor colorWithPatternImage:matterScreenBackGroundImage];
                 return cell;
          
            
@@ -441,15 +470,15 @@
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-   if (indexPath.row == 2)
+   if (indexPath.row == 3)
    {
        [self showDropDownWithContentType:kShowAppointmentLinkedToCaseId andDataArray:[[_dict_linkToCaseID objectForKey:@"data"] objectForKey:@"ja_CLIENTFULLNAME"]];
    }
-   else if (indexPath.row == 3)
+   else if (indexPath.row == 4)
    {
        [self showDropDownWithContentType:kShowAppointmentSelectVenue];
    }
-   else if (indexPath.row == 8)
+   else if (indexPath.row == 9)
    {
        [self showReminderViewController];
    }
@@ -522,6 +551,7 @@
 }
 #pragma mark - Text Field Delegate
 -(BOOL)textFieldShouldReturn:(UITextField *)textField{
+    [textField resignFirstResponder];
     return YES;
 }
 -(BOOL)textFieldShouldBeginEditing:(UITextField *)textField{

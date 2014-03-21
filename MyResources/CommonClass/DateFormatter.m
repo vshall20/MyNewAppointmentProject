@@ -44,5 +44,10 @@ static DateFormatter *dateForm = nil;
 {
     return [_dateFormatter stringFromDate:date];
 }
+-(NSComparisonResult)compareDate:(NSDate *)myDate fromTodayDate:(NSDate *)todayDate
+{
+    NSComparisonResult result = [myDate compare:todayDate];
+    return result;
+}
 
 @end

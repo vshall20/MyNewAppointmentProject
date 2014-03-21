@@ -35,6 +35,9 @@
 		33B3EF5F18C756B5006AEF58 /* MyTabBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = 33B3EF5E18C756B5006AEF58 /* MyTabBar.xib */; };
 		33B3EF6218C7649B006AEF58 /* myNavigationBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = 33B3EF6118C7649B006AEF58 /* myNavigationBar.xib */; };
 		33B3EF6518C76556006AEF58 /* MyNavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 33B3EF6418C76556006AEF58 /* MyNavigationBar.m */; };
+		33B94FE218DC51A100D79C53 /* CustomCretaeNewMatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 33B94FE118DC51A100D79C53 /* CustomCretaeNewMatter.m */; };
+		33B94FE418DC51B900D79C53 /* CustomCretaeNewMatter.xib in Resources */ = {isa = PBXBuildFile; fileRef = 33B94FE318DC51B900D79C53 /* CustomCretaeNewMatter.xib */; };
+		33B94FE618DC60A900D79C53 /* Background.png in Resources */ = {isa = PBXBuildFile; fileRef = 33B94FE518DC60A900D79C53 /* Background.png */; };
 		33CD95F118CD9B830011EAD5 /* AddEditAppoinmentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 33CD95EF18CD9B830011EAD5 /* AddEditAppoinmentViewController.m */; };
 		33CD95F518CDA1A20011EAD5 /* MyDatePicker.xib in Resources */ = {isa = PBXBuildFile; fileRef = 33CD95F418CDA1A20011EAD5 /* MyDatePicker.xib */; };
 		33CD95F918CDA2C50011EAD5 /* MyDropDownViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 33CD95F718CDA2C50011EAD5 /* MyDropDownViewController.m */; };
@@ -69,6 +72,8 @@
 		33EAF93418C6277B0016C832 /* LeftViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 33EAF93218C6277B0016C832 /* LeftViewController.xib */; };
 		33EAF93818C6278C0016C832 /* RightViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 33EAF93618C6278C0016C832 /* RightViewController.m */; };
 		33EAF93918C6278C0016C832 /* RightViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 33EAF93718C6278C0016C832 /* RightViewController.xib */; };
+		33F4A25618D9D5D1004DA5A2 /* MatterSummaryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 33F4A25418D9D5D1004DA5A2 /* MatterSummaryViewController.m */; };
+		33F4A25718D9D5D1004DA5A2 /* MatterSummaryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 33F4A25518D9D5D1004DA5A2 /* MatterSummaryViewController.xib */; };
 		33F655F918D1875D00B5987C /* MyDatePicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 33F655F818D1875D00B5987C /* MyDatePicker.m */; };
 		33F655FD18D1C8AF00B5987C /* CustomVisibilityCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 33F655FC18D1C8AF00B5987C /* CustomVisibilityCell.m */; };
 		33F655FF18D1C8CB00B5987C /* CustomVisibilityCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 33F655FE18D1C8CB00B5987C /* CustomVisibilityCell.xib */; };
@@ -148,6 +153,10 @@
 		33B3EF6118C7649B006AEF58 /* myNavigationBar.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = myNavigationBar.xib; sourceTree = "<group>"; };
 		33B3EF6318C76556006AEF58 /* MyNavigationBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyNavigationBar.h; sourceTree = "<group>"; };
 		33B3EF6418C76556006AEF58 /* MyNavigationBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyNavigationBar.m; sourceTree = "<group>"; };
+		33B94FE018DC51A100D79C53 /* CustomCretaeNewMatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomCretaeNewMatter.h; sourceTree = "<group>"; };
+		33B94FE118DC51A100D79C53 /* CustomCretaeNewMatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomCretaeNewMatter.m; sourceTree = "<group>"; };
+		33B94FE318DC51B900D79C53 /* CustomCretaeNewMatter.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomCretaeNewMatter.xib; sourceTree = "<group>"; };
+		33B94FE518DC60A900D79C53 /* Background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Background.png; sourceTree = "<group>"; };
 		33CD95EE18CD9B830011EAD5 /* AddEditAppoinmentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddEditAppoinmentViewController.h; sourceTree = "<group>"; };
 		33CD95EF18CD9B830011EAD5 /* AddEditAppoinmentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddEditAppoinmentViewController.m; sourceTree = "<group>"; };
 		33CD95F018CD9B830011EAD5 /* AddEditAppoinmentViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddEditAppoinmentViewController.xib; sourceTree = "<group>"; };
@@ -195,6 +204,9 @@
 		33EAF93618C6278C0016C832 /* RightViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RightViewController.m; sourceTree = "<group>"; };
 		33EAF93718C6278C0016C832 /* RightViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RightViewController.xib; sourceTree = "<group>"; };
 		33EAF93A18C62D240016C832 /* Constant.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Constant.h; sourceTree = "<group>"; };
+		33F4A25318D9D5D1004DA5A2 /* MatterSummaryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MatterSummaryViewController.h; sourceTree = "<group>"; };
+		33F4A25418D9D5D1004DA5A2 /* MatterSummaryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MatterSummaryViewController.m; sourceTree = "<group>"; };
+		33F4A25518D9D5D1004DA5A2 /* MatterSummaryViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MatterSummaryViewController.xib; sourceTree = "<group>"; };
 		33F655F718D1875D00B5987C /* MyDatePicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyDatePicker.h; sourceTree = "<group>"; };
 		33F655F818D1875D00B5987C /* MyDatePicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyDatePicker.m; sourceTree = "<group>"; };
 		33F655FB18D1C8AF00B5987C /* CustomVisibilityCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomVisibilityCell.h; sourceTree = "<group>"; };
@@ -375,6 +387,7 @@
 		33EAF92718C61FD30016C832 /* CommonClass */ = {
 			isa = PBXGroup;
 			children = (
+				33B94FE518DC60A900D79C53 /* Background.png */,
 				33EAF93A18C62D240016C832 /* Constant.h */,
 				33B3EF5B18C75584006AEF58 /* MyTabBar.h */,
 				33B3EF5C18C75584006AEF58 /* MyTabBar.m */,
@@ -420,6 +433,9 @@
 				330B089E18D2E38800C40AAC /* CustomBottomView.h */,
 				330B089F18D2E38800C40AAC /* CustomBottomView.m */,
 				330B08A118D2E3BF00C40AAC /* CustomBottomView.xib */,
+				33B94FE018DC51A100D79C53 /* CustomCretaeNewMatter.h */,
+				33B94FE118DC51A100D79C53 /* CustomCretaeNewMatter.m */,
+				33B94FE318DC51B900D79C53 /* CustomCretaeNewMatter.xib */,
 			);
 			path = CommonClass;
 			sourceTree = "<group>";
@@ -479,6 +495,9 @@
 				33F6560F18D1ED2900B5987C /* DetailedAppointmentViewController.h */,
 				33F6561018D1ED2900B5987C /* DetailedAppointmentViewController.m */,
 				33F6561118D1ED2900B5987C /* DetailedAppointmentViewController.xib */,
+				33F4A25318D9D5D1004DA5A2 /* MatterSummaryViewController.h */,
+				33F4A25418D9D5D1004DA5A2 /* MatterSummaryViewController.m */,
+				33F4A25518D9D5D1004DA5A2 /* MatterSummaryViewController.xib */,
 			);
 			path = UIViewController;
 			sourceTree = "<group>";
@@ -586,6 +605,7 @@
 				33A8BC2318C9EAE200F4F2DE /* FilterByLawyerViewController.xib in Resources */,
 				33F655FF18D1C8CB00B5987C /* CustomVisibilityCell.xib in Resources */,
 				33EAF93918C6278C0016C832 /* RightViewController.xib in Resources */,
+				33B94FE618DC60A900D79C53 /* Background.png in Resources */,
 				330B08A218D2E3BF00C40AAC /* CustomBottomView.xib in Resources */,
 				33CD960C18CDCB9B0011EAD5 /* AddEditAppoinmentViewController.xib in Resources */,
 				33A8BC1D18C9A22900F4F2DE /* AppointmentTypeViewController.xib in Resources */,
@@ -604,6 +624,8 @@
 				33EAF8FE18C61F560016C832 /* InfoPlist.strings in Resources */,
 				33F6560E18D1E68300B5987C /* CustomMyAppointmentListCell.xib in Resources */,
 				33B3EF5F18C756B5006AEF58 /* MyTabBar.xib in Resources */,
+				33B94FE418DC51B900D79C53 /* CustomCretaeNewMatter.xib in Resources */,
+				33F4A25718D9D5D1004DA5A2 /* MatterSummaryViewController.xib in Resources */,
 				33B3EF4D18C74A9F006AEF58 /* LoginViewController.xib in Resources */,
 				33EAF90918C61F560016C832 /* Images.xcassets in Resources */,
 			);
@@ -626,6 +648,7 @@
 			files = (
 				330B08A018D2E38800C40AAC /* CustomBottomView.m in Sources */,
 				33EAF92E18C620160016C832 /* MyAppointmentListViewController.m in Sources */,
+				33F4A25618D9D5D1004DA5A2 /* MatterSummaryViewController.m in Sources */,
 				33B3EF6518C76556006AEF58 /* MyNavigationBar.m in Sources */,
 				33CD960B18CDBF750011EAD5 /* CustomAppoinmentDescriptionCell.m in Sources */,
 				33B3EF5918C7523C006AEF58 /* NewAppointmentViewController.m in Sources */,
@@ -637,6 +660,7 @@
 				33A8BC1C18C9A22900F4F2DE /* AppointmentTypeViewController.m in Sources */,
 				33CD95F918CDA2C50011EAD5 /* MyDropDownViewController.m in Sources */,
 				33F6561218D1ED2900B5987C /* DetailedAppointmentViewController.m in Sources */,
+				33B94FE218DC51A100D79C53 /* CustomCretaeNewMatter.m in Sources */,
 				33F6560818D1D10200B5987C /* MyReminderTableViewController.m in Sources */,
 				33B3EF4118C73EB7006AEF58 /* NSDate+TKCategory.m in Sources */,
 				33EAF90718C61F560016C832 /* MyNewAppointmentProject.xcdatamodeld in Sources */,

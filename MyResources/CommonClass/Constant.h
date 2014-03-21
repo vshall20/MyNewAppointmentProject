@@ -57,4 +57,22 @@ typedef enum {
     AppointmentTypeAll
 } AppointmentType;
 
+
+#define appointmentBasicCell        @"appointmentBasicCell"
+#define appointmentTitleCell        @"appointmentTitleCell"
+#define appointmentFromToCell       @"appointmentFromToCell"
+#define appoinmentDescriptionCell   @"appoinmentDescriptionCell"
+#define appoinmentRecurringCell     @"appoinmentRecurringCell"
+#define appointmentHoildayTypeCell  @"appointmentHoildayTypeCell"
+#define appointmentVisibilityCell   @"appointmentVisibilityCell"
+
+#define heightAppointmentTitleCell         50.0
+#define heightAppointmentFromToCell         65.0
+#define heightAppoinmentDescriptionCell     150.0
+#define heightAppoinmentRecurringCell       55.0
+#define heightAppointmentHoildayTypeCell    55.0
+#define heightAppointmentBasicCell          44.0
+#define heightAppointmentVisibilityCell     55.0
+
+#define matterScreenBackGroundImage   [UIImage imageNamed:@"Background.png"]
 #endif

@@ -46,7 +46,7 @@
         _txt_ClientName.delegate = self;
         self.tableView.tableHeaderView = _txt_ClientName;
     }
-
+    self.tableView.backgroundColor = [UIColor colorWithPatternImage:matterScreenBackGroundImage];
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
  
@@ -106,7 +106,7 @@
        cell.textLabel.text = [arr_Venue objectAtIndex:indexPath.row];
     }
 
-    
+    cell.contentView.backgroundColor = [UIColor colorWithPatternImage:matterScreenBackGroundImage];
     // Configure the cell...
     
     return cell;

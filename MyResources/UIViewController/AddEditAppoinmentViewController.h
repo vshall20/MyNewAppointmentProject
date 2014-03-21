@@ -21,4 +21,5 @@
 @property(strong,nonatomic) DataEntity  *model;
 @property (nonatomic, weak) id<AddEditAppointmentViewDelegate> delegate;
 @property (nonatomic, strong) NSMutableDictionary *dict_linkToCaseID;
+@property(readwrite)int mode; /// 0 for Add 1 for Edit 2 For Add Another Matter
 @end
