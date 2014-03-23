@@ -22,10 +22,14 @@
     return self;
 }
 
+-(NSString *)servicePath
+{
+    return @"/eLegalNet_GetAppointments?";
+}
 
 -(NSMutableDictionary *)fetchData
 {
-    NSString *parameterName = [NSString stringWithFormat:@"/eLegalNet_GetAppointments?parameter={\"search\":\" 11/19/2013\",\"lawyerid\":\"%@\",\"caseid\":\"\",\"appointmenttype\":\"\",\"chamberid\":\"%@\",\"logintype\":\"lawyer\"}",_lawyerID,_chamberID];
+    NSString *parameterName = [NSString stringWithFormat:@"%@parameter={\"search\":\" 11/19/2013\",\"lawyerid\":\"%@\",\"caseid\":\"\",\"appointmenttype\":\"\",\"chamberid\":\"%@\",\"logintype\":\"lawyer\"}",[self servicePath],_lawyerID,_chamberID];
     
     NSLog(@"Parameter name for local login type:=%@",parameterName);
     

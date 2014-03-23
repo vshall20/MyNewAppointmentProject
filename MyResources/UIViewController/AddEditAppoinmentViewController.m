@@ -86,9 +86,9 @@
     }
 
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
-        NSString *parameterName = [NSString stringWithFormat:@"/eLegalNet_AutoFilter_ClientName_CaseID?parameter={\"search\":\"\",\"lawyerid\":\"%@\"}",[[AppDelegate delegate] lawyerID]];
+        NSString *parameterName = [NSString stringWithFormat:@"%@parameter={\"search\":\"\",\"lawyerid\":\"%@\"}",[self servicePathForClientName],[[AppDelegate delegate] lawyerID]];
         _dict_linkToCaseID = [self getData:parameterName];
-        NSString *parameterName1 = [NSString stringWithFormat:@"/eLegalNet_Fill_CaseID_ByClientName?parameter={\"clientname\":\"%@\",\"mode\":\"\",\"chamberid\":\"%@\",\"loggedUserid\":\"%@\"}",@"fff83d8b-3c03-429d-81d8-f0a7a6064e19",[[AppDelegate delegate] chamberID],[[AppDelegate delegate ] lawyerID]];
+        NSString *parameterName1 = [NSString stringWithFormat:@"%@parameter={\"clientname\":\"%@\",\"mode\":\"\",\"chamberid\":\"%@\",\"loggedUserid\":\"%@\"}",[self servicePathForCaseIdByClientName],@"fff83d8b-3c03-429d-81d8-f0a7a6064e19",[[AppDelegate delegate] chamberID],[[AppDelegate delegate ] lawyerID]];
         [self getData:parameterName1];
     });
     
@@ -97,6 +97,16 @@
  
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+}
+
+-(NSString *)servicePathForClientName
+{
+    return @"/eLegalNet_AutoFilter_ClientName_CaseID?";
+}
+
+-(NSString *)servicePathForCaseIdByClientName
+{
+    return @"/eLegalNet_Fill_CaseID_ByClientName?";
 }
 
 -(NSMutableDictionary *)getData:(NSString *)parameterName

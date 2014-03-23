@@ -84,6 +84,8 @@
 		33F6561218D1ED2900B5987C /* DetailedAppointmentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 33F6561018D1ED2900B5987C /* DetailedAppointmentViewController.m */; };
 		33F6561318D1ED2900B5987C /* DetailedAppointmentViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 33F6561118D1ED2900B5987C /* DetailedAppointmentViewController.xib */; };
 		33FC8ECE18CA205100D409CF /* DateFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 33FC8ECD18CA205100D409CF /* DateFormatter.m */; };
+		86667FB918DDD9E40023BDAB /* SaveAppointmentRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 86667FB818DDD9E40023BDAB /* SaveAppointmentRequest.m */; };
+		86667FBC18DDD9FE0023BDAB /* SaveAppointmentResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 86667FBB18DDD9FE0023BDAB /* SaveAppointmentResponse.m */; };
 		86E2CC5418C8FFC200E11FD4 /* DataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 86E2CC5318C8FFC200E11FD4 /* DataManager.m */; };
 		86E2CC5A18C905A400E11FD4 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 86E2CC5918C905A400E11FD4 /* Reachability.m */; };
 		86E2CC5D18C905E700E11FD4 /* Utility.m in Sources */ = {isa = PBXBuildFile; fileRef = 86E2CC5C18C905E700E11FD4 /* Utility.m */; };
@@ -223,6 +225,10 @@
 		33F6561118D1ED2900B5987C /* DetailedAppointmentViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DetailedAppointmentViewController.xib; sourceTree = "<group>"; };
 		33FC8ECC18CA205100D409CF /* DateFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DateFormatter.h; sourceTree = "<group>"; };
 		33FC8ECD18CA205100D409CF /* DateFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DateFormatter.m; sourceTree = "<group>"; };
+		86667FB718DDD9E40023BDAB /* SaveAppointmentRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SaveAppointmentRequest.h; sourceTree = "<group>"; };
+		86667FB818DDD9E40023BDAB /* SaveAppointmentRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SaveAppointmentRequest.m; sourceTree = "<group>"; };
+		86667FBA18DDD9FE0023BDAB /* SaveAppointmentResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SaveAppointmentResponse.h; sourceTree = "<group>"; };
+		86667FBB18DDD9FE0023BDAB /* SaveAppointmentResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SaveAppointmentResponse.m; sourceTree = "<group>"; };
 		86E2CC5218C8FFC200E11FD4 /* DataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataManager.h; sourceTree = "<group>"; };
 		86E2CC5318C8FFC200E11FD4 /* DataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataManager.m; sourceTree = "<group>"; };
 		86E2CC5818C905A400E11FD4 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
@@ -520,6 +526,10 @@
 				86E2CC6C18C91EC000E11FD4 /* DataRequest.m */,
 				86E2CC6E18C91ED500E11FD4 /* DataResponse.h */,
 				86E2CC6F18C91ED500E11FD4 /* DataResponse.m */,
+				86667FB718DDD9E40023BDAB /* SaveAppointmentRequest.h */,
+				86667FB818DDD9E40023BDAB /* SaveAppointmentRequest.m */,
+				86667FBA18DDD9FE0023BDAB /* SaveAppointmentResponse.h */,
+				86667FBB18DDD9FE0023BDAB /* SaveAppointmentResponse.m */,
 			);
 			name = "Data Request and Response";
 			sourceTree = "<group>";
@@ -661,6 +671,7 @@
 				33CD95F918CDA2C50011EAD5 /* MyDropDownViewController.m in Sources */,
 				33F6561218D1ED2900B5987C /* DetailedAppointmentViewController.m in Sources */,
 				33B94FE218DC51A100D79C53 /* CustomCretaeNewMatter.m in Sources */,
+				86667FBC18DDD9FE0023BDAB /* SaveAppointmentResponse.m in Sources */,
 				33F6560818D1D10200B5987C /* MyReminderTableViewController.m in Sources */,
 				33B3EF4118C73EB7006AEF58 /* NSDate+TKCategory.m in Sources */,
 				33EAF90718C61F560016C832 /* MyNewAppointmentProject.xcdatamodeld in Sources */,
@@ -688,6 +699,7 @@
 				33A8BC2218C9EAE200F4F2DE /* FilterByLawyerViewController.m in Sources */,
 				86E2CC6218C910C600E11FD4 /* LawyerEntity.m in Sources */,
 				33B3EF4618C73EB7006AEF58 /* TKGlobal.m in Sources */,
+				86667FB918DDD9E40023BDAB /* SaveAppointmentRequest.m in Sources */,
 				86E2CC7018C91ED500E11FD4 /* DataResponse.m in Sources */,
 				33CD960818CDBEF80011EAD5 /* CustomAppointmentFromToCell.m in Sources */,
 				86E2CC6618C9186A00E11FD4 /* LoginRequest.m in Sources */,

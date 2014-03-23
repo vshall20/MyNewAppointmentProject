@@ -13,6 +13,8 @@
 #import "MyAppoinmentSaveCancelView.h"
 #import "MyDropDownViewController.h"
 #import "DataEntityValidator.h"
+#import "SaveAppointmentRequest.h"
+#import "SaveAppointmentResponse.h"
 
 
 @interface NewAppointmentViewController ()<MyDropDownViewControllerDelegate>
@@ -180,11 +182,11 @@
 -(void)saveButtonClicked:(id)sender
 {
         //validate
-    obj_addEditViewController.model.subject = @"Test";
+//    obj_addEditViewController.model.subject = @"Test";
     DataEntityValidator *validator = [[DataEntityValidator alloc]initWithEntity:obj_addEditViewController.model];
     if ([validator isValid]) {
             //send request
-        [self generateRequestString];
+        [self saveAppointment];
     }
     else
     {
@@ -194,10 +196,16 @@
     
 }
 
--(NSString *)generateRequestString
+-(void)saveAppointment
 {
-    NSString *parameterString = @"";
-    return parameterString;
+//    /eLegalNet_SaveingEditAppointment
+//    /eLegalNet_Save_Appointment?parameter={"subject":"test subject 1","start":"03/20/2014 12:00:00 AM","end":"03/20/2014 12:30:00 AM","appointmenttype":"matter","clientname","","caseid":"","description":"","venue":"","reminder":"","recurrencerule":"","recurrenceparentid":"","status":"","eventvisibility":"","createdby":"","createddate":"","isallday":"","holidaytype":"","matterstatus":"","mattersummary":"","matterfromdate":"","mattertodate":"","updatedby":"","updatedon":"","roleid":"","acfilterid":"","acroleid":"","acappointmentstatus":""}
+    
+    SaveAppointmentRequest *request = [[SaveAppointmentRequest alloc]initWithDataEntity:obj_addEditViewController.model];
+    NSMutableDictionary *dict = [request saveRequest];
+    SaveAppointmentResponse *response = [[SaveAppointmentResponse alloc]initWithDictionary:dict];
+    [response parseAndSave];
+    
 }
 
 
