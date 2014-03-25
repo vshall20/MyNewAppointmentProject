@@ -15,9 +15,13 @@
 #import "DataEntityValidator.h"
 #import "SaveAppointmentRequest.h"
 #import "SaveAppointmentResponse.h"
+#import "DateFormatter.h"
+#import "DataEntity.h"
 
 
-@interface NewAppointmentViewController ()<MyDropDownViewControllerDelegate>
+
+
+@interface NewAppointmentViewController ()<MyDropDownViewControllerDelegate,UtilityDelegate>
 
 {
     MyNavigationBar  *obj_MyNavigationBar;
@@ -120,7 +124,7 @@
     [obj_SaveCancelView.btn_DropDownList setEnabled:YES];
     if ([str_ContentType isEqualToString:kShowAppointmentType])
     {
-       obj_SaveCancelView.txt_AppointmentType.text  = str_Content;
+        obj_SaveCancelView.txt_AppointmentType.text  = str_Content;
     }
     [self addEditViewControllerWithAppointmentType:str_Content withDataEntity:nil setMode:_mode];
     
@@ -182,11 +186,20 @@
 -(void)saveButtonClicked:(id)sender
 {
         //validate
-//    obj_addEditViewController.model.subject = @"Test";
+    obj_addEditViewController.model.subject = @"Test";
+    obj_addEditViewController.model.caseId  = @"fff83d8b-3c03-429d-81d8-f0a7a6064e19";
+    [self saveAppointment];
     DataEntityValidator *validator = [[DataEntityValidator alloc]initWithEntity:obj_addEditViewController.model];
     if ([validator isValid]) {
             //send request
+        if (_mode == 0)
+        {
         [self saveAppointment];
+        }
+        else if (_mode == 1)
+        {
+            // edit
+        }
     }
     else
     {
@@ -198,13 +211,44 @@
 
 -(void)saveAppointment
 {
-//    /eLegalNet_SaveingEditAppointment
-//    /eLegalNet_Save_Appointment?parameter={"subject":"test subject 1","start":"03/20/2014 12:00:00 AM","end":"03/20/2014 12:30:00 AM","appointmenttype":"matter","clientname","","caseid":"","description":"","venue":"","reminder":"","recurrencerule":"","recurrenceparentid":"","status":"","eventvisibility":"","createdby":"","createddate":"","isallday":"","holidaytype":"","matterstatus":"","mattersummary":"","matterfromdate":"","mattertodate":"","updatedby":"","updatedon":"","roleid":"","acfilterid":"","acroleid":"","acappointmentstatus":""}
     
-    SaveAppointmentRequest *request = [[SaveAppointmentRequest alloc]initWithDataEntity:obj_addEditViewController.model];
-    NSMutableDictionary *dict = [request saveRequest];
-    SaveAppointmentResponse *response = [[SaveAppointmentResponse alloc]initWithDictionary:dict];
-    [response parseAndSave];
+//    SaveAppointmentRequest *request = [[SaveAppointmentRequest alloc]initWithDataEntity:obj_addEditViewController.model];
+//    NSMutableDictionary *dict = [request saveRequest];
+//    SaveAppointmentResponse *response = [[SaveAppointmentResponse alloc]initWithDictionary:dict];
+//    [response parseAndSave];
+    
+
+    
+    NSMutableDictionary  *dict =  [[NSMutableDictionary alloc]initWithObjectsAndKeys:obj_addEditViewController.model.subject,@"subject",
+                                   [[DateFormatter sharedDateFormatter] stringFromGivenDate:obj_addEditViewController.model.start], @"start",
+                                   [[DateFormatter sharedDateFormatter] stringFromGivenDate:obj_addEditViewController.model.end], @"end",
+                                   obj_addEditViewController.model.appointmentType, @"appointmenttype",
+                                   obj_addEditViewController.model.clientName, @"clientname",
+                                   obj_addEditViewController.model.caseId, @"caseid",
+                                   obj_addEditViewController.model.venue, @"venue",
+                                   obj_addEditViewController.model.reminder, @"reminder",
+                                   obj_addEditViewController.model.recurrenceParentId, @"recurrenceparentid",
+                                   obj_addEditViewController.model.recurrenceRule, @"recurrencerule",
+                                   obj_addEditViewController.model.status, @"status",
+                                   obj_addEditViewController.model.eventVisibility, @"eventvisibility",
+                                   obj_addEditViewController.model.createdBy, @"createdby",
+                                   obj_addEditViewController.model.isAllDay, @"isallday",
+                                   obj_addEditViewController.model.holidayType, @"holidaytype",
+                                   obj_addEditViewController.model.matterStatus, @"matterstatus",
+                                   obj_addEditViewController.model.matterSummary, @"mattersummary",
+                                   [[DateFormatter sharedDateFormatter] stringFromGivenDate:obj_addEditViewController.model.matterFromDate], @"matterfromdate",
+                                   obj_addEditViewController.model.updatedOn, @"updatedon",
+                                   [[DateFormatter sharedDateFormatter] stringFromGivenDate:obj_addEditViewController.model.matterToDate], @"mattertodate",
+                                   obj_addEditViewController.model.updatedBy, @"updatedby",
+                                   @"1", @"roleid",
+                                   @"", @"acfilterid",
+                                   @"", @"acroleid",
+                                   @"", @"acappointmentstatus",
+                                   nil];
+    Utility *util = [Utility sharedInstance];
+    [util setDelegate:self];
+    [util fetchDataWithMethodName:@"Appointment_Save" andParameterDictionary:dict];
+
     
 }
 
@@ -212,6 +256,16 @@
 -(void)cancelButtonClicked:(id)sender
 {
     [self.navigationController popToRootViewControllerAnimated:YES];
+}
+#pragma mark - Utility Delegate
+-(void)inComingResponse:(id)response forRequest:(NSString *)request
+{
+       
+}
+
+-(void)inComingError:(NSString *)errorMessage forRequest:(NSString *)request
+{
+    
 }
 
 - (void)didReceiveMemoryWarning

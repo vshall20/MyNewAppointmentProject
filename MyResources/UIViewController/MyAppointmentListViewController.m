@@ -27,7 +27,7 @@
 #define customAppointmentListCell @"customAppointmentListCell"
 
 
-@interface MyAppointmentListViewController ()<LeftViewControllerDelegate,TKCalendarMonthViewDelegate,TKCalendarMonthViewDataSource,AppointmentTypeDelegate,FilterByLawyerDelegate>
+@interface MyAppointmentListViewController ()<LeftViewControllerDelegate,TKCalendarMonthViewDelegate,TKCalendarMonthViewDataSource,AppointmentTypeDelegate,FilterByLawyerDelegate,UtilityDelegate>
 
 {
     LeftViewController  *obj_LeftViewController;
@@ -108,7 +108,7 @@
     self.fetchResultController.delegate = self;
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
         [self loginWebServiceCallAndResponseToGetChamberIDandLawyerID]; //loginWebService Call.
-        [self callTheEventListWebService];     //fetching Events Details WebService Call.
+        //[self callTheEventListWebService];     //fetching Events Details WebService Call.
     });
     
     
@@ -172,23 +172,79 @@
 
 -(void)loginWebServiceCallAndResponseToGetChamberIDandLawyerID
 {
-    LoginRequest *request = [[LoginRequest alloc]initWithUsername:@"shyam.deore@prod.shriyais.com" andPassword:@"Password123"];
-    LoginResponse *response = [[LoginResponse alloc]initWithDictionary:[request fetchLawyerIDandChamberID]];
-    _chamberID = request.chamberID;
-    _lawyerID = request.lawyerID;
-    [response saveData];
+    
+    NSMutableDictionary  *dict =  [[NSMutableDictionary alloc]initWithObjectsAndKeys:@"chm00101",@"id",
+                                   @"shyam.deore@prod.shriyais.com", @"username",
+                                   @"Password123", @"password",
+                                   @"1", @"flag",
+                                   nil];
+    Utility *util = [Utility sharedInstance];
+    [util setDelegate:self];
+    [util fetchDataWithMethodName:@"Login" andParameterDictionary:dict];
+
+//    LoginRequest *request = [[LoginRequest alloc]initWithUsername:@"shyam.deore@prod.shriyais.com" andPassword:@"Password123"];
+//    [request fetchLawyerIDandChamberID];
+//    _chamberID = [AppDelegate delegate].chamberID;
+//    _lawyerID = [AppDelegate delegate].lawyerID;
 }
 
 
 -(void)callTheEventListWebService
 {
+    //{\"search\":\" 11/19/2013\",\"lawyerid\":\"%@\",\"caseid\":\"\",\"appointmenttype\":\"\",\"chamberid\":\"%@\",\"logintype\":\"lawyer\"}
+    NSMutableDictionary  *dict =  [[NSMutableDictionary alloc]initWithObjectsAndKeys:@"11/18/2013",@"search",
+                                       _lawyerID, @"id",
+                                       @"", @"caseid",
+                                       @"1", @"appointmenttype",
+                                       _chamberID, @"chamberid",
+                                       @"lawyer", @"logintype",nil];
+
     
-    DataRequest *request = [[DataRequest alloc]initWithlawyerID:_lawyerID andChamberID:_chamberID];
-    DataResponse *response = [[DataResponse alloc]initWithDictionary:[request fetchData]];
-    [response saveData];
+    Utility *util = [Utility sharedInstance];
+    [util setDelegate:self];
+    [util fetchDataWithMethodName:@"Appointment_ListAllAppointment" andParameterDictionary:dict];
+
+    
+   
     
 }
+#pragma mark - Utility Delegate 
+-(void)inComingResponse:(id)response forRequest:(NSString *)request
+{
+   if ([request isEqualToString:@"Login"])
+   {
+       [self parseLoginDataWithResponse:response];  /// after successful response call get List webservices
+   }
+   else if ([request isEqualToString:@"Appointment_ListAllAppointment"])
+   {
+       [self parseGetAppointmentListDataWithResponse:response];
+   }
 
+}
+
+-(void)inComingError:(NSString *)errorMessage forRequest:(NSString *)request
+{
+    
+}
+-(void)parseLoginDataWithResponse:(NSObject *)responseData
+{
+    _chamberID = [responseData valueForKeyPath:@"data.chamberid"];
+    _lawyerID  = [responseData valueForKeyPath:@"data.id"];
+    
+    [[AppDelegate delegate] setLawyerID:_lawyerID];
+    [[AppDelegate delegate] setChamberID:_chamberID];
+    
+    LoginResponse *lresponse = [[LoginResponse alloc]initWithDictionary:(NSMutableDictionary *)responseData];
+    [lresponse saveData];
+    
+    [self callTheEventListWebService];
+}
+-(void)parseGetAppointmentListDataWithResponse:(NSObject *)responseData
+{
+    DataResponse *response = [[DataResponse alloc]initWithDictionary:(NSMutableDictionary *)responseData];
+    [response saveData];
+}
+#pragma mark end
 #pragma tableView Methods
 #pragma mark -
 

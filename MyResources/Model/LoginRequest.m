@@ -7,6 +7,7 @@
 //
 
 #import "LoginRequest.h"
+#import "LoginResponse.h"
 
 @implementation LoginRequest
 
@@ -24,23 +25,33 @@
 
 -(NSString *)servicePath
 {
-    return @"/Login?";
+    return @"Login";
 }
 
--(NSMutableDictionary *)fetchLawyerIDandChamberID
+-(void)inComingResponse:(id)response forRequest:(NSString *)request
 {
-    NSString *parameterName = [NSString stringWithFormat:@"%@parameter={\"id\":\"chm00101\",\"username\":\"%@\",\"password\":\"%@\",\"flag\":\"1\"}",[self servicePath],_username,_password];
-    NSLog(@"Parameter name for local login type:=%@",parameterName);
-    
-    NSMutableDictionary *jsonObject = [[Utility sharedInstance] fetchData:parameterName];
-    
-    _chamberID = [jsonObject valueForKeyPath:@"logindata.chamberid"];
-    _lawyerID  = [jsonObject valueForKeyPath:@"logindata.lawerid"];
+    _responseDict = (NSMutableDictionary *)response;
+    _chamberID = [_responseDict valueForKeyPath:@"logindata.chamberid"];
+    _lawyerID  = [_responseDict valueForKeyPath:@"logindata.lawerid"];
     
     [[AppDelegate delegate] setLawyerID:_lawyerID];
     [[AppDelegate delegate] setChamberID:_chamberID];
     
-    return jsonObject;
+    LoginResponse *lresponse = [[LoginResponse alloc]initWithDictionary:[self responseDict]];
+    [lresponse saveData];
+}
+
+-(void)inComingError:(NSString *)errorMessage forRequest:(NSString *)request
+{
+    
+}
+
+-(void)fetchLawyerIDandChamberID
+{
+//    NSString *parameterName = [NSString stringWithFormat:@"%@parameter={\"id\":\"chm00101\",\"username\":\"%@\",\"password\":\"%@\",\"flag\":\"1\"}",[self servicePath],_username,_password];
+//    NSLog(@"Parameter name for local login type:=%@",parameterName);
+    
+    
 }
 
 @end

@@ -45,6 +45,35 @@
     return self;
 }
 
+
+-(void)initializeDataModel
+{
+    model.appId=@"";
+    model.appointmentType=@"";
+    model.caseId=@"";
+    model.clientName=@"";
+    model.createdBy=@"";
+    model.createdDate = [NSDate date];
+    model.appointmentDescription=@"";
+    model.end=[NSDate date];;
+    model.eventVisibility=@"";
+    model.holidayType=@"";
+    model.isAllDay=@"";
+    model.matterFromDate=[NSDate date];
+    model.matterStatus=@"";
+    model.matterSummary=@"";
+    model.matterToDate=[NSDate date];
+    model.recurrenceParentId=@"";
+    model.recurrenceRule=@"";
+    model.reminder=@"";
+    model.start=[NSDate date];;
+    model.status=@"";
+    model.subject=@"";
+    model.updatedBy=@"";
+    model.updatedOn=@"";
+    model.venue=@"";
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -65,12 +94,13 @@
             
         }
     }
-    else{   /// add mode 
-    NSManagedObjectContext *context = [[[AppDelegate delegate] dataManager] managedObjectContext];
-    model = (DataEntity *)[[NSManagedObject alloc]initWithEntity:[NSEntityDescription entityForName:kNameEntityName inManagedObjectContext:context] insertIntoManagedObjectContext:context];
-    
-    model.start = [NSDate date];
-    model.end   = [NSDate date];
+    else{   /// add mode
+        NSManagedObjectContext *context = [[[AppDelegate delegate] dataManager] managedObjectContext];
+        model = (DataEntity *)[[NSManagedObject alloc]initWithEntity:[NSEntityDescription entityForName:kNameEntityName inManagedObjectContext:context] insertIntoManagedObjectContext:context];
+        [self initializeDataModel];
+        model.start = [NSDate date];
+        model.end   = [NSDate date];
+        model.appointmentType = _str_AppointmentType;
     }
     NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"MyDatePicker" owner:self options:nil];
     obj_MyDatePicker = (MyDatePicker *)[nib objectAtIndex:0];
@@ -84,7 +114,7 @@
         
         [keyboardToolbar setItems:[[NSArray alloc] initWithObjects:done, nil]];
     }
-
+    
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
         NSString *parameterName = [NSString stringWithFormat:@"%@parameter={\"search\":\"\",\"lawyerid\":\"%@\"}",[self servicePathForClientName],[[AppDelegate delegate] lawyerID]];
         _dict_linkToCaseID = [self getData:parameterName];
@@ -94,7 +124,7 @@
     
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
- 
+    
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
@@ -127,7 +157,7 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-
+    
     // Return the number of sections
     return 1;
 }
@@ -139,35 +169,24 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     
     switch (indexPath.row) {
-            case 0: /// From Date
+        case 0: /// From Date
             return heightAppointmentTitleCell;
             break;
-            case 1: /// From Date
-                return heightAppointmentFromToCell;  
-                break;
-            case 2: ///// To Date
-                 {
-            if ([_str_AppointmentType isEqualToString:@"Matter"] || [_str_AppointmentType isEqualToString:@"Consulation"] || [_str_AppointmentType isEqualToString:@"Discussion"] || [_str_AppointmentType isEqualToString:@"Event"])
-               {
-                return heightAppointmentFromToCell;
-               }
-            else{
-                return 0;
-            }
-        }
-                break;
-            case 3: //// Link to case id
-                 {
+        case 1: /// From Date
+            return heightAppointmentFromToCell;
+            break;
+        case 2: ///// To Date
+        {
             if ([_str_AppointmentType isEqualToString:@"Matter"] || [_str_AppointmentType isEqualToString:@"Consulation"] || [_str_AppointmentType isEqualToString:@"Discussion"] || [_str_AppointmentType isEqualToString:@"Event"])
             {
-                return heightAppointmentBasicCell;
+                return heightAppointmentFromToCell;
             }
             else{
                 return 0;
             }
         }
-                break;
-          case 4: //// select venue
+            break;
+        case 3: //// Link to case id
         {
             if ([_str_AppointmentType isEqualToString:@"Matter"] || [_str_AppointmentType isEqualToString:@"Consulation"] || [_str_AppointmentType isEqualToString:@"Discussion"] || [_str_AppointmentType isEqualToString:@"Event"])
             {
@@ -177,7 +196,18 @@
                 return 0;
             }
         }
-
+            break;
+        case 4: //// select venue
+        {
+            if ([_str_AppointmentType isEqualToString:@"Matter"] || [_str_AppointmentType isEqualToString:@"Consulation"] || [_str_AppointmentType isEqualToString:@"Discussion"] || [_str_AppointmentType isEqualToString:@"Event"])
+            {
+                return heightAppointmentBasicCell;
+            }
+            else{
+                return 0;
+            }
+        }
+            
             break;
         case 5: /////  Visibility
         {
@@ -219,11 +249,11 @@
         case 9: /// From Reminder
             return heightAppointmentBasicCell;
             break;
-               default:
-                return heightAppointmentBasicCell;
-                break;
-           }
-
+        default:
+            return heightAppointmentBasicCell;
+            break;
+    }
+    
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -248,26 +278,26 @@
             cell.contentView.backgroundColor = [UIColor colorWithPatternImage:matterScreenBackGroundImage];
             return cell;
         }
-
+            
         case 1: ///// From  Date
-                {
-                    CustomAppointmentFromToCell *cell = (CustomAppointmentFromToCell*) [tableView dequeueReusableCellWithIdentifier:appointmentFromToCell];
-                    if (cell == nil)
-                    {
-                        NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"CustomAppointmentFromToCell" owner:self options:nil];
-                        cell = (CustomAppointmentFromToCell *)[nib objectAtIndex:0];
-                    }
-                    cell.txt_Date.text = [[DateFormatter sharedDateFormatter] stringFromGivenDate:model.start];
-                    done.tag = 0;
-                    [cell.txt_Date setInputAccessoryView:keyboardToolbar];
-                    cell.txt_Date.tag = 100;
-                    cell.txt_Date.delegate = self;
-                    obj_MyDatePicker.datePickerMode = UIDatePickerModeDateAndTime;
-                    [cell.txt_Date setInputView:obj_MyDatePicker];
-                    cell.contentView.backgroundColor = [UIColor colorWithPatternImage:matterScreenBackGroundImage];
-                    return cell;
-                }
-        break;
+        {
+            CustomAppointmentFromToCell *cell = (CustomAppointmentFromToCell*) [tableView dequeueReusableCellWithIdentifier:appointmentFromToCell];
+            if (cell == nil)
+            {
+                NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"CustomAppointmentFromToCell" owner:self options:nil];
+                cell = (CustomAppointmentFromToCell *)[nib objectAtIndex:0];
+            }
+            cell.txt_Date.text = [[DateFormatter sharedDateFormatter] stringFromGivenDate:model.start];
+            done.tag = 0;
+            [cell.txt_Date setInputAccessoryView:keyboardToolbar];
+            cell.txt_Date.tag = 100;
+            cell.txt_Date.delegate = self;
+            obj_MyDatePicker.datePickerMode = UIDatePickerModeDateAndTime;
+            [cell.txt_Date setInputView:obj_MyDatePicker];
+            cell.contentView.backgroundColor = [UIColor colorWithPatternImage:matterScreenBackGroundImage];
+            return cell;
+        }
+            break;
         case 2:  ////// To Date
         {
             CustomAppointmentFromToCell *cell = (CustomAppointmentFromToCell*) [tableView dequeueReusableCellWithIdentifier:appointmentFromToCell];
@@ -279,21 +309,21 @@
             cell.txt_Date.text = [[DateFormatter sharedDateFormatter] stringFromGivenDate:model.end];
             cell.txt_Date.tag = 101;
             done.tag = 1;
-           [cell.txt_Date setInputAccessoryView:keyboardToolbar];
+            [cell.txt_Date setInputAccessoryView:keyboardToolbar];
             cell.txt_Date.delegate = self;
             obj_MyDatePicker.datePickerMode = UIDatePickerModeDateAndTime;
             obj_MyDatePicker.minimumDate = model.start;
-           [cell.txt_Date setInputView:obj_MyDatePicker];
-           
-                cell.lbl_Title.text = @"To";
-                if ([_str_AppointmentType isEqualToString:@"Matter"] || [_str_AppointmentType isEqualToString:@"Consulation"] || [_str_AppointmentType isEqualToString:@"Discussion"] || [_str_AppointmentType isEqualToString:@"Event"])
-                {
-                    cell.hidden = NO;
-                }
-                else{
-                    cell.hidden = YES;
-                    
-                }
+            [cell.txt_Date setInputView:obj_MyDatePicker];
+            
+            cell.lbl_Title.text = @"To";
+            if ([_str_AppointmentType isEqualToString:@"Matter"] || [_str_AppointmentType isEqualToString:@"Consulation"] || [_str_AppointmentType isEqualToString:@"Discussion"] || [_str_AppointmentType isEqualToString:@"Event"])
+            {
+                cell.hidden = NO;
+            }
+            else{
+                cell.hidden = YES;
+                
+            }
             cell.contentView.backgroundColor = [UIColor colorWithPatternImage:matterScreenBackGroundImage];
             return cell;
         }
@@ -309,7 +339,7 @@
             if (model.caseId)
             {
                 cell.textLabel.text = [NSString stringWithFormat:@"Link to case id %@",model.caseId];
-                    //Invite Button
+                //Invite Button
                 [_delegate inviteButtonState:YES];
             }
             else
@@ -356,26 +386,26 @@
         }
             break;
         case 5:
-     
+            
+        {
+            CustomVisibilityCell *cell = (CustomVisibilityCell*) [tableView dequeueReusableCellWithIdentifier:appointmentVisibilityCell];
+            if (cell == nil)
             {
-                CustomVisibilityCell *cell = (CustomVisibilityCell*) [tableView dequeueReusableCellWithIdentifier:appointmentVisibilityCell];
-                if (cell == nil)
-                {
-                    NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"CustomVisibilityCell" owner:self options:nil];
-                    cell = (CustomVisibilityCell *)[nib objectAtIndex:0];
-                }
-                [cell.btn_Private addTarget:self action:@selector(visibilityButtonSelected:) forControlEvents:UIControlEventTouchDragInside];
-                [cell.btn_Public addTarget:self action:@selector(visibilityButtonSelected:) forControlEvents:UIControlEventTouchDragInside];
-                if ([_str_AppointmentType isEqualToString:@"Event"])
-                {
-                    cell.hidden = NO;
-                }
-                else{
-                    cell.hidden = YES;
-                }
-                cell.contentView.backgroundColor = [UIColor colorWithPatternImage:matterScreenBackGroundImage];
-                return cell;
+                NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"CustomVisibilityCell" owner:self options:nil];
+                cell = (CustomVisibilityCell *)[nib objectAtIndex:0];
             }
+            [cell.btn_Private addTarget:self action:@selector(visibilityButtonSelected:) forControlEvents:UIControlEventTouchDragInside];
+            [cell.btn_Public addTarget:self action:@selector(visibilityButtonSelected:) forControlEvents:UIControlEventTouchDragInside];
+            if ([_str_AppointmentType isEqualToString:@"Event"])
+            {
+                cell.hidden = NO;
+            }
+            else{
+                cell.hidden = YES;
+            }
+            cell.contentView.backgroundColor = [UIColor colorWithPatternImage:matterScreenBackGroundImage];
+            return cell;
+        }
             break;
         case 6:
         {
@@ -385,7 +415,7 @@
                 NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"CustomRecurringCell" owner:self options:nil];
                 cell = (CustomRecurringCell *)[nib objectAtIndex:0];
             }
-            cell.userInteractionEnabled = NO;  
+            cell.userInteractionEnabled = NO;
             [cell.btn_Yes addTarget:self action:@selector(recurringButtonSelected:) forControlEvents:UIControlEventTouchDragInside];
             [cell.btn_No addTarget:self action:@selector(recurringButtonSelected:) forControlEvents:UIControlEventTouchDragInside];
             if ([_str_AppointmentType isEqualToString:@"Birthday"] || [_str_AppointmentType isEqualToString:@"Anniversary"] || [_str_AppointmentType isEqualToString:@"Holiday"])
@@ -451,11 +481,11 @@
             break;
         case 9:
         {
-          
-                UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:appointmentBasicCell];
-                if (cell == nil) {
-                    cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:appointmentBasicCell];
-                }
+            
+            UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:appointmentBasicCell];
+            if (cell == nil) {
+                cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:appointmentBasicCell];
+            }
             cell.textLabel.text = @"Reminder";
             if (model.reminder)
             {
@@ -463,9 +493,9 @@
             }
             [cell setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
             cell.contentView.backgroundColor = [UIColor colorWithPatternImage:matterScreenBackGroundImage];
-                return cell;
-         
-           
+            return cell;
+            
+            
         }
             break;
             
@@ -480,18 +510,18 @@
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-   if (indexPath.row == 3)
-   {
-       [self showDropDownWithContentType:kShowAppointmentLinkedToCaseId andDataArray:[[_dict_linkToCaseID objectForKey:@"data"] objectForKey:@"ja_CLIENTFULLNAME"]];
-   }
-   else if (indexPath.row == 4)
-   {
-       [self showDropDownWithContentType:kShowAppointmentSelectVenue];
-   }
-   else if (indexPath.row == 9)
-   {
-       [self showReminderViewController];
-   }
+    if (indexPath.row == 3)
+    {
+        [self showDropDownWithContentType:kShowAppointmentLinkedToCaseId andDataArray:[[_dict_linkToCaseID objectForKey:@"data"] objectForKey:@"ja_CLIENTFULLNAME"]];
+    }
+    else if (indexPath.row == 4)
+    {
+        [self showDropDownWithContentType:kShowAppointmentSelectVenue];
+    }
+    else if (indexPath.row == 9)
+    {
+        [self showReminderViewController];
+    }
 }
 
 -(void)showDropDownWithContentType:(NSString *)str_ContentType
@@ -546,7 +576,7 @@
 -(void)showReminderViewController
 {
     MyReminderTableViewController *obj_ReminderTableViewController = [[MyReminderTableViewController alloc] initWithNibName:@"MyReminderTableViewController" bundle:nil];
-
+    
     obj_ReminderTableViewController.myDelegate = self;
     obj_ReminderTableViewController.view.frame = CGRectMake(0, self.view.frame.size.height-100,obj_ReminderTableViewController.view.frame.size.width,100);
     
@@ -575,7 +605,7 @@
     if([text isEqualToString:@"\n"]) {
         model.appointmentDescription = textView.text;
         [textView resignFirstResponder];
-       return NO;
+        return NO;
     }
     else if (range.length > text.length) {
         return YES;
@@ -588,7 +618,7 @@
 
 #pragma mark ---
 
-#pragma mark - Date Picker 
+#pragma mark - Date Picker
 -(void)datePickerValueChanged:(UIDatePicker*)picker
 {
     tempTextField.text = [NSString stringWithFormat:@"%@",picker.date];
@@ -638,11 +668,11 @@
     if (bln_Value)
     {
         [tempTextField resignFirstResponder];
-    myIndexPath = [NSIndexPath indexPathForRow:0 inSection:0];
-    [self.tableView scrollToRowAtIndexPath:myIndexPath atScrollPosition:UITableViewScrollPositionNone animated:YES];
+        myIndexPath = [NSIndexPath indexPathForRow:0 inSection:0];
+        [self.tableView scrollToRowAtIndexPath:myIndexPath atScrollPosition:UITableViewScrollPositionNone animated:YES];
     }
 }
-#pragma mark - Button Action 
+#pragma mark - Button Action
 -(void)recurringButtonSelected:(id)sender
 {
     if ([sender tag] == 0)
@@ -673,62 +703,62 @@
     else{
         model.holidayType = @"chamber";
     }
-
-}
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
-}
-*/
-
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    }   
-    else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
-{
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
-
-/*
-#pragma mark - Table view delegate
-
-// In a xib-based application, navigation from a table can be handled in -tableView:didSelectRowAtIndexPath:
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Navigation logic may go here, for example:
-    // Create the next view controller.
-    <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
-
-    // Pass the selected object to the new view controller.
     
-    // Push the view controller.
-    [self.navigationController pushViewController:detailViewController animated:YES];
 }
+/*
+ // Override to support conditional editing of the table view.
+ - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
+ {
+ // Return NO if you do not want the specified item to be editable.
+ return YES;
+ }
+ */
+
+/*
+ // Override to support editing the table view.
+ - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
+ {
+ if (editingStyle == UITableViewCellEditingStyleDelete) {
+ // Delete the row from the data source
+ [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+ }
+ else if (editingStyle == UITableViewCellEditingStyleInsert) {
+ // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
+ }
+ }
+ */
+
+/*
+ // Override to support rearranging the table view.
+ - (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
+ {
+ }
+ */
+
+/*
+ // Override to support conditional rearranging of the table view.
+ - (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
+ {
+ // Return NO if you do not want the item to be re-orderable.
+ return YES;
+ }
+ */
+
+/*
+ #pragma mark - Table view delegate
+ 
+ // In a xib-based application, navigation from a table can be handled in -tableView:didSelectRowAtIndexPath:
+ - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+ {
+ // Navigation logic may go here, for example:
+ // Create the next view controller.
+ <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
+ 
+ // Pass the selected object to the new view controller.
+ 
+ // Push the view controller.
+ [self.navigationController pushViewController:detailViewController animated:YES];
+ }
  
  */
 

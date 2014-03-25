@@ -96,6 +96,16 @@
 		86E2CC6D18C91EC000E11FD4 /* DataRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 86E2CC6C18C91EC000E11FD4 /* DataRequest.m */; };
 		86E2CC7018C91ED500E11FD4 /* DataResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 86E2CC6F18C91ED500E11FD4 /* DataResponse.m */; };
 		86E9C89318D776EC005C5523 /* DataEntityValidator.m in Sources */ = {isa = PBXBuildFile; fileRef = 86E9C89218D776EC005C5523 /* DataEntityValidator.m */; };
+		B23F729D18E1877000104668 /* AFHTTPClient.m in Sources */ = {isa = PBXBuildFile; fileRef = B23F728918E1877000104668 /* AFHTTPClient.m */; };
+		B23F729E18E1877000104668 /* AFHTTPRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = B23F728B18E1877000104668 /* AFHTTPRequestOperation.m */; };
+		B23F729F18E1877000104668 /* AFImageRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = B23F728D18E1877000104668 /* AFImageRequestOperation.m */; };
+		B23F72A018E1877000104668 /* AFJSONRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = B23F728F18E1877000104668 /* AFJSONRequestOperation.m */; };
+		B23F72A118E1877000104668 /* AFNetworkActivityIndicatorManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B23F729118E1877000104668 /* AFNetworkActivityIndicatorManager.m */; };
+		B23F72A218E1877000104668 /* AFPropertyListRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = B23F729418E1877000104668 /* AFPropertyListRequestOperation.m */; };
+		B23F72A318E1877000104668 /* AFURLConnectionOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = B23F729618E1877000104668 /* AFURLConnectionOperation.m */; };
+		B23F72A418E1877000104668 /* AFXMLRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = B23F729818E1877000104668 /* AFXMLRequestOperation.m */; };
+		B23F72A518E1877000104668 /* MyAPIClient.m in Sources */ = {isa = PBXBuildFile; fileRef = B23F729A18E1877000104668 /* MyAPIClient.m */; };
+		B23F72A618E1877000104668 /* UIImageView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = B23F729C18E1877000104668 /* UIImageView+AFNetworking.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -248,6 +258,27 @@
 		86E2CC6F18C91ED500E11FD4 /* DataResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataResponse.m; sourceTree = "<group>"; };
 		86E9C89118D776EC005C5523 /* DataEntityValidator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataEntityValidator.h; sourceTree = "<group>"; };
 		86E9C89218D776EC005C5523 /* DataEntityValidator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataEntityValidator.m; sourceTree = "<group>"; };
+		B23F728818E1877000104668 /* AFHTTPClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPClient.h; sourceTree = "<group>"; };
+		B23F728918E1877000104668 /* AFHTTPClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFHTTPClient.m; sourceTree = "<group>"; };
+		B23F728A18E1877000104668 /* AFHTTPRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPRequestOperation.h; sourceTree = "<group>"; };
+		B23F728B18E1877000104668 /* AFHTTPRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFHTTPRequestOperation.m; sourceTree = "<group>"; };
+		B23F728C18E1877000104668 /* AFImageRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFImageRequestOperation.h; sourceTree = "<group>"; };
+		B23F728D18E1877000104668 /* AFImageRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFImageRequestOperation.m; sourceTree = "<group>"; };
+		B23F728E18E1877000104668 /* AFJSONRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFJSONRequestOperation.h; sourceTree = "<group>"; };
+		B23F728F18E1877000104668 /* AFJSONRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFJSONRequestOperation.m; sourceTree = "<group>"; };
+		B23F729018E1877000104668 /* AFNetworkActivityIndicatorManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFNetworkActivityIndicatorManager.h; sourceTree = "<group>"; };
+		B23F729118E1877000104668 /* AFNetworkActivityIndicatorManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFNetworkActivityIndicatorManager.m; sourceTree = "<group>"; };
+		B23F729218E1877000104668 /* AFNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFNetworking.h; sourceTree = "<group>"; };
+		B23F729318E1877000104668 /* AFPropertyListRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFPropertyListRequestOperation.h; sourceTree = "<group>"; };
+		B23F729418E1877000104668 /* AFPropertyListRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFPropertyListRequestOperation.m; sourceTree = "<group>"; };
+		B23F729518E1877000104668 /* AFURLConnectionOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFURLConnectionOperation.h; sourceTree = "<group>"; };
+		B23F729618E1877000104668 /* AFURLConnectionOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFURLConnectionOperation.m; sourceTree = "<group>"; };
+		B23F729718E1877000104668 /* AFXMLRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFXMLRequestOperation.h; sourceTree = "<group>"; };
+		B23F729818E1877000104668 /* AFXMLRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFXMLRequestOperation.m; sourceTree = "<group>"; };
+		B23F729918E1877000104668 /* MyAPIClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyAPIClient.h; sourceTree = "<group>"; };
+		B23F729A18E1877000104668 /* MyAPIClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyAPIClient.m; sourceTree = "<group>"; };
+		B23F729B18E1877000104668 /* UIImageView+AFNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+AFNetworking.h"; sourceTree = "<group>"; };
+		B23F729C18E1877000104668 /* UIImageView+AFNetworking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+AFNetworking.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -464,6 +495,7 @@
 		33EAF92918C61FD30016C832 /* ThirdPartyAPI */ = {
 			isa = PBXGroup;
 			children = (
+				B23F728718E1877000104668 /* AFNetworking */,
 				86E2CC5818C905A400E11FD4 /* Reachability.h */,
 				86E2CC5918C905A400E11FD4 /* Reachability.m */,
 				33B3EF3118C73EB7006AEF58 /* TapkuLibrary */,
@@ -532,6 +564,34 @@
 				86667FBB18DDD9FE0023BDAB /* SaveAppointmentResponse.m */,
 			);
 			name = "Data Request and Response";
+			sourceTree = "<group>";
+		};
+		B23F728718E1877000104668 /* AFNetworking */ = {
+			isa = PBXGroup;
+			children = (
+				B23F728818E1877000104668 /* AFHTTPClient.h */,
+				B23F728918E1877000104668 /* AFHTTPClient.m */,
+				B23F728A18E1877000104668 /* AFHTTPRequestOperation.h */,
+				B23F728B18E1877000104668 /* AFHTTPRequestOperation.m */,
+				B23F728C18E1877000104668 /* AFImageRequestOperation.h */,
+				B23F728D18E1877000104668 /* AFImageRequestOperation.m */,
+				B23F728E18E1877000104668 /* AFJSONRequestOperation.h */,
+				B23F728F18E1877000104668 /* AFJSONRequestOperation.m */,
+				B23F729018E1877000104668 /* AFNetworkActivityIndicatorManager.h */,
+				B23F729118E1877000104668 /* AFNetworkActivityIndicatorManager.m */,
+				B23F729218E1877000104668 /* AFNetworking.h */,
+				B23F729318E1877000104668 /* AFPropertyListRequestOperation.h */,
+				B23F729418E1877000104668 /* AFPropertyListRequestOperation.m */,
+				B23F729518E1877000104668 /* AFURLConnectionOperation.h */,
+				B23F729618E1877000104668 /* AFURLConnectionOperation.m */,
+				B23F729718E1877000104668 /* AFXMLRequestOperation.h */,
+				B23F729818E1877000104668 /* AFXMLRequestOperation.m */,
+				B23F729918E1877000104668 /* MyAPIClient.h */,
+				B23F729A18E1877000104668 /* MyAPIClient.m */,
+				B23F729B18E1877000104668 /* UIImageView+AFNetworking.h */,
+				B23F729C18E1877000104668 /* UIImageView+AFNetworking.m */,
+			);
+			path = AFNetworking;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -656,20 +716,27 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B23F72A318E1877000104668 /* AFURLConnectionOperation.m in Sources */,
 				330B08A018D2E38800C40AAC /* CustomBottomView.m in Sources */,
 				33EAF92E18C620160016C832 /* MyAppointmentListViewController.m in Sources */,
 				33F4A25618D9D5D1004DA5A2 /* MatterSummaryViewController.m in Sources */,
 				33B3EF6518C76556006AEF58 /* MyNavigationBar.m in Sources */,
 				33CD960B18CDBF750011EAD5 /* CustomAppoinmentDescriptionCell.m in Sources */,
+				B23F729D18E1877000104668 /* AFHTTPClient.m in Sources */,
 				33B3EF5918C7523C006AEF58 /* NewAppointmentViewController.m in Sources */,
 				33EAF93318C6277B0016C832 /* LeftViewController.m in Sources */,
+				B23F72A218E1877000104668 /* AFPropertyListRequestOperation.m in Sources */,
+				B23F72A418E1877000104668 /* AFXMLRequestOperation.m in Sources */,
+				B23F72A118E1877000104668 /* AFNetworkActivityIndicatorManager.m in Sources */,
 				86E2CC6D18C91EC000E11FD4 /* DataRequest.m in Sources */,
 				86E2CC5D18C905E700E11FD4 /* Utility.m in Sources */,
 				33CD95FF18CDA4140011EAD5 /* MyAppoinmentSaveCancelView.m in Sources */,
 				33F655F918D1875D00B5987C /* MyDatePicker.m in Sources */,
 				33A8BC1C18C9A22900F4F2DE /* AppointmentTypeViewController.m in Sources */,
+				B23F72A018E1877000104668 /* AFJSONRequestOperation.m in Sources */,
 				33CD95F918CDA2C50011EAD5 /* MyDropDownViewController.m in Sources */,
 				33F6561218D1ED2900B5987C /* DetailedAppointmentViewController.m in Sources */,
+				B23F729E18E1877000104668 /* AFHTTPRequestOperation.m in Sources */,
 				33B94FE218DC51A100D79C53 /* CustomCretaeNewMatter.m in Sources */,
 				86667FBC18DDD9FE0023BDAB /* SaveAppointmentResponse.m in Sources */,
 				33F6560818D1D10200B5987C /* MyReminderTableViewController.m in Sources */,
@@ -680,6 +747,7 @@
 				33A8BC2918CA17C700F4F2DE /* DataEntity.m in Sources */,
 				86E2CC5418C8FFC200E11FD4 /* DataManager.m in Sources */,
 				33F6560C18D1E67300B5987C /* CustomMyAppointmentListCell.m in Sources */,
+				B23F72A518E1877000104668 /* MyAPIClient.m in Sources */,
 				86E2CC6918C9187E00E11FD4 /* LoginResponse.m in Sources */,
 				33B3EF4518C73EB7006AEF58 /* TKCalendarMonthViewController.m in Sources */,
 				33CD95F118CD9B830011EAD5 /* AddEditAppoinmentViewController.m in Sources */,
@@ -687,6 +755,7 @@
 				33B3EF5D18C75584006AEF58 /* MyTabBar.m in Sources */,
 				86E9C89318D776EC005C5523 /* DataEntityValidator.m in Sources */,
 				33EAF90418C61F560016C832 /* AppDelegate.m in Sources */,
+				B23F72A618E1877000104668 /* UIImageView+AFNetworking.m in Sources */,
 				33A8BC2618CA096100F4F2DE /* Processor.m in Sources */,
 				33B3EF4318C73EB7006AEF58 /* TKCalendarMonthTableViewController.m in Sources */,
 				33B3EF4818C73EB7006AEF58 /* UIView+TKCategory.m in Sources */,
@@ -702,6 +771,7 @@
 				86667FB918DDD9E40023BDAB /* SaveAppointmentRequest.m in Sources */,
 				86E2CC7018C91ED500E11FD4 /* DataResponse.m in Sources */,
 				33CD960818CDBEF80011EAD5 /* CustomAppointmentFromToCell.m in Sources */,
+				B23F729F18E1877000104668 /* AFImageRequestOperation.m in Sources */,
 				86E2CC6618C9186A00E11FD4 /* LoginRequest.m in Sources */,
 				33B3EF4418C73EB7006AEF58 /* TKCalendarMonthView.m in Sources */,
 				33EAF93818C6278C0016C832 /* RightViewController.m in Sources */,

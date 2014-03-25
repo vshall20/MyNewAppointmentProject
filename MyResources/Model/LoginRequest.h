@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface LoginRequest : NSObject
+@interface LoginRequest : NSObject<UtilityDelegate>
 
 @property (nonatomic, strong) NSString *chamberID;
 @property (nonatomic, strong) NSString *lawyerID;
@@ -16,8 +16,10 @@
 @property (nonatomic, strong) NSString *username;
 @property (nonatomic, strong) NSString *password;
 
+@property (nonatomic, strong) NSMutableDictionary *responseDict;
+
 -(id)initWithUsername:(NSString *)username andPassword:(NSString *)password;
 
--(NSMutableDictionary *)fetchLawyerIDandChamberID;
+-(void)fetchLawyerIDandChamberID;
 
 @end

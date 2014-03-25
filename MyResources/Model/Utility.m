@@ -7,6 +7,7 @@
 //
 
 #import "Utility.h"
+#import "AFNetworking.h"
 
 @implementation Utility
 
@@ -55,10 +56,13 @@ static Utility *util = nil;
 
 -(NSString *)baseURL
 {
-    return [NSString stringWithFormat:@"http://14.140.93.226/MylegalNetRemote/MyLegalNetService.svc"];
+    return [NSString stringWithFormat:@"http://14.140.93.226/MylegalNetRemote/LegalNetService.svc/"];
 }
-
 -(NSMutableDictionary *)fetchData:(NSString *)webMethod
+{
+    return nil;
+}
+-(void)fetchDataWithMethodName:(NSString *)webMethod andParameterDictionary:(NSMutableDictionary *)dictionary
 {
     if (!_isNetworkConnectionAvailable) {
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"" message:@"Please check the network connection" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
@@ -67,47 +71,37 @@ static Utility *util = nil;
     
     else {
         
-        NSString *urlPath = [self baseURL];
+        AFHTTPClient *client = [[AFHTTPClient alloc] initWithBaseURL:
+                                [NSURL URLWithString:[self baseURL]]];
+        [client setDefaultHeader:@"Accept" value:@"application/json"];
+        client.parameterEncoding = AFJSONParameterEncoding;
+        [client registerHTTPOperationClass:[AFJSONRequestOperation class]];
         
-        NSString *urlStringRequest = [NSString stringWithFormat:@"%@%@",urlPath,webMethod];
+        NSMutableURLRequest *request =
+        [client requestWithMethod:@"POST" path:webMethod parameters:dictionary];
+        [[AFNetworkActivityIndicatorManager sharedManager] setEnabled:YES];
+        [[AFNetworkActivityIndicatorManager sharedManager] incrementActivityCount];
+        [AFJSONRequestOperation addAcceptableContentTypes:[NSSet setWithObject:@"text/html"]];
         
-        NSLog(@"final url to connect:=%@",urlStringRequest);
-        
-        NSString *encodedURL = [urlStringRequest stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-        
-        NSLog(@"encoded url:=%@",encodedURL);
-        
-        NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:encodedURL] cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:30.0];
-        
-        [request setHTTPMethod:@"POST"];
-        [request setValue:@"application/json" forHTTPHeaderField:@"content-type"];
-        [request setValue:@"application/json" forHTTPHeaderField:@"Accept"];
-        
-        NSHTTPURLResponse* response = [[NSHTTPURLResponse alloc] init];
-        NSError* error ;
-        NSData *result1 = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
-        NSLog(@"result1:-%@",result1);
-        
-        if (error) {
-            
-        }
-        
-        NSMutableDictionary *jsonObject = [self parseJsonResult:result1];
-        NSLog(@"jsonObject:=%@",jsonObject);
-        
-        NSArray *values=[[NSArray alloc] init];
-        values =[jsonObject allValues];
-        NSString *tempString=[NSMutableString stringWithFormat:@"%@",[values objectAtIndex:0]];
-        NSLog(@"tempstring:=%@",tempString);
-        
-        NSData *data=[tempString dataUsingEncoding:NSUTF8StringEncoding];
-        jsonObject = [self parseJsonResult:data];
-        NSLog(@"json parsed Object 2nd:=%@",jsonObject);
-        return jsonObject;
+        AFJSONRequestOperation *operation =
+        [AFJSONRequestOperation JSONRequestOperationWithRequest:request
+                                                        success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON)
+         {
+             NSLog(@"JSON: %@",JSON);
+             [_delegate inComingResponse:JSON forRequest:webMethod];
+             
+         }
+                                                        failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON)
+         {
+             NSLog(@"%@",error.localizedDescription);
+             [_delegate inComingError:error.localizedDescription forRequest:webMethod];
+             
+         }];
+        [operation start];
     }
-    return nil;
 }
 
+    
 - (id)parseJsonResult:(NSData *)result
 {
     if( ! result)

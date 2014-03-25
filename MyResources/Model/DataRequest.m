@@ -33,9 +33,9 @@
     
     NSLog(@"Parameter name for local login type:=%@",parameterName);
     
-    NSMutableDictionary *jsonObject = [[Utility sharedInstance] fetchData:parameterName];
+    //NSMutableDictionary *jsonObject = [[Utility sharedInstance] fetchData:parameterName];
     
-    return jsonObject;
+    return nil;
 }
 
 
@@ -45,9 +45,9 @@
     
     NSLog(@"Parameter name for local login type:=%@",parameterName);
     
-    NSMutableDictionary *jsonObject = [[Utility sharedInstance] fetchData:parameterName];
+    //NSMutableDictionary *jsonObject = [[Utility sharedInstance] fetchData:parameterName];
     
-    return jsonObject;
+    return nil;
 }
 
 @end
