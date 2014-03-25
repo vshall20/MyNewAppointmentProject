@@ -12,6 +12,9 @@
 #import "AddEditAppoinmentViewController.h"
 #import "MyAppoinmentSaveCancelView.h"
 #import "MyDropDownViewController.h"
+#import "DataEntityValidator.h"
+#import "SaveAppointmentRequest.h"
+#import "SaveAppointmentResponse.h"
 
 
 @interface NewAppointmentViewController ()<MyDropDownViewControllerDelegate>
@@ -77,10 +80,10 @@
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    if (_entityData)
+    if (_entityData && _mode > 0)
     {
-       obj_SaveCancelView.txt_AppointmentType.text  = _entityData.appointmentType;
-        [self addEditViewControllerWithAppointmentType:_entityData.appointmentType withDataEntity:_entityData];
+        obj_SaveCancelView.txt_AppointmentType.text  = _entityData.appointmentType;
+        [self addEditViewControllerWithAppointmentType:_entityData.appointmentType withDataEntity:_entityData setMode:_mode];
     }
 
 }
@@ -117,13 +120,13 @@
     [obj_SaveCancelView.btn_DropDownList setEnabled:YES];
     if ([str_ContentType isEqualToString:kShowAppointmentType])
     {
-    obj_SaveCancelView.txt_AppointmentType.text  = str_Content;
+       obj_SaveCancelView.txt_AppointmentType.text  = str_Content;
     }
-    [self addEditViewControllerWithAppointmentType:str_Content withDataEntity:nil];
+    [self addEditViewControllerWithAppointmentType:str_Content withDataEntity:nil setMode:_mode];
     
     
 }
--(void)addEditViewControllerWithAppointmentType:(NSString *)appointmentType withDataEntity:(DataEntity *)myEntityData
+-(void)addEditViewControllerWithAppointmentType:(NSString *)appointmentType withDataEntity:(DataEntity *)myEntityData setMode:(int)modeValue
 {
     if (obj_addEditViewController)
     {
@@ -135,6 +138,7 @@
         float yOrigin = obj_MyNavigationBar.frame.size.height + obj_SaveCancelView.frame.size.height;
         obj_addEditViewController.str_AppointmentType = appointmentType;
         obj_addEditViewController.entityData          = myEntityData;
+        obj_addEditViewController.mode                = _mode;
         obj_addEditViewController.delegate = self;
         float viewHeight = obj_MyNavigationBar.frame.size.height + obj_SaveCancelView.frame.size.height + obj_MyTabBar.frame.size.height;
         obj_addEditViewController.view.frame = CGRectMake(0,yOrigin, self.view.frame.size.width, self.view.frame.size.height-viewHeight);
@@ -177,8 +181,34 @@
 }
 -(void)saveButtonClicked:(id)sender
 {
+        //validate
+//    obj_addEditViewController.model.subject = @"Test";
+    DataEntityValidator *validator = [[DataEntityValidator alloc]initWithEntity:obj_addEditViewController.model];
+    if ([validator isValid]) {
+            //send request
+        [self saveAppointment];
+    }
+    else
+    {
+        UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"Oops !" message:@"Enter all mandatory fields." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
+        [alert show];
+    }
     
 }
+
+-(void)saveAppointment
+{
+//    /eLegalNet_SaveingEditAppointment
+//    /eLegalNet_Save_Appointment?parameter={"subject":"test subject 1","start":"03/20/2014 12:00:00 AM","end":"03/20/2014 12:30:00 AM","appointmenttype":"matter","clientname","","caseid":"","description":"","venue":"","reminder":"","recurrencerule":"","recurrenceparentid":"","status":"","eventvisibility":"","createdby":"","createddate":"","isallday":"","holidaytype":"","matterstatus":"","mattersummary":"","matterfromdate":"","mattertodate":"","updatedby":"","updatedon":"","roleid":"","acfilterid":"","acroleid":"","acappointmentstatus":""}
+    
+    SaveAppointmentRequest *request = [[SaveAppointmentRequest alloc]initWithDataEntity:obj_addEditViewController.model];
+    NSMutableDictionary *dict = [request saveRequest];
+    SaveAppointmentResponse *response = [[SaveAppointmentResponse alloc]initWithDictionary:dict];
+    [response parseAndSave];
+    
+}
+
+
 -(void)cancelButtonClicked:(id)sender
 {
     [self.navigationController popToRootViewControllerAnimated:YES];

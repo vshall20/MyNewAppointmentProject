@@ -115,6 +115,13 @@
 }
 
 
+-(void)performFetchWithCaseID:(NSString *)caseID
+{
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"caseId like %@",caseID];
+    [self.fetchedResultsController.fetchRequest setPredicate:predicate];
+    [self performFetch];
+}
+
 -(void)performFetchWithPredicateType:(AppointmentType)type
 {
     NSPredicate *predicate;

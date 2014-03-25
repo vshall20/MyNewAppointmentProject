@@ -22,10 +22,14 @@
     return self;
 }
 
+-(NSString *)servicePath
+{
+    return @"/Login?";
+}
 
 -(NSMutableDictionary *)fetchLawyerIDandChamberID
 {
-    NSString *parameterName = [NSString stringWithFormat:@"/eLegalNet_Login?parameter={\"id\":\"chm00101\",\"username\":\"%@\",\"password\":\"%@\",\"flag\":\"1\"}",_username,_password];
+    NSString *parameterName = [NSString stringWithFormat:@"%@parameter={\"id\":\"chm00101\",\"username\":\"%@\",\"password\":\"%@\",\"flag\":\"1\"}",[self servicePath],_username,_password];
     NSLog(@"Parameter name for local login type:=%@",parameterName);
     
     NSMutableDictionary *jsonObject = [[Utility sharedInstance] fetchData:parameterName];

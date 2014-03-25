@@ -16,5 +16,5 @@
 +(DateFormatter *)sharedDateFormatter;
 -(NSDate *)dateFromParamString:(NSString *)string;
 -(NSString *)stringFromGivenDate:(NSDate *)date;
-
+-(NSComparisonResult)compareDate:(NSDate *)myDate fromTodayDate:(NSDate *)todayDate;
 @end

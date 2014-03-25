@@ -12,6 +12,8 @@
 #import "MyTabBar.h"
 #import "LeftViewController.h"
 #import "NewAppointmentViewController.h"
+#import "CustomBottomView.h"
+#import "MatterSummaryViewController.h"
 
 
 @interface DetailedAppointmentViewController ()<UITabBarDelegate,LeftViewControllerDelegate>
@@ -20,6 +22,7 @@
      NSArray             *nib;
      MyTabBar            *obj_MyTabBar;
      LeftViewController   *obj_LeftViewController;
+     DateFormatter       *myDateFormat;
 }
 
 @end
@@ -55,7 +58,27 @@
     obj_MyTabBar.frame = CGRectMake(0, self.view.frame.size.height-obj_MyTabBar.frame.size.height, obj_MyTabBar.frame.size.width, obj_MyTabBar.frame.size.height);
     obj_MyTabBar.delegate = self;
     [self.view addSubview:obj_MyTabBar];
-
+    
+   
+   
+    
+   
+   ///////// IF END DATE IS LESS THAN TODAYS DATE SHOW MATTER VIEW //////////////////////
+    myDateFormat = [DateFormatter sharedDateFormatter];
+    NSComparisonResult result = [myDateFormat compareDate:_entityData.end fromTodayDate:[NSDate date]];
+    if (result == NSOrderedAscending && [_entityData.appointmentType isEqualToString:@"Matter"])
+    {
+        nib = [[NSBundle mainBundle] loadNibNamed:@"CustomBottomView" owner:self options:nil];
+        CustomBottomView *obj_CustomBottomView = (CustomBottomView *)[nib objectAtIndex:0];
+        obj_CustomBottomView.frame = CGRectMake(0, obj_MyTabBar.frame.origin.y-obj_MyTabBar.frame.size.height, obj_CustomBottomView.frame.size.width, obj_CustomBottomView.frame.size.height);
+         [self.view addSubview:obj_CustomBottomView];
+        obj_CustomBottomView.view_Attending.alpha = 0.0;
+        obj_CustomBottomView.view_AttendingAccepted.alpha = 0.0;
+        obj_CustomBottomView.view_Matter.alpha = 1.0;
+        
+        [obj_CustomBottomView.btn_Matter addTarget:self action:@selector(showMatterSummaryScreen:) forControlEvents:UIControlEventTouchUpInside];
+    }
+     _tbl_MyTable.backgroundColor = [UIColor colorWithPatternImage:matterScreenBackGroundImage];
     // Do any additional setup after loading the view from its nib.
 }
 -(void)viewWillAppear:(BOOL)animated
@@ -115,6 +138,7 @@
     {
         NewAppointmentViewController *obj_New = [[NewAppointmentViewController alloc] initWithNibName:@"NewAppointmentViewController" bundle:nil];
         obj_New.entityData  = _entityData;
+        obj_New.mode       = 1; // edit 
         [self.navigationController pushViewController:obj_New animated:YES];
     }
     else
@@ -129,6 +153,14 @@
 
 
 #pragma mark - Table view data source
+- (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section
+{
+    UIView* customView = nil;
+    return customView;
+}
+- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
+    return 1.0;
+}
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
@@ -141,7 +173,6 @@
     // Return the number of rows in the section.
     return 9;
 }
-
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
 
     switch (indexPath.row) {
@@ -246,6 +277,18 @@
         case 1:  ////// To Date
         {
             cell.textLabel.text = @"To";
+            if ([_entityData.appointmentType isEqualToString:@"Matter"]) {
+                if ([_entityData.end compare:[NSDate date]]==NSOrderedDescending) {
+                        //dont show matter button
+                    NSLog(@"Dont Show matter button");
+                }
+                else
+                {
+                        //show matter button
+                    NSLog(@"Show matter button");
+                }
+            }
+            
             cell.detailTextLabel.text = [[DateFormatter sharedDateFormatter] stringFromGivenDate:_entityData.end];
             if ([_entityData.appointmentType isEqualToString:@"Matter"] || [_entityData.appointmentType isEqualToString:@"Consulation"] || [_entityData.appointmentType isEqualToString:@"Discussion"] || [_entityData.appointmentType isEqualToString:@"Event"])
             {
@@ -360,10 +403,17 @@
         default:
             break;
     }
-    
+    cell.contentView.backgroundColor = [UIColor colorWithPatternImage:matterScreenBackGroundImage];
     // Configure the cell...
     
     return cell;
+}
+
+-(void)showMatterSummaryScreen:(id)sender
+{
+    MatterSummaryViewController *obj_Matter = [[MatterSummaryViewController alloc] initWithNibName:@"MatterSummaryViewController" bundle:nil];
+    obj_Matter.model  = _entityData;
+    [self.navigationController pushViewController:obj_Matter animated:YES];
 }
 - (IBAction)buttnClicked:(id)sender {
 }
