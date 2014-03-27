@@ -32,7 +32,7 @@
     //    "eLegalNet_AutoFilter_ClientName_CaseIDResult" = "{\"success\":\"1\",\"data\":\"{\\r\\n  \\\"ja_CLIENTFULLNAME\\\": \\\"[\\\\r\\\\n  \\\\\\\"Amit Shrivastav\\\\\\\",\\\\r\\\\n  \\\\\\\"Poorima P\\\\\\\"\\\\r\\\\n]\\\",\\r\\n  \\\"ja_CL_Id\\\": \\\"[\\\\r\\\\n  \\\\\\\"\\\\\\\",\\\\r\\\\n  \\\\\\\"\\\\\\\"\\\\r\\\\n]\\\"\\r\\n}\"}";
     //
     //}
-
+ 
 -(void)viewWillAppear:(BOOL)animated
 {
     if([_str_ShowTableContent isEqualToString:kShowAppointmentLinkedToCaseId] || [_str_ShowTableContent isEqualToString:kShowCaseId])
