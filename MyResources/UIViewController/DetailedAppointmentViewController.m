@@ -160,7 +160,7 @@
     {
         NewAppointmentViewController *obj_New = [[NewAppointmentViewController alloc] initWithNibName:@"NewAppointmentViewController" bundle:nil];
         obj_New.entityData  = _entityData;
-        obj_New.mode       = 1; // edit 
+        obj_New.mode       = AppointmentModeEdit; // edit
         [self.navigationController pushViewController:obj_New animated:YES];
     }
     else
