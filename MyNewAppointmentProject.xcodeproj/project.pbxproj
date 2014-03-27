@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		330B08A018D2E38800C40AAC /* CustomBottomView.m in Sources */ = {isa = PBXBuildFile; fileRef = 330B089F18D2E38800C40AAC /* CustomBottomView.m */; };
 		330B08A218D2E3BF00C40AAC /* CustomBottomView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 330B08A118D2E3BF00C40AAC /* CustomBottomView.xib */; };
+		33940E9118E41B88006F19F9 /* LinkToCaseIdAutoFilterModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 33940E9018E41B88006F19F9 /* LinkToCaseIdAutoFilterModel.m */; };
 		33A4C44518CEE4E10010FDF3 /* CustomRecurringCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 33A4C44418CEE4E10010FDF3 /* CustomRecurringCell.m */; };
 		33A4C44818CEE4F50010FDF3 /* CustomHolidayTypeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 33A4C44718CEE4F50010FDF3 /* CustomHolidayTypeCell.m */; };
 		33A4C44A18CEE5150010FDF3 /* CustomRecurringCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 33A4C44918CEE5150010FDF3 /* CustomRecurringCell.xib */; };
@@ -86,11 +87,11 @@
 		33FC8ECE18CA205100D409CF /* DateFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 33FC8ECD18CA205100D409CF /* DateFormatter.m */; };
 		86667FB918DDD9E40023BDAB /* SaveAppointmentRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 86667FB818DDD9E40023BDAB /* SaveAppointmentRequest.m */; };
 		86667FBC18DDD9FE0023BDAB /* SaveAppointmentResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 86667FBB18DDD9FE0023BDAB /* SaveAppointmentResponse.m */; };
-		8680022C18E2304D0069EDC6 /* LawyerEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 8680022B18E2304D0069EDC6 /* LawyerEntity.m */; };
 		86E2CC5418C8FFC200E11FD4 /* DataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 86E2CC5318C8FFC200E11FD4 /* DataManager.m */; };
 		86E2CC5A18C905A400E11FD4 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 86E2CC5918C905A400E11FD4 /* Reachability.m */; };
 		86E2CC5D18C905E700E11FD4 /* Utility.m in Sources */ = {isa = PBXBuildFile; fileRef = 86E2CC5C18C905E700E11FD4 /* Utility.m */; };
 		86E2CC5F18C9061900E11FD4 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 86E2CC5E18C9061900E11FD4 /* SystemConfiguration.framework */; };
+		86E2CC6218C910C600E11FD4 /* LawyerEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 86E2CC6118C910C600E11FD4 /* LawyerEntity.m */; };
 		86E2CC6618C9186A00E11FD4 /* LoginRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 86E2CC6518C9186A00E11FD4 /* LoginRequest.m */; };
 		86E2CC6918C9187E00E11FD4 /* LoginResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 86E2CC6818C9187E00E11FD4 /* LoginResponse.m */; };
 		86E2CC6D18C91EC000E11FD4 /* DataRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 86E2CC6C18C91EC000E11FD4 /* DataRequest.m */; };
@@ -122,6 +123,8 @@
 		330B089E18D2E38800C40AAC /* CustomBottomView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomBottomView.h; sourceTree = "<group>"; };
 		330B089F18D2E38800C40AAC /* CustomBottomView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomBottomView.m; sourceTree = "<group>"; };
 		330B08A118D2E3BF00C40AAC /* CustomBottomView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomBottomView.xib; sourceTree = "<group>"; };
+		33940E8F18E41B88006F19F9 /* LinkToCaseIdAutoFilterModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LinkToCaseIdAutoFilterModel.h; sourceTree = "<group>"; };
+		33940E9018E41B88006F19F9 /* LinkToCaseIdAutoFilterModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LinkToCaseIdAutoFilterModel.m; sourceTree = "<group>"; };
 		33A4C44318CEE4E10010FDF3 /* CustomRecurringCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomRecurringCell.h; sourceTree = "<group>"; };
 		33A4C44418CEE4E10010FDF3 /* CustomRecurringCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomRecurringCell.m; sourceTree = "<group>"; };
 		33A4C44618CEE4F50010FDF3 /* CustomHolidayTypeCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomHolidayTypeCell.h; sourceTree = "<group>"; };
@@ -239,8 +242,6 @@
 		86667FB818DDD9E40023BDAB /* SaveAppointmentRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SaveAppointmentRequest.m; sourceTree = "<group>"; };
 		86667FBA18DDD9FE0023BDAB /* SaveAppointmentResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SaveAppointmentResponse.h; sourceTree = "<group>"; };
 		86667FBB18DDD9FE0023BDAB /* SaveAppointmentResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SaveAppointmentResponse.m; sourceTree = "<group>"; };
-		8680022A18E2304D0069EDC6 /* LawyerEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LawyerEntity.h; sourceTree = "<group>"; };
-		8680022B18E2304D0069EDC6 /* LawyerEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LawyerEntity.m; sourceTree = "<group>"; };
 		86E2CC5218C8FFC200E11FD4 /* DataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataManager.h; sourceTree = "<group>"; };
 		86E2CC5318C8FFC200E11FD4 /* DataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataManager.m; sourceTree = "<group>"; };
 		86E2CC5818C905A400E11FD4 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
@@ -248,6 +249,8 @@
 		86E2CC5B18C905E700E11FD4 /* Utility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Utility.h; sourceTree = "<group>"; };
 		86E2CC5C18C905E700E11FD4 /* Utility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Utility.m; sourceTree = "<group>"; };
 		86E2CC5E18C9061900E11FD4 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		86E2CC6018C910C600E11FD4 /* LawyerEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LawyerEntity.h; sourceTree = "<group>"; };
+		86E2CC6118C910C600E11FD4 /* LawyerEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LawyerEntity.m; sourceTree = "<group>"; };
 		86E2CC6418C9186A00E11FD4 /* LoginRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginRequest.h; sourceTree = "<group>"; };
 		86E2CC6518C9186A00E11FD4 /* LoginRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginRequest.m; sourceTree = "<group>"; };
 		86E2CC6718C9187E00E11FD4 /* LoginResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginResponse.h; sourceTree = "<group>"; };
@@ -370,10 +373,10 @@
 				33EAF90318C61F560016C832 /* AppDelegate.m */,
 				33EAF90818C61F560016C832 /* Images.xcassets */,
 				33EAF90518C61F560016C832 /* MyNewAppointmentProject.xcdatamodeld */,
-				8680022A18E2304D0069EDC6 /* LawyerEntity.h */,
-				8680022B18E2304D0069EDC6 /* LawyerEntity.m */,
 				33A8BC2718CA17C700F4F2DE /* DataEntity.h */,
 				33A8BC2818CA17C700F4F2DE /* DataEntity.m */,
+				86E2CC6018C910C600E11FD4 /* LawyerEntity.h */,
+				86E2CC6118C910C600E11FD4 /* LawyerEntity.m */,
 				33EAF8FA18C61F560016C832 /* Supporting Files */,
 				86E9C89118D776EC005C5523 /* DataEntityValidator.h */,
 				86E9C89218D776EC005C5523 /* DataEntityValidator.m */,
@@ -488,6 +491,8 @@
 				86E2CC5C18C905E700E11FD4 /* Utility.m */,
 				33A8BC2418CA096100F4F2DE /* Processor.h */,
 				33A8BC2518CA096100F4F2DE /* Processor.m */,
+				33940E8F18E41B88006F19F9 /* LinkToCaseIdAutoFilterModel.h */,
+				33940E9018E41B88006F19F9 /* LinkToCaseIdAutoFilterModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -721,7 +726,6 @@
 				33EAF92E18C620160016C832 /* MyAppointmentListViewController.m in Sources */,
 				33F4A25618D9D5D1004DA5A2 /* MatterSummaryViewController.m in Sources */,
 				33B3EF6518C76556006AEF58 /* MyNavigationBar.m in Sources */,
-				8680022C18E2304D0069EDC6 /* LawyerEntity.m in Sources */,
 				33CD960B18CDBF750011EAD5 /* CustomAppoinmentDescriptionCell.m in Sources */,
 				B23F729D18E1877000104668 /* AFHTTPClient.m in Sources */,
 				33B3EF5918C7523C006AEF58 /* NewAppointmentViewController.m in Sources */,
@@ -767,6 +771,8 @@
 				33B3EF4718C73EB7006AEF58 /* UIImage+TKCategory.m in Sources */,
 				33FC8ECE18CA205100D409CF /* DateFormatter.m in Sources */,
 				33A8BC2218C9EAE200F4F2DE /* FilterByLawyerViewController.m in Sources */,
+				33940E9118E41B88006F19F9 /* LinkToCaseIdAutoFilterModel.m in Sources */,
+				86E2CC6218C910C600E11FD4 /* LawyerEntity.m in Sources */,
 				33B3EF4618C73EB7006AEF58 /* TKGlobal.m in Sources */,
 				86667FB918DDD9E40023BDAB /* SaveAppointmentRequest.m in Sources */,
 				86E2CC7018C91ED500E11FD4 /* DataResponse.m in Sources */,
@@ -893,13 +899,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer: vishal dharmawat (FE7DAEQW3S)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "MyNewAppointmentProject/MyNewAppointmentProject-Prefix.pch";
 				INFOPLIST_FILE = "MyNewAppointmentProject/MyNewAppointmentProject-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "D224163A-B2AA-4882-89E0-9AB823B77117";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -909,13 +913,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer: vishal dharmawat (FE7DAEQW3S)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "MyNewAppointmentProject/MyNewAppointmentProject-Prefix.pch";
 				INFOPLIST_FILE = "MyNewAppointmentProject/MyNewAppointmentProject-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "D224163A-B2AA-4882-89E0-9AB823B77117";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

@@ -14,9 +14,10 @@
 #import "NewAppointmentViewController.h"
 #import "CustomBottomView.h"
 #import "MatterSummaryViewController.h"
+#import "Utility.h"
 
 
-@interface DetailedAppointmentViewController ()<UITabBarDelegate,LeftViewControllerDelegate>
+@interface DetailedAppointmentViewController ()<UITabBarDelegate,LeftViewControllerDelegate,UtilityDelegate>
 {
      MyNavigationBar     *obj_MyNavigationBar;
      NSArray             *nib;
@@ -79,6 +80,7 @@
         [obj_CustomBottomView.btn_Matter addTarget:self action:@selector(showMatterSummaryScreen:) forControlEvents:UIControlEventTouchUpInside];
     }
      _tbl_MyTable.backgroundColor = [UIColor colorWithPatternImage:matterScreenBackGroundImage];
+    [self callSingleDetailedWebservices];
     // Do any additional setup after loading the view from its nib.
 }
 -(void)viewWillAppear:(BOOL)animated
@@ -119,6 +121,26 @@
 - (IBAction)rightBarClicked:(id)sender {
     
 }
+#pragma mark - get Single Detailed Webservices
+-(void)callSingleDetailedWebservices
+{
+    NSMutableDictionary  *dict =  [[NSMutableDictionary alloc]initWithObjectsAndKeys:_entityData.appId,@"appointmentid",@"680c1005-b448-4b7d-8f52-c0bbf21ea416",@"id",nil];
+    Utility *util = [Utility sharedInstance];
+    [util setDelegate:self];
+    [util fetchDataWithMethodName:@"Appointment_SelectedAppointmentDetails" andParameterDictionary:dict];
+
+}
+#pragma mark - Utility Delegate
+-(void)inComingResponse:(id)response forRequest:(NSString *)request
+{
+    
+}
+
+-(void)inComingError:(NSString *)errorMessage forRequest:(NSString *)request
+{
+    
+}
+
 #pragma mark - remove child controller
 -(void)removeLeftViewController
 {
