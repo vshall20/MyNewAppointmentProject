@@ -8,10 +8,14 @@
 
 #import <UIKit/UIKit.h>
 
+enum {
+    ViewByCaseIdAutoFilterWebservicesCalled = 0,
+    ViewByCaseIdGetCaseIdByClientNameWebservicesCalled,
+   
+} typedef ViewByCaseIdMode;
+
 @protocol MyDropDownViewControllerDelegate <NSObject>
-
 -(void)selectedDropDownListTableWithContent:(NSString *)str_Content contentType:(NSString *)str_ContentType;
-
 @end
 
 

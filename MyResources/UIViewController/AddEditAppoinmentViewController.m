@@ -512,7 +512,7 @@
 {
     if (indexPath.row == 3)
     {
-        [self showDropDownWithContentType:kShowAppointmentLinkedToCaseId andDataArray:[[_dict_linkToCaseID objectForKey:@"data"] objectForKey:@"ja_CLIENTFULLNAME"]];
+        [self showDropDownWithContentType:kShowAppointmentLinkedToCaseId];
     }
     else if (indexPath.row == 4)
     {
@@ -529,11 +529,7 @@
     MyDropDownViewController *obj_MyDropDownViewController = [[MyDropDownViewController alloc] initWithNibName:@"MyDropDownViewController" bundle:nil];
     obj_MyDropDownViewController.str_ShowTableContent  = str_ContentType;
     obj_MyDropDownViewController.delegate = self;
-    obj_MyDropDownViewController.view.frame = CGRectMake(0, self.view.frame.size.height-200,obj_MyDropDownViewController.view.frame.size.width,200);
-    
-    [self addChildViewController:obj_MyDropDownViewController];
-    [self.view addSubview:obj_MyDropDownViewController.view];
-    [obj_MyDropDownViewController didMoveToParentViewController:self];
+    [self.navigationController pushViewController:obj_MyDropDownViewController animated:YES];
     
 }
 

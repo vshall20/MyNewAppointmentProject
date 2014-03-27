@@ -7,12 +7,19 @@
 //
 
 #import "MyDropDownViewController.h"
+#import "LinkToCaseIdAutoFilterModel.h"
 
-@interface MyDropDownViewController ()<UITextFieldDelegate>
+#define getAutoFilterClientName @"ViewByCaseID_AutoFilter_ClientName_CaseID"
+#define getCaseIdBtClientName   @"ViewByCaseID_Fill_CaseID_ByClientName"
+
+@interface MyDropDownViewController ()<UITextFieldDelegate,UtilityDelegate>
 {
-    NSArray  *arr_AppointmentType;
-    NSArray  *arr_LinkToCaseId;
-    NSArray  *arr_Venue;
+    NSArray         *arr_AppointmentType;
+    NSMutableArray  *arr_LinkToCaseId;
+    NSMutableArray  *arr_LinkToCaseIdTempData; /// to store previous data auto filter name
+    NSArray         *arr_Venue;
+    ViewByCaseIdMode _viewByCaseIdMode;
+    
 }
 
 @end
@@ -27,22 +34,16 @@
     }
     return self;
 }
-//{
-//    
-//    "eLegalNet_AutoFilter_ClientName_CaseIDResult" = "{\"success\":\"1\",\"data\":\"{\\r\\n  \\\"ja_CLIENTFULLNAME\\\": \\\"[\\\\r\\\\n  \\\\\\\"Amit Shrivastav\\\\\\\",\\\\r\\\\n  \\\\\\\"Poorima P\\\\\\\"\\\\r\\\\n]\\\",\\r\\n  \\\"ja_CL_Id\\\": \\\"[\\\\r\\\\n  \\\\\\\"\\\\\\\",\\\\r\\\\n  \\\\\\\"\\\\\\\"\\\\r\\\\n]\\\"\\r\\n}\"}";
-//    
-//}
-
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     arr_AppointmentType = [NSArray arrayWithObjects:@"Matter",@"Consulation",@"Discussion",@"Event",@"Birthday",@"Anniversary",@"Holiday", nil];
-    arr_LinkToCaseId = [NSArray arrayWithObjects:@"fff83d8b-3c03-429d-81d8-f0a7a6064e19",@"58353398-631e-46a3-9022-815f88f001af", nil];
+//    arr_LinkToCaseId = [NSArray arrayWithObjects:@"fff83d8b-3c03-429d-81d8-f0a7a6064e19",@"58353398-631e-46a3-9022-815f88f001af", nil];
     arr_Venue = [NSArray arrayWithObjects:@"dfgdfgfdg",@"fgfgf",@"fgfgfg",@"rtertrtr",@"rtrtrtret",@"tyrtytry",@"tyrtytyt", nil];
     
     if ([_str_ShowTableContent isEqualToString:kShowAppointmentLinkedToCaseId]) {
        
+        [self getAutoFilterClientNameWebservices];
         _txt_ClientName.delegate = self;
         self.tableView.tableHeaderView = _txt_ClientName;
     }
@@ -100,7 +101,15 @@
     }
     else if ([_str_ShowTableContent isEqualToString:kShowAppointmentLinkedToCaseId])
     {
-        cell.textLabel.text = [arr_LinkToCaseId objectAtIndex:indexPath.row];
+        LinkToCaseIdAutoFilterModel *model = (LinkToCaseIdAutoFilterModel *)[arr_LinkToCaseId objectAtIndex:indexPath.row];
+        if (_viewByCaseIdMode == ViewByCaseIdAutoFilterWebservicesCalled)
+        {
+           cell.textLabel.text = model.str_ClientName;
+        }
+        else if (_viewByCaseIdMode == ViewByCaseIdGetCaseIdByClientNameWebservicesCalled)
+        {
+           cell.textLabel.text = model.str_CaseId;
+        }
     }
     else{
        cell.textLabel.text = [arr_Venue objectAtIndex:indexPath.row];
@@ -117,18 +126,31 @@
     if ([_str_ShowTableContent isEqualToString:kShowAppointmentType])
     {
         str_Content = [arr_AppointmentType objectAtIndex:indexPath.row];
+        [self didMoveToParentViewController:nil];
+        [self.view removeFromSuperview];
+        [self removeFromParentViewController];
+
     }
     else if ([_str_ShowTableContent isEqualToString:kShowAppointmentLinkedToCaseId])
     {
-         str_Content = [arr_LinkToCaseId objectAtIndex:indexPath.row];
+        if (_viewByCaseIdMode == ViewByCaseIdAutoFilterWebservicesCalled)
+        {
+            LinkToCaseIdAutoFilterModel *model = (LinkToCaseIdAutoFilterModel *)[arr_LinkToCaseId objectAtIndex:indexPath.row];
+            [self getCaseIdByClientNameFromClientName:model.str_ClientName];
+
+        }
+        else if (_viewByCaseIdMode == ViewByCaseIdGetCaseIdByClientNameWebservicesCalled)
+        {
+            //str_Content = [arr_LinkToCaseId objectAtIndex:indexPath.row];
+            [self.navigationController popViewControllerAnimated:YES];
+        }
+        
     }
     else{
         str_Content = [arr_Venue objectAtIndex:indexPath.row];
+        [self.navigationController popViewControllerAnimated:YES];
     }
-    [self didMoveToParentViewController:nil];
-    [self.view removeFromSuperview];
-    [self removeFromParentViewController];
-
+    
     [_delegate selectedDropDownListTableWithContent:str_Content contentType:_str_ShowTableContent];
     
  
@@ -136,6 +158,80 @@
 #pragma mark - Text Field Delegate
 -(BOOL)textFieldShouldReturn:(UITextField *)textField{
     return YES;
+}
+#pragma mark _ Call webservices Method 
+-(void)getAutoFilterClientNameWebservices
+{
+    NSMutableDictionary  *dict =  [[NSMutableDictionary alloc]initWithObjectsAndKeys:@"",@"search",@"680c1005-b448-4b7d-8f52-c0bbf21ea416",@"id",nil];
+    Utility *util = [Utility sharedInstance];
+    [util setDelegate:self];
+    [util fetchDataWithMethodName:getAutoFilterClientName andParameterDictionary:dict];
+}
+-(void)getCaseIdByClientNameFromClientName:(NSString *)name
+{
+    _viewByCaseIdMode = ViewByCaseIdAutoFilterWebservicesCalled;
+    
+    NSMutableDictionary  *dict =  [[NSMutableDictionary alloc]initWithObjectsAndKeys:name,@"clientname",@"0",@"mode",@"77ec0754-a225-472a-8d1a-1e34eb459d90",@"chamberid",@"680c1005-b448-4b7d-8f52-c0bbf21ea416",@"loggeduserid",@"1",@"status",nil];
+    Utility *util = [Utility sharedInstance];
+    [util setDelegate:self];
+    [util fetchDataWithMethodName:getCaseIdBtClientName andParameterDictionary:dict];
+    
+}
+#pragma mark - Utility Delegate
+-(void)inComingResponse:(id)response forRequest:(NSString *)request
+{
+    if ([request isEqualToString:getAutoFilterClientName])
+    {
+        [self storeClientNameAndClientIdFromAutoFilterWebservicesResponse:response];
+    }
+    else if ([request isEqualToString:getCaseIdBtClientName])
+    {
+        [self storeClientNameAndClientIdFromAutoFilterWebservicesResponse:response];
+    }
+}
+
+-(void)inComingError:(NSString *)errorMessage forRequest:(NSString *)request
+{
+    
+}
+-(void)storeClientNameAndClientIdFromAutoFilterWebservicesResponse:(NSObject *)data
+{
+    if (arr_LinkToCaseId)
+    {
+        [arr_LinkToCaseId removeAllObjects];
+        arr_LinkToCaseId = nil;
+        
+        arr_LinkToCaseIdTempData = nil;
+    }
+    arr_LinkToCaseId = [[NSMutableArray alloc] init];
+    for (int i = 0;i<[[data valueForKeyPath:@"data.ja_CLIENTFULLNAME"] count];i++)
+    {
+        LinkToCaseIdAutoFilterModel *model = [[LinkToCaseIdAutoFilterModel alloc] init];
+        model.str_ClientName               = [(NSArray *)[data valueForKeyPath:@"data.ja_CLIENTFULLNAME"] objectAtIndex:i];
+        model.str_ClientId               = [(NSArray *)[data valueForKeyPath:@"data.ja_CL_Id"] objectAtIndex:i];
+        [arr_LinkToCaseId addObject:model];
+    }
+    arr_LinkToCaseIdTempData = [NSMutableArray arrayWithArray:arr_LinkToCaseId];
+    [self.tableView reloadData];
+}
+-(void)storeCaseIdAndIdFromGetCaseIdByClientNameWebservicesResponse:(NSObject *)data
+{
+    if (arr_LinkToCaseId)
+    {
+        [arr_LinkToCaseId removeAllObjects];
+        arr_LinkToCaseId = nil;
+        
+        arr_LinkToCaseIdTempData = nil;
+    }
+    arr_LinkToCaseId = [[NSMutableArray alloc] init];
+    for (int i = 0;i<[[data valueForKeyPath:@"data.ja_CF_CaseID"] count];i++)
+    {
+        LinkToCaseIdAutoFilterModel *model = [[LinkToCaseIdAutoFilterModel alloc] init];
+        model.str_CaseId               = [(NSArray *)[data valueForKeyPath:@"data.ja_CF_CaseID"] objectAtIndex:i];
+        model.str_Id               = [(NSArray *)[data valueForKeyPath:@"data.ja_CF_ID"] objectAtIndex:i];
+        [arr_LinkToCaseId addObject:model];
+    }
+    [self.tableView reloadData];
 }
 /*
 // Override to support conditional editing of the table view.

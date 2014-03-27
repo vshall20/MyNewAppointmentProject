@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		330B08A018D2E38800C40AAC /* CustomBottomView.m in Sources */ = {isa = PBXBuildFile; fileRef = 330B089F18D2E38800C40AAC /* CustomBottomView.m */; };
 		330B08A218D2E3BF00C40AAC /* CustomBottomView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 330B08A118D2E3BF00C40AAC /* CustomBottomView.xib */; };
+		33940E9118E41B88006F19F9 /* LinkToCaseIdAutoFilterModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 33940E9018E41B88006F19F9 /* LinkToCaseIdAutoFilterModel.m */; };
 		33A4C44518CEE4E10010FDF3 /* CustomRecurringCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 33A4C44418CEE4E10010FDF3 /* CustomRecurringCell.m */; };
 		33A4C44818CEE4F50010FDF3 /* CustomHolidayTypeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 33A4C44718CEE4F50010FDF3 /* CustomHolidayTypeCell.m */; };
 		33A4C44A18CEE5150010FDF3 /* CustomRecurringCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 33A4C44918CEE5150010FDF3 /* CustomRecurringCell.xib */; };
@@ -122,6 +123,8 @@
 		330B089E18D2E38800C40AAC /* CustomBottomView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomBottomView.h; sourceTree = "<group>"; };
 		330B089F18D2E38800C40AAC /* CustomBottomView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomBottomView.m; sourceTree = "<group>"; };
 		330B08A118D2E3BF00C40AAC /* CustomBottomView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomBottomView.xib; sourceTree = "<group>"; };
+		33940E8F18E41B88006F19F9 /* LinkToCaseIdAutoFilterModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LinkToCaseIdAutoFilterModel.h; sourceTree = "<group>"; };
+		33940E9018E41B88006F19F9 /* LinkToCaseIdAutoFilterModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LinkToCaseIdAutoFilterModel.m; sourceTree = "<group>"; };
 		33A4C44318CEE4E10010FDF3 /* CustomRecurringCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomRecurringCell.h; sourceTree = "<group>"; };
 		33A4C44418CEE4E10010FDF3 /* CustomRecurringCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomRecurringCell.m; sourceTree = "<group>"; };
 		33A4C44618CEE4F50010FDF3 /* CustomHolidayTypeCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomHolidayTypeCell.h; sourceTree = "<group>"; };
@@ -488,6 +491,8 @@
 				86E2CC5C18C905E700E11FD4 /* Utility.m */,
 				33A8BC2418CA096100F4F2DE /* Processor.h */,
 				33A8BC2518CA096100F4F2DE /* Processor.m */,
+				33940E8F18E41B88006F19F9 /* LinkToCaseIdAutoFilterModel.h */,
+				33940E9018E41B88006F19F9 /* LinkToCaseIdAutoFilterModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -766,6 +771,7 @@
 				33B3EF4718C73EB7006AEF58 /* UIImage+TKCategory.m in Sources */,
 				33FC8ECE18CA205100D409CF /* DateFormatter.m in Sources */,
 				33A8BC2218C9EAE200F4F2DE /* FilterByLawyerViewController.m in Sources */,
+				33940E9118E41B88006F19F9 /* LinkToCaseIdAutoFilterModel.m in Sources */,
 				86E2CC6218C910C600E11FD4 /* LawyerEntity.m in Sources */,
 				33B3EF4618C73EB7006AEF58 /* TKGlobal.m in Sources */,
 				86667FB918DDD9E40023BDAB /* SaveAppointmentRequest.m in Sources */,

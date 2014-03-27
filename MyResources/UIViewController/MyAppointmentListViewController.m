@@ -114,7 +114,11 @@
     
     [self controllerDidChangeContent:self.fetchResultController];
 }
-
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:YES];
+    [_tbl_AppointmentList reloadData];
+}
 -(void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
@@ -195,7 +199,7 @@
     NSMutableDictionary  *dict =  [[NSMutableDictionary alloc]initWithObjectsAndKeys:@"11/18/2013",@"search",
                                        _lawyerID, @"id",
                                        @"", @"caseid",
-                                       @"1", @"appointmenttype",
+                                       @"", @"appointmenttype",
                                        _chamberID, @"chamberid",
                                        @"lawyer", @"logintype",nil];
 
@@ -342,7 +346,7 @@
         obj_LeftViewController = [[LeftViewController alloc] initWithNibName:@"LeftViewController" bundle:nil];
         obj_LeftViewController.myArray = arr_Data;
         obj_LeftViewController.delegate = self;
-        obj_LeftViewController.view.frame = CGRectMake(0, obj_MyNavigationBar.frame.size.height, 100, 88);
+        obj_LeftViewController.view.frame = CGRectMake(0, obj_MyNavigationBar.frame.size.height,200, 88);
         [self addChildViewController:obj_LeftViewController];
         [self.view addSubview:obj_LeftViewController.view];
         [obj_LeftViewController didMoveToParentViewController:self];
@@ -474,10 +478,13 @@
 #pragma mark - Tab Bar Delegate 
 - (void)tabBar:(UITabBar *)tabBar didSelectItem:(UITabBarItem *)item;
 {
+    if (item.tag == 0)
+    {
     NewAppointmentViewController *obj_New = [[NewAppointmentViewController alloc] initWithNibName:@"NewAppointmentViewController" bundle:nil];
     obj_New.entityData = nil;
     obj_New.mode       = 0; // add
     [self.navigationController pushViewController:obj_New animated:YES];
+    }
     NSLog(@"item %d",item.tag);
 }
 
