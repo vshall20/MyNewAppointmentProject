@@ -16,5 +16,6 @@
 
 -(id)initWithDictionary:(NSMutableDictionary *)dict;
 -(void)parseDictionaryAndSave;
+-(void)parseDictionaryAndSaveLawyerData;
 
 @end

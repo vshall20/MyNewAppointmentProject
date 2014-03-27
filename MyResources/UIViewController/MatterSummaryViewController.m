@@ -325,7 +325,7 @@
 -(void)goToNewAppointmentScreen
 {
     NewAppointmentViewController *obj_New = [[NewAppointmentViewController alloc] initWithNibName:@"NewAppointmentViewController" bundle:nil];
-    obj_New.mode       = 2; // add another matter 
+    obj_New.mode       =  AppointmentModeAddMatter; //2; // add another matter
     obj_New.entityData = model;
     [self.navigationController pushViewController:obj_New animated:YES];
 }

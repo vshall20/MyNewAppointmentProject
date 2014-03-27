@@ -116,10 +116,9 @@
     }
     
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
-        NSString *parameterName = [NSString stringWithFormat:@"%@parameter={\"search\":\"\",\"lawyerid\":\"%@\"}",[self servicePathForClientName],[[AppDelegate delegate] lawyerID]];
-        _dict_linkToCaseID = [self getData:parameterName];
-        NSString *parameterName1 = [NSString stringWithFormat:@"%@parameter={\"clientname\":\"%@\",\"mode\":\"\",\"chamberid\":\"%@\",\"loggedUserid\":\"%@\"}",[self servicePathForCaseIdByClientName],@"fff83d8b-3c03-429d-81d8-f0a7a6064e19",[[AppDelegate delegate] chamberID],[[AppDelegate delegate ] lawyerID]];
-        [self getData:parameterName1];
+        NSString *parameterName = @"";//[NSString stringWithFormat:@"%@parameter={\"search\":\"\",\"lawyerid\":\"%@\"}",[self servicePathForClientName],[[AppDelegate delegate] lawyerID]];
+        [self getData:parameterName];
+        
     });
     
     // Uncomment the following line to preserve selection between presentations.
@@ -131,19 +130,29 @@
 
 -(NSString *)servicePathForClientName
 {
-    return @"/eLegalNet_AutoFilter_ClientName_CaseID?";
+//    /eLegalNet_AutoFilter_ClientName_CaseID?
+    return @"ViewByCaseID_AutoFilter_ClientName_CaseID";
 }
 
--(NSString *)servicePathForCaseIdByClientName
+
+-(void)inComingResponse:(id)response forRequest:(NSString *)request
 {
-    return @"/eLegalNet_Fill_CaseID_ByClientName?";
+    if ([request isEqualToString:[self servicePathForClientName]]) {
+        _dict_linkToCaseID = (NSMutableDictionary *)response;
+    }
 }
 
--(NSMutableDictionary *)getData:(NSString *)parameterName
+-(void)inComingError:(NSString *)errorMessage forRequest:(NSString *)request
+{
+    _dict_linkToCaseID = nil;
+}
+
+-(void)getData:(NSString *)parameterName
 {
     Utility *util = [Utility sharedInstance];
-    NSMutableDictionary *dict = [util fetchData:parameterName];
-    return dict;
+    [util setDelegate:self];
+    NSMutableDictionary *dict = [[NSMutableDictionary alloc]initWithObjectsAndKeys:@"",@"search",[[AppDelegate delegate] lawyerID],@"id", nil];
+    [util fetchDataWithMethodName:[self servicePathForClientName] andParameterDictionary:dict];
 }
 
 
@@ -166,6 +175,7 @@
 {
     return 10;
 }
+
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     
     switch (indexPath.row) {
@@ -255,6 +265,7 @@
     }
     
 }
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     
@@ -508,11 +519,12 @@
     
     return nil;
 }
+
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (indexPath.row == 3)
     {
-        [self showDropDownWithContentType:kShowAppointmentLinkedToCaseId andDataArray:[[_dict_linkToCaseID objectForKey:@"data"] objectForKey:@"ja_CLIENTFULLNAME"]];
+        [self showDropDownWithContentType:kShowAppointmentLinkedToCaseId andDataArray:nil andDictionary:[_dict_linkToCaseID objectForKey:@"data"]];
     }
     else if (indexPath.row == 4)
     {
@@ -537,27 +549,29 @@
     
 }
 
--(void)showDropDownWithContentType:(NSString *)str_ContentType andDataArray :(NSArray *)array
+-(void)showDropDownWithContentType:(NSString *)str_ContentType andDataArray :(NSArray *)array andDictionary:(NSMutableDictionary *)dict
 {
     MyDropDownViewController *obj_MyDropDownViewController = [[MyDropDownViewController alloc] initWithNibName:@"MyDropDownViewController" bundle:nil];
     obj_MyDropDownViewController.str_ShowTableContent  = str_ContentType;
     obj_MyDropDownViewController.delegate = self;
     obj_MyDropDownViewController.dataArray = array;
-    obj_MyDropDownViewController.view.frame = CGRectMake(0, self.view.frame.size.height-200,obj_MyDropDownViewController.view.frame.size.width,200);
+    obj_MyDropDownViewController.dict_linkToCaseID = dict;
+//    obj_MyDropDownViewController.view.frame = CGRectMake(0, self.view.frame.size.height-200,obj_MyDropDownViewController.view.frame.size.width,200);
     
-    [self addChildViewController:obj_MyDropDownViewController];
-    [self.view addSubview:obj_MyDropDownViewController.view];
-    [obj_MyDropDownViewController didMoveToParentViewController:self];
-    
+//    [self addChildViewController:obj_MyDropDownViewController];
+//    [self.view addSubview:obj_MyDropDownViewController.view];
+//    [obj_MyDropDownViewController didMoveToParentViewController:self];
+
+    [self.navigationController pushViewController:obj_MyDropDownViewController animated:YES];
 }
 
 
 #pragma mark - MyDropDownViewController Delegate
 -(void)selectedDropDownListTableWithContent:(NSString *)str_Content contentType:(NSString *)str_ContentType
 {
-    if ([str_ContentType isEqualToString:kShowAppointmentLinkedToCaseId])
+    if ([str_ContentType isEqualToString:kShowCaseId])
     {
-        model.caseId = [self idForName:str_Content]; //str_Content;
+        model.caseId =  str_Content;//[self idForName:str_Content];
     }
     else{
         model.venue = str_Content;
