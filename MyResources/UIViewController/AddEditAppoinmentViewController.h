@@ -15,7 +15,7 @@
 
 @end
 
-@interface AddEditAppoinmentViewController : UITableViewController
+@interface AddEditAppoinmentViewController : UITableViewController<UtilityDelegate>
 @property (nonatomic,readwrite)NSString    *str_AppointmentType;
 @property(strong,nonatomic) DataEntity  *entityData;
 @property(strong,nonatomic) DataEntity  *model;

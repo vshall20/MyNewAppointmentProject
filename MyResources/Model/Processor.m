@@ -9,6 +9,7 @@
 #import "Processor.h"
 #import "DataManager.h"
 #import "DateFormatter.h"
+#import "LawyerEntity.h"
 
 @implementation Processor
 
@@ -22,6 +23,24 @@
         dictionary = dict;
     }
     return self;
+}
+
+-(void)parseDictionaryAndSaveLawyerData
+{
+    DataManager *dataManager = [[AppDelegate delegate] dataManager];
+    if (dictionary) {
+        NSMutableDictionary *dict = [dictionary objectForKey:@"data"];
+        LawyerEntity *entity = [NSEntityDescription insertNewObjectForEntityForName:kNameLawyerEntityName inManagedObjectContext:[dataManager bgManagedObjectContext]];
+        entity.chamberID = [dict valueForKey:@"chamberid"];
+        entity.lawyerID = [dict valueForKey:@"id"];
+        entity.emailAddress = [dict valueForKey:@"emailadd"];
+        entity.firstName = [dict valueForKey:@"firstname"];
+        entity.lastName = [dict valueForKey:@"lastname"];
+        entity.roleName = [dict valueForKey:@"rolename"];
+        entity.loginStatus = [dict valueForKey:@"login_status"];
+        entity.roleId = [dict valueForKey:@"roleid"];
+        [dataManager saveBGContext];
+    }
 }
 
 -(void)parseDictionaryAndSave
