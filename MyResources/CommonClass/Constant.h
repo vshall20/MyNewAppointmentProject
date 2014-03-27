@@ -14,11 +14,9 @@
 
 #define kShowAppointmentType             @"ShowAppointmentType"
 #define kShowAppointmentLinkedToCaseId   @"ShowAppointmentLinkedToCaseId"
-#define kShowCaseId                      @"ShowCaseId"
 #define kShowAppointmentSelectVenue      @"ShowAppointmentSelectVenue"
 
 #define kNameEntityName             @"DataEntity"
-#define kNameLawyerEntityName       @"LawyerEntity"
 
 #define kNameja_AllStartDate        @"ja_AllStartDate"
 #define kNameja_AppId               @"ja_AppId"
@@ -58,12 +56,6 @@ typedef enum {
     AppointmentTypeOthers,
     AppointmentTypeAll
 } AppointmentType;
-
-typedef enum {
-    AppointmentModeNew =0,
-    AppointmentModeEdit,
-    AppointmentModeAddMatter
-} AppointmentMode;
 
 
 #define appointmentBasicCell        @"appointmentBasicCell"

@@ -7,7 +7,6 @@
 //
 
 #import "LoginResponse.h"
-#import "Processor.h"
 
 @implementation LoginResponse
 
@@ -24,14 +23,7 @@
 
 -(void)saveData
 {
-    if (_lawyerDictionary)
-    {
-        Processor *processor = [[Processor alloc]initWithDictionary:_lawyerDictionary];
-        
-        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
-            [processor parseDictionaryAndSaveLawyerData];
-        });
-    }
+    
 }
 
 

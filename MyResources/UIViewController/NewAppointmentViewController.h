@@ -13,6 +13,4 @@
 
 @property(strong,nonatomic) DataEntity  *entityData;
 @property(readwrite)int mode; /// 0 for Add 1 for Edit 2 For Add Another Matter
-@property(nonatomic, strong) NSMutableDictionary *saveDictionary;
-
 @end

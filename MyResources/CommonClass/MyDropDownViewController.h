@@ -19,11 +19,10 @@ enum {
 @end
 
 
-@interface MyDropDownViewController : UITableViewController <UtilityDelegate>
+@interface MyDropDownViewController : UITableViewController
 @property(nonatomic,readwrite)NSString *str_ShowTableContent;
 @property(nonatomic,assign)id <MyDropDownViewControllerDelegate> delegate;
 @property (strong, nonatomic) IBOutlet UITextField *txt_ClientName;
 @property (nonatomic, readwrite) NSArray *dataArray;
-@property (strong, nonatomic) NSMutableDictionary *dict_linkToCaseID;
 
 @end

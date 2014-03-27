@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="5063" systemVersion="13C64" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="3396" systemVersion="12F45" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
     <entity name="DataEntity" representedClassName="DataEntity" syncable="YES">
         <attribute name="appId" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="appointmentDescription" optional="YES" attributeType="String" syncable="YES"/>
@@ -28,16 +28,10 @@
     </entity>
     <entity name="LawyerEntity" representedClassName="LawyerEntity" syncable="YES">
         <attribute name="chamberID" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="emailAddress" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="firstName" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="lastName" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="lawyerID" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="loginStatus" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="roleId" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="roleName" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <elements>
         <element name="DataEntity" positionX="-4914" positionY="-975" width="128" height="403"/>
-        <element name="LawyerEntity" positionX="-4707" positionY="-873" width="128" height="165"/>
+        <element name="LawyerEntity" positionX="-4707" positionY="-873" width="128" height="73"/>
     </elements>
 </model>
